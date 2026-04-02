@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Israel Valencia — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Syne:wght@800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+      --bg: #0C0C0E;
+      --bg2: #0C0C0E;
+      --bg3: #0C0C0E;
+      --card: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.08);
+      --text: #F0EDE6;
+      --muted: #888888;
+      --accent: #C8F135;
+      --accent2: #C8F135;
+      --accent-glow: rgba(200,241,53,0.25);
+      --green: #C8F135;
+      --orange: #C8F135;
+      --pink: #C8F135;
+      --teal: #C8F135;
+      --yellow: #C8F135;
+      --blue: #C8F135;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(12,12,14,0.80);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo span.emoji { font-size: 20px; }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent2) !important;
+      color: var(--bg) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .lang-btn {
+      padding: 5px 11px;
+      border-radius: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 180ms ease;
+      color: var(--muted);
+      background: transparent;
+      border: none;
+      letter-spacing: 0.8px;
+      font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 2px 8px rgba(124,92,252,0.4);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(124,92,252,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(20,184,166,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* dim overlay — sits between canvas (z:1) and text (z:3) */
+    .hero-dim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: rgba(10,10,14,0.70);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-canvas-wrap {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-canvas-wrap canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .hero-canvas-wrap {
+        opacity: 0.3;
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(124,92,252,0.12);
+      border: 1px solid rgba(124,92,252,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent2);
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
+      font-size: clamp(52px, 9vw, 96px);
+      font-weight: 700;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero h1 .name-accent {
+      background: linear-gradient(90deg, #7c5cfc, #14b8a6, #ec4899, #C8F135, #7c5cfc);
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 6s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-intro {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--muted);
+      max-width: 650px;
+      line-height: 1.7;
+      margin: 0 auto 48px;
+      animation: fadeUp 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-intro strong { color: var(--text); font-weight: 500; }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.6s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 180ms ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0C0C0E;
+      box-shadow: 0 0 30px rgba(124,92,252,0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(124,92,252,0.6);
+    }
+
+    .btn-secondary {
+      background: var(--bg3);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--card);
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      animation: fadeUp 0.6s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+        @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION ── */
+    section { padding: 120px 40px; }
+
+    .section-header {
+      margin-bottom: 56px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+        .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 17px;
+      margin-top: 12px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── DISCIPLINES ── */
+    #disciplines { background: var(--bg2); }
+
+    .disciplines-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .disciplines-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .discipline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      transition: all 180ms ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .discipline-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent) 0%, transparent 60%); opacity: 0; transition: opacity 180ms ease; }
+
+    .discipline-card:hover {
+      border-color: var(--d-color, var(--accent));
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .discipline-card:hover::before { opacity: 0.05; }
+
+    .discipline-card.active {
+      border-color: var(--d-color, var(--accent));
+      box-shadow: 0 0 0 1px var(--d-color, var(--accent)), 0 0 24px rgba(124,92,252,0.2);
+    }
+
+    .discipline-card.active::before { opacity: 0.1; }
+
+    .discipline-card.active .discipline-icon {
+      border-color: var(--d-color, var(--accent));
+    }
+
+    /* "Todos" reset card */
+    .discipline-card.all-card {
+      --d-color: #a78bfa;
+      grid-column: 1 / -1;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .discipline-card.all-card.active {
+      color: var(--text);
+    }
+
+    .discipline-card.all-card .all-dot {
+      width: 8px; height: 8px;
+      background: var(--accent2);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Project filter animation */
+    .project-card {
+      transition: all 180ms ease;
+    }
+
+    .project-card.filtered-out {
+      display: none;
+    }
+
+    .year-group.all-hidden {
+      display: none;
+    }
+
+    /* Filter hint text */
+    .filter-hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 20px;
+      text-align: center;
+      transition: opacity 0.3s;
+    }
+
+    .discipline-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 1;
+    }
+
+    .discipline-name {
+      font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
+      font-size: 17px;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--bg); }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .year-group { margin-bottom: 20px; }
+
+    .year-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .year-tag {
+      font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--bg);
+      background: var(--accent2);
+      padding: 4px 14px;
+      border-radius: 100px;
+    }
+
+    .year-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 180ms ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: rgba(124,92,252,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+
+    .project-thumb {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg3);
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 180ms ease;
+    }
+
+    .project-card:hover .project-thumb img {
+      transform: scale(1.04);
+    }
+
+    .project-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .project-title {
+      font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .project-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      color: var(--accent2);
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      margin-top: 8px;
+    }
+
+    .project-card:hover .project-arrow {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .about-inner {
+        text-align: center;
+      }
+      .about-text     .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+      .about-stats { justify-content: center; }
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .stat-number {
+      font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
+      font-size: 36px;
+      font-weight: 700;
+      
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      position: relative;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 21px;
+      
+      z-index: -1;
+    }
+
+    .about-quote {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .about-quote strong { color: var(--text); font-style: normal; }
+
+    .about-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .about-info-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .about-info-icon {
+      width: 32px; height: 32px;
+      background: rgba(124,92,252,0.1);
+      border: 1px solid rgba(124,92,252,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .about-info-label { color: var(--muted); }
+    .about-info-value { color: var(--text); font-weight: 500; margin-left: auto; }
+
+    /* ── PORTFOLIO LINKS ── */
+    #portfolios { background: var(--bg); }
+
+    .portfolios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .portfolio-link-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 180ms ease;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-link-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-gradient, linear-gradient(90deg, var(--accent), var(--accent2)));
+    }
+
+    .portfolio-link-card:hover {
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .portfolio-link-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+    }
+
+    .portfolio-link-title {
+      font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .portfolio-link-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .portfolio-link-url {
+      font-size: 12px;
+      color: var(--accent2);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg2); }
+
+    .contact-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .contact-text {
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .contact-text     .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .contact-text p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 24px;
+      border-radius: 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 180ms ease;
+    }
+
+    .contact-btn:hover {
+      border-color: var(--btn-color, var(--accent));
+      background: rgba(255,255,255,0.03);
+      transform: translateX(6px);
+    }
+
+    .contact-btn-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .contact-btn-arrow {
+      margin-left: auto;
+      color: var(--muted);
+      transition: transform 0.2s;
+    }
+
+    .contact-btn:hover .contact-btn-arrow { transform: translateX(4px); color: var(--btn-color, var(--accent)); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--bg);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    .footer-links { display: flex; gap: 24px; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 70px 20px; }
+      .hero { padding: 100px 20px 70px; }
+      .hero-scroll { left: 20px; }
+      .about-inner,
+      .contact-inner,
+      .portfolios-grid { grid-template-columns: 1fr; gap: 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <span class="emoji">🚀</span>Israel Valencia
+    </a>
+    <ul class="nav-links">
+      <li><a href="#disciplines" data-i18n="nav_disciplines">Disciplinas</a></li>
+      <li><a href="#projects" data-i18n="nav_projects">Proyectos</a></li>
+      <li><a href="#about" data-i18n="nav_about">Sobre mí</a></li>
+      <li><a href="#portfolios" data-i18n="nav_portfolios">Portafolios</a></li>
+      <li><a href="#contact" class="nav-cta" data-i18n="nav_cta">Conectemos</a></li>
+    </ul>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn" id="btn-es" onclick="setLanguage('es')">ES</button>
+      <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-badge" data-i18n="hero_badge">Disponible para colaborar</div>
+
+      <h1>
+        <span data-i18n="hero_greeting">Hola, soy</span><br />
+        <span class="name-accent">Israel Valencia</span>
+      </h1>
+
+      <p class="hero-intro" data-i18n-html="hero_intro">
+        Product Designer and Creative Technologist. Aquí podrás encontrar
+        <strong>mis trabajos y proyectos</strong> en distintas disciplinas —
+        desde diseño de producto hasta inteligencia generativa.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <span data-i18n="hero_cta_primary">Ver proyectos</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-secondary" data-i18n="hero_cta_secondary">
+          Contactar
+        </a>
+      </div>
+    </div>
+
+    <!-- 3D Animation -->
+    <div class="hero-canvas-wrap" id="hero-3d">
+      <canvas id="hero-canvas"></canvas>
+    </div>
+
+    <!-- Dim overlay for text contrast -->
+    <div class="hero-dim" aria-hidden="true"></div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span data-i18n="hero_scroll">Scroll para explorar</span>
+    </div>
+  </section>
+
+  <!-- ── DISCIPLINES ── -->
+  <section id="disciplines">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label" data-i18n="disc_label">Lo que hago</div>
+        <h2 class="section-title" data-i18n="disc_title">Disciplinas</h2>
+        <p class="section-sub" data-i18n="disc_sub">Áreas en las que trabajo y sigo explorando.</p>
+      </div>
+
+      <div class="disciplines-grid">
+        <div class="discipline-card all-card active" data-filter="all" role="button" tabindex="0">
+          <div class="all-dot"></div>
+          <div class="discipline-name" data-i18n="disc_all">Todos los proyectos</div>
+        </div>
+        <div class="discipline-card" data-filter="product-design" style="--d-color: #3b82f6" role="button" tabindex="0">
+          <div class="discipline-icon">🎨</div>
+          <div class="discipline-name">Product Design</div>
+        </div>
+        <div class="discipline-card" data-filter="branding" style="--d-color: #f97316" role="button" tabindex="0">
+          <div class="discipline-icon">✦</div>
+          <div class="discipline-name">Branding</div>
+        </div>
+        <div class="discipline-card" data-filter="data-bi" style="--d-color: #eab308" role="button" tabindex="0">
+          <div class="discipline-icon">📊</div>
+          <div class="discipline-name">Data and BI</div>
+        </div>
+        <div class="discipline-card" data-filter="visual" style="--d-color: #a855f7" role="button" tabindex="0">
+          <div class="discipline-icon">🖼</div>
+          <div class="discipline-name">Visual</div>
+        </div>
+        <div class="discipline-card" data-filter="generative-ai" style="--d-color: #14b8a6" role="button" tabindex="0">
+          <div class="discipline-icon">🤖</div>
+          <div class="discipline-name">Generative AI</div>
+        </div>
+      </div>
+      <p class="filter-hint" id="filter-hint" data-i18n="disc_hint">Haz clic en una disciplina para filtrar proyectos ↓</p>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label" data-i18n="proj_label">Mi trabajo</div>
+        <h2 class="section-title" data-i18n="proj_title">Proyectos</h2>
+        <p class="section-sub" data-i18n="proj_sub">Casos seleccionados ordenados por año.</p>
+      </div>
+
+      <div class="timeline">
+
+        <!-- 2026 -->
+        <div class="year-group">
+          <div class="year-label">
+            <span class="year-tag">2026</span>
+            <div class="year-line"></div>
+          </div>
+          <div class="projects-grid">
+
+            <a class="project-card" data-discipline="generative-ai" href="https://learsival.notion.site/Neoconsulting-Video-IA-31e08144e2b280c9a5d1c390c8650ae9" target="_blank" rel="noopener">
+              <div class="project-thumb" style="">
+                <span style="font-size:36px">🤖</span>
+              </div>
+              <div class="project-body">
+                <div class="project-title">Neoconsulting — Video IA</div>
+                <div class="project-desc" data-i18n="p_neo">Producción de video con inteligencia artificial para consultoría.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+            <a class="project-card" data-discipline="visual" href="https://learsival.notion.site/Crisva-Design-Lab-31e08144e2b28043ba31d42fcf7ed346" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/crisva.png" alt="Crisva Design Lab" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Crisva Design Lab</div>
+                <div class="project-desc" data-i18n="p_crisva">Estrategia de contenido para Laboratorio de Diseño de productos.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+            <a class="project-card" data-discipline="branding" href="https://learsival.notion.site/Datasigners-Brand-31e08144e2b280d98ba0f8f647514d41" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/datasigners-brand.png" alt="Datasigners Brand" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Datasigners Brand</div>
+                <div class="project-desc" data-i18n="p_datasigners_brand">Brandbook para proyecto web educativo.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+            <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Datasigners-31f08144e2b280d6b78be852edf798ab" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/datasigners.png" alt="Datasigners" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Datasigners</div>
+                <div class="project-desc" data-i18n="p_datasigners">Web educativa que convierte KPIs y métricas en recursos visuales de aprendizaje y consulta.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+            <a class="project-card" data-discipline="branding" href="https://learsival.notion.site/Pawspet-App-31f08144e2b280498870cd9728d76932" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/pawspet.png" alt="Pawspet App" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Pawspet App</div>
+                <div class="project-desc" data-i18n="p_pawspet">Competencia Hult Price: Plataforma de reserva de servicios para Mascotas.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+            <a class="project-card" data-discipline="branding" href="https://learsival.notion.site/LlamaLeads-31f08144e2b280bba385dca9239550e4" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/llamaleads.png" alt="LlamaLeads" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">LlamaLeads</div>
+                <div class="project-desc" data-i18n="p_llama">Brandbook para Agencia de Growth Marketing.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- 2025 -->
+        <div class="year-group">
+          <div class="year-label">
+            <span class="year-tag" style="background: var(--teal)">2025</span>
+            <div class="year-line"></div>
+          </div>
+          <div class="projects-grid">
+
+            <a class="project-card" data-discipline="data-bi" href="https://learsival.notion.site/Aquatica-31e08144e2b2804c86b0e0e3fe5c36a2" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/aquatica.png" alt="Aquatica" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Aquatica</div>
+                <div class="project-desc" data-i18n="p_aquatica">Reporte de Ventas Interactivo.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+            <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Bulkmate-31f08144e2b28049bb43eea4d4f4d609" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/bulkmate.png" alt="Bulkmate" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Bulkmate</div>
+                <div class="project-desc" data-i18n="p_bulk">Monitoreo de ejercicios y consumo calórico para ectomorfos.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+            <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Reebok-Green-31f08144e2b28096970ef273a1e15b8b" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/reebok.png" alt="Reebok Green" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Reebok Green</div>
+                <div class="project-desc" data-i18n="p_reebok">Competencia Globant Design Center Latam. App de análisis de calzado y reciclaje gamificado.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- 2024 -->
+        <div class="year-group">
+          <div class="year-label">
+            <span class="year-tag" style="background: var(--pink)">2024</span>
+            <div class="year-line"></div>
+          </div>
+          <div class="projects-grid">
+
+            <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Fitmashi-31f08144e2b2807a9daaefb6600d5d51" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/fitmashi.png" alt="Fitmashi" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Fitmashi</div>
+                <div class="project-desc" data-i18n="p_fitmashi">Aplicación de fitness y seguimiento de actividad física.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+            <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Interseguro-31f08144e2b2807998accc2c29cbdc8b" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/interseguro.png" alt="Interseguro" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Interseguro</div>
+                <div class="project-desc" data-i18n="p_interseguro">Diseño de experiencia para plataforma de seguros.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+            <a class="project-card" data-discipline="data-bi" href="https://learsival.notion.site/Hackeando-Productos-Informe-31f08144e2b280cea59dda2e0e6da5bb" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/hackeando.png" alt="Hackeando Productos" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Hackeando Productos</div>
+                <div class="project-desc" data-i18n="p_hackeando">Informe de análisis y hacking de productos digitales.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- 2023 -->
+        <div class="year-group">
+          <div class="year-label">
+            <span class="year-tag" style="background: var(--orange)">2023</span>
+            <div class="year-line"></div>
+          </div>
+          <div class="projects-grid">
+
+            <a class="project-card" data-discipline="visual" href="https://learsival.notion.site/ONG-Digtital-Marketing-31f08144e2b280a495f6d17ff7e9e558" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <img src="images/ong.png" alt="ONG Digital Marketing" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">ONG Digital Marketing</div>
+                <div class="project-desc" data-i18n="p_ong">Estrategia de marketing digital para organización sin fines de lucro.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-text">
+          <div class="section-label" data-i18n="about_label">Sobre mí</div>
+          <h2 class="section-title" style="margin-bottom: 28px;" data-i18n="about_title">CONÓCEME</h2>
+
+          <p data-i18n-html="about_p1">
+            Haber crecido en una <strong>constante mudanza</strong> me abrió los ojos sobre las diferentes realidades de mi país, y la propia realidad individual que supone cada persona.
+          </p>
+          <p data-i18n-html="about_p2">
+            Crecí como un empedernido explorador de <strong>la realidad digital</strong> que nos une. Estas vivencias generaron en mí una inmensa curiosidad sobre la relación entre las personas y la tecnología.
+          </p>
+          <p data-i18n-html="about_p3">
+            Con los años, comprendí que mi propósito debía centrarse en <strong>mejorar la experiencia</strong> que vivimos en esta convergencia de realidades.
+          </p>
+          <p data-i18n-html="about_p4">
+            Actualmente estudio <strong>Comunicaciones en la Universidad de Lima</strong>, y siempre, SIEMPRE, estoy dispuesto a aprender algo nuevo.
+          </p>
+
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-number">13+</div>
+              <div class="stat-label" data-i18n="stat_projects">Proyectos realizados</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">6</div>
+              <div class="stat-label" data-i18n="stat_disciplines">Disciplinas</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">4</div>
+              <div class="stat-label" data-i18n="stat_years">Años de experiencia</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">∞</div>
+              <div class="stat-label" data-i18n="stat_learning">Ganas de aprender</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-visual">
+          <div class="about-card">
+            <p class="about-quote" data-i18n-html="about_quote">
+              "Mi propósito se centra en mejorar la experiencia que vivimos en la <strong>convergencia entre el mundo digital y humano</strong>."
+            </p>
+            <div class="about-info">
+              <div class="about-info-row">
+                <div class="about-info-icon">🎓</div>
+                <span class="about-info-label" data-i18n="info_studies">Estudios</span>
+                <span class="about-info-value">Universidad de Lima</span>
+              </div>
+              <div class="about-info-row">
+                <div class="about-info-icon">📚</div>
+                <span class="about-info-label" data-i18n="info_degree">Carrera</span>
+                <span class="about-info-value">Comunicaciones</span>
+              </div>
+              <div class="about-info-row">
+                <div class="about-info-icon">🌎</div>
+                <span class="about-info-label" data-i18n="info_location">Ubicación</span>
+                <span class="about-info-value">Perú</span>
+              </div>
+              <div class="about-info-row">
+                <div class="about-info-icon">🚀</div>
+                <span class="about-info-label" data-i18n="info_focus">Enfoque</span>
+                <span class="about-info-value">Product Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MORE PORTFOLIOS ── -->
+  <section id="portfolios">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label" data-i18n="port_label">Más trabajo</div>
+        <h2 class="section-title" data-i18n="port_title">Más Portafolios</h2>
+        <p class="section-sub" data-i18n="port_sub">Explora portafolios adicionales por disciplina.</p>
+      </div>
+
+      <div class="portfolios-grid">
+        <a class="portfolio-link-card" href="https://iv-portafolio-1-1.webflow.io/" target="_blank" rel="noopener"
+           style="--card-gradient: linear-gradient(90deg, #3b82f6, #6366f1)">
+          <div class="portfolio-link-icon">🎨</div>
+          <div>
+            <div class="portfolio-link-title" data-i18n="port1_title">Product Design and Innovación</div>
+          </div>
+          <div class="portfolio-link-desc" data-i18n="port1_desc">
+            Portafolio completo de proyectos de diseño de producto e innovación. Casos de estudio, procesos y resultados.
+          </div>
+          <div class="portfolio-link-url">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            iv-portafolio-1-1.webflow.io
+          </div>
+        </a>
+
+        <a class="portfolio-link-card" href="https://www.canva.com/design/DAGuv5fViiM/E1lu0zNhAAnqJAY1THAurg/view" target="_blank" rel="noopener"
+           style="--card-gradient: linear-gradient(90deg, #a855f7, #ec4899)">
+          <div class="portfolio-link-icon">🖼</div>
+          <div>
+            <div class="portfolio-link-title" data-i18n="port2_title">Diseño Visual</div>
+          </div>
+          <div class="portfolio-link-desc" data-i18n="port2_desc">
+            Colección de trabajos de diseño visual: identidades, composiciones gráficas y piezas visuales.
+          </div>
+          <div class="portfolio-link-url">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            canva.com — Visual Design
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-text">
+          <div class="section-label" data-i18n="contact_label">Hablemos</div>
+          <h2 class="section-title" style="margin-bottom: 24px;" data-i18n="contact_title">CONECTEMOS!</h2>
+          <p data-i18n="contact_p1">¿Tienes un proyecto en mente? ¿Quieres colaborar o simplemente conocernos?</p>
+          <p data-i18n="contact_p2">Siempre estoy abierto a nuevas oportunidades, conversaciones interesantes y desafíos creativos.</p>
+          <p data-i18n="contact_p3">No dudes en escribirme — respondiendo siempre. 🚀</p>
+        </div>
+
+        <div class="contact-buttons">
+          <a href="https://wa.me/" target="_blank" rel="noopener" class="contact-btn" style="--btn-color: #22c55e">
+            <div class="contact-btn-icon">💬</div>
+            <div>
+              <div style="font-size:15px;font-weight:600">WhatsApp</div>
+              <div style="font-size:12px;color:var(--muted);font-weight:400;margin-top:2px" data-i18n="contact_wa_sub">Escríbeme directo</div>
+            </div>
+            <div class="contact-btn-arrow">→</div>
+          </a>
+
+          <a href="https://linkedin.com/in/" target="_blank" rel="noopener" class="contact-btn" style="--btn-color: #3b82f6">
+            <div class="contact-btn-icon">💼</div>
+            <div>
+              <div style="font-size:15px;font-weight:600">LinkedIn</div>
+              <div style="font-size:12px;color:var(--muted);font-weight:400;margin-top:2px" data-i18n="contact_li_sub">Conectemos profesionalmente</div>
+            </div>
+            <div class="contact-btn-arrow">→</div>
+          </a>
+
+          <a href="mailto:" class="contact-btn" style="--btn-color: #a855f7">
+            <div class="contact-btn-icon">✉️</div>
+            <div>
+              <div style="font-size:15px;font-weight:600">Email</div>
+              <div style="font-size:12px;color:var(--muted);font-weight:400;margin-top:2px" data-i18n="contact_mail_sub">Envíame un correo</div>
+            </div>
+            <div class="contact-btn-arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span>© 2026 Israel Valencia — Portfolio</span>
+    <div class="footer-links">
+      <a href="#home" data-i18n="footer_home">Inicio</a>
+      <a href="#projects" data-i18n="nav_projects">Proyectos</a>
+      <a href="#contact" data-i18n="footer_contact">Contacto</a>
+    </div>
+    <span data-i18n="footer_made">Hecho con ❤️ y mucha curiosidad</span>
+  </footer>
+
+  <script>
+    // ── INTERSECTION OBSERVER (fade-in on scroll) ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.discipline-card, .project-card, .portfolio-link-card, .stat-card, .about-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 180ms ease, box-shadow 180ms ease';
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.discipline-card').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 80}ms`;
+    });
+
+    document.querySelectorAll('.project-card').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 3) * 80}ms`;
+    });
+
+    // ── FILTER LOGIC ──
+    const disciplineCards = document.querySelectorAll('.discipline-card[data-filter]');
+    const projectCards    = document.querySelectorAll('.project-card[data-discipline]');
+    const yearGroups      = document.querySelectorAll('.year-group');
+    const filterHint      = document.getElementById('filter-hint');
+
+    function applyFilter(filter) {
+      // Update active discipline card
+      disciplineCards.forEach(card => {
+        card.classList.toggle('active', card.dataset.filter === filter);
+      });
+
+      // Show / hide project cards
+      projectCards.forEach(card => {
+        const match = filter === 'all' || card.dataset.discipline === filter;
+        card.classList.toggle('filtered-out', !match);
+        // Re-enable animation for visible cards
+        if (match) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }
+      });
+
+      // Hide year groups that have no visible cards
+      yearGroups.forEach(group => {
+        const visible = group.querySelectorAll('.project-card:not(.filtered-out)').length > 0;
+        group.classList.toggle('all-hidden', !visible);
+      });
+
+      // Update hint text
+      if (filterHint) {
+        const lang = window.currentLang || 'es';
+        if (filter === 'all') {
+          filterHint.textContent = translations[lang].disc_hint;
+        } else {
+          const label = document.querySelector(`.discipline-card[data-filter="${filter}"] .discipline-name`)?.textContent || filter;
+          const count = document.querySelectorAll(`.project-card[data-discipline="${filter}"]`).length;
+          filterHint.textContent = lang === 'es'
+            ? `${count} proyecto${count !== 1 ? 's' : ''} en ${label} — Clic en "Todos" para ver todos ↓`
+            : `${count} project${count !== 1 ? 's' : ''} in ${label} — Click "All" to see everything ↓`;
+        }
+      }
+
+      // Smooth scroll to projects section
+      if (filter !== 'all') {
+        setTimeout(() => {
+          document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+
+    disciplineCards.forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => applyFilter(card.dataset.filter));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); applyFilter(card.dataset.filter); }
+      });
+    });
+
+    // ── I18N TRANSLATIONS ──
+    const translations = {
+      es: {
+        nav_disciplines: 'Disciplinas',
+        nav_projects:    'Proyectos',
+        nav_about:       'Sobre mí',
+        nav_portfolios:  'Portafolios',
+        nav_cta:         'Conectemos',
+        hero_badge:      'Disponible para colaborar',
+        hero_greeting:   'Hola, soy',
+        hero_intro:      'Product Designer and Creative Technologist. Aquí podrás encontrar <strong>mis trabajos y proyectos</strong> en distintas disciplinas — desde diseño de producto hasta inteligencia generativa.',
+        hero_cta_primary:   'Ver proyectos',
+        hero_cta_secondary: 'Contactar',
+        hero_scroll:     'Scroll para explorar',
+        disc_label: 'Lo que hago',
+        disc_title: 'Disciplinas',
+        disc_sub:   'Áreas en las que trabajo y sigo explorando.',
+        disc_all:   'Todos los proyectos',
+        disc_hint:  'Haz clic en una disciplina para filtrar proyectos ↓',
+        proj_label: 'Mi trabajo',
+        proj_title: 'Proyectos',
+        proj_sub:   'Casos seleccionados ordenados por año.',
+        p_neo:               'Producción de video con inteligencia artificial para consultoría.',
+        p_crisva:            'Estrategia de contenido para Laboratorio de Diseño de productos.',
+        p_datasigners_brand: 'Brandbook para proyecto web educativo.',
+        p_datasigners:       'Web educativa que convierte KPIs y métricas en recursos visuales de aprendizaje y consulta.',
+        p_pawspet:           'Competencia Hult Price: Plataforma de reserva de servicios para Mascotas.',
+        p_llama:             'Brandbook para Agencia de Growth Marketing.',
+        p_aquatica:          'Reporte de Ventas Interactivo.',
+        p_bulk:              'Monitoreo de ejercicios y consumo calórico para ectomorfos.',
+        p_reebok:            'Competencia Globant Design Center Latam. App de análisis de calzado y reciclaje gamificado.',
+        p_fitmashi:          'Aplicación de fitness y seguimiento de actividad física.',
+        p_interseguro:       'Diseño de experiencia para plataforma de seguros.',
+        p_hackeando:         'Informe de análisis y hacking de productos digitales.',
+        p_ong:               'Estrategia de marketing digital para organización sin fines de lucro.',
+        about_label: 'Sobre mí',
+        about_title: 'CONÓCEME',
+        about_p1:    'Haber crecido en una <strong>constante mudanza</strong> me abrió los ojos sobre las diferentes realidades de mi país, y la propia realidad individual que supone cada persona.',
+        about_p2:    'Crecí como un empedernido explorador de <strong>la realidad digital</strong> que nos une. Estas vivencias generaron en mí una inmensa curiosidad sobre la relación entre las personas y la tecnología.',
+        about_p3:    'Con los años, comprendí que mi propósito debía centrarse en <strong>mejorar la experiencia</strong> que vivimos en esta convergencia de realidades.',
+        about_p4:    'Actualmente estudio <strong>Comunicaciones en la Universidad de Lima</strong>, y siempre, SIEMPRE, estoy dispuesto a aprender algo nuevo.',
+        stat_projects:    'Proyectos realizados',
+        stat_disciplines: 'Disciplinas',
+        stat_years:       'Años de experiencia',
+        stat_learning:    'Ganas de aprender',
+        about_quote:  '"Mi propósito se centra en mejorar la experiencia que vivimos en la <strong>convergencia entre el mundo digital y humano</strong>."',
+        info_studies:  'Estudios',
+        info_degree:   'Carrera',
+        info_location: 'Ubicación',
+        info_focus:    'Enfoque',
+        port_label: 'Más trabajo',
+        port_title: 'Más Portafolios',
+        port_sub:   'Explora portafolios adicionales por disciplina.',
+        port1_title: 'Product Design and Innovación',
+        port1_desc:  'Portafolio completo de proyectos de diseño de producto e innovación. Casos de estudio, procesos y resultados.',
+        port2_title: 'Diseño Visual',
+        port2_desc:  'Colección de trabajos de diseño visual: identidades, composiciones gráficas y piezas visuales.',
+        contact_label: 'Hablemos',
+        contact_title: 'CONECTEMOS!',
+        contact_p1:    '¿Tienes un proyecto en mente? ¿Quieres colaborar o simplemente conocernos?',
+        contact_p2:    'Siempre estoy abierto a nuevas oportunidades, conversaciones interesantes y desafíos creativos.',
+        contact_p3:    'No dudes en escribirme — respondiendo siempre. 🚀',
+        contact_wa_sub:   'Escríbeme directo',
+        contact_li_sub:   'Conectemos profesionalmente',
+        contact_mail_sub: 'Envíame un correo',
+        footer_home:    'Inicio',
+        footer_contact: 'Contacto',
+        footer_made:    'Hecho con ❤️ y mucha curiosidad',
+      },
+      en: {
+        nav_disciplines: 'Disciplines',
+        nav_projects:    'Projects',
+        nav_about:       'About me',
+        nav_portfolios:  'Portfolios',
+        nav_cta:         "Let's connect",
+        hero_badge:      'Available to collaborate',
+        hero_greeting:   "Hi, I'm",
+        hero_intro:      'Product Designer and Creative Technologist. Here you can find <strong>my work and projects</strong> across different disciplines — from product design to generative AI.',
+        hero_cta_primary:   'View projects',
+        hero_cta_secondary: 'Contact me',
+        hero_scroll:     'Scroll to explore',
+        disc_label: 'What I do',
+        disc_title: 'Disciplines',
+        disc_sub:   'Areas I work in and keep exploring.',
+        disc_all:   'All projects',
+        disc_hint:  'Click a discipline to filter projects ↓',
+        proj_label: 'My work',
+        proj_title: 'Projects',
+        proj_sub:   'Selected cases ordered by year.',
+        p_neo:               'AI-powered video production for consulting.',
+        p_crisva:            'Content strategy for a Product Design Lab.',
+        p_datasigners_brand: 'Brandbook for an educational web project.',
+        p_datasigners:       'Educational web app that turns KPIs and metrics into visual learning resources.',
+        p_pawspet:           'Hult Prize Competition: Pet services booking platform.',
+        p_llama:             'Brandbook for a Growth Marketing Agency.',
+        p_aquatica:          'Interactive Sales Report.',
+        p_bulk:              'Exercise and caloric intake tracking for ectomorphs.',
+        p_reebok:            'Globant Design Center Latam competition. Footwear analysis and gamified recycling app.',
+        p_fitmashi:          'Fitness app with physical activity tracking.',
+        p_interseguro:       'UX design for an insurance platform.',
+        p_hackeando:         'Analysis and hacking report for digital products.',
+        p_ong:               'Digital marketing strategy for a non-profit organization.',
+        about_label: 'About me',
+        about_title: 'GET TO KNOW ME',
+        about_p1:    'Growing up constantly <strong>moving around</strong> opened my eyes to the different realities of my country, and the individual reality that each person carries.',
+        about_p2:    'I grew up as an avid explorer of <strong>the digital reality</strong> that connects us. These experiences sparked in me a deep curiosity about the relationship between people and technology.',
+        about_p3:    'Over the years, I understood that my purpose should focus on <strong>improving the experience</strong> we live in this convergence of realities.',
+        about_p4:    'I currently study <strong>Communications at Universidad de Lima</strong>, and I am always, ALWAYS, willing to learn something new.',
+        stat_projects:    'Completed projects',
+        stat_disciplines: 'Disciplines',
+        stat_years:       'Years of experience',
+        stat_learning:    'Eagerness to learn',
+        about_quote:  '"My purpose is to improve the experience we live in the <strong>convergence between the digital and human world</strong>."',
+        info_studies:  'Studies',
+        info_degree:   'Degree',
+        info_location: 'Location',
+        info_focus:    'Focus',
+        port_label: 'More work',
+        port_title: 'More Portfolios',
+        port_sub:   'Explore additional portfolios by discipline.',
+        port1_title: 'Product Design and Innovation',
+        port1_desc:  'Complete portfolio of product design and innovation projects. Case studies, processes and outcomes.',
+        port2_title: 'Visual Design',
+        port2_desc:  'Collection of visual design work: brand identities, graphic compositions and visual pieces.',
+        contact_label: "Let's talk",
+        contact_title: "LET'S CONNECT!",
+        contact_p1:    'Do you have a project in mind? Want to collaborate or just get to know each other?',
+        contact_p2:    'I am always open to new opportunities, interesting conversations and creative challenges.',
+        contact_p3:    "Don't hesitate to reach out — I always reply. 🚀",
+        contact_wa_sub:   'Message me directly',
+        contact_li_sub:   "Let's connect professionally",
+        contact_mail_sub: 'Send me an email',
+        footer_home:    'Home',
+        footer_contact: 'Contact',
+        footer_made:    'Made with ❤️ and lots of curiosity',
+      }
+    };
+
+    window.currentLang = 'en';
+
+    document.addEventListener('DOMContentLoaded', () => setLanguage('en'));
+
+    function setLanguage(lang) {
+      window.currentLang = lang;
+
+      // Toggle button states
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+      // Update html lang attribute
+      document.documentElement.lang = lang;
+
+      const t = translations[lang];
+
+      // Apply textContent translations
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      // Apply innerHTML translations (for elements with <strong> etc.)
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      // Re-apply current filter hint with new language
+      const activeFilter = document.querySelector('.discipline-card.active')?.dataset.filter || 'all';
+      if (filterHint) {
+        if (activeFilter === 'all') {
+          filterHint.textContent = t.disc_hint;
+        } else {
+          const label = document.querySelector(`.discipline-card[data-filter="${activeFilter}"] .discipline-name`)?.textContent || activeFilter;
+          const count = document.querySelectorAll(`.project-card[data-discipline="${activeFilter}"]`).length;
+          filterHint.textContent = lang === 'es'
+            ? `${count} proyecto${count !== 1 ? 's' : ''} en ${label} — Clic en "Todos" para ver todos ↓`
+            : `${count} project${count !== 1 ? 's' : ''} in ${label} — Click "All" to see everything ↓`;
+        }
+      }
+    }
+  </script>
+
+  <!-- ── 3D HERO ANIMATION (Three.js) ── -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    const canvas  = document.getElementById('hero-canvas');
+    const wrap    = document.getElementById('hero-3d');
+    if (!canvas || !wrap) return;
+
+    /* ── Renderer ── */
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+
+    /* ── Scene & Camera ── */
+    const scene  = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+    camera.position.set(0, 0, 5);
+
+    /* ── Colour palette ── */
+    const C_PURPLE  = new THREE.Color('#7c5cfc');
+    const C_VIOLET  = new THREE.Color('#a78bfa');
+    const C_TEAL    = new THREE.Color('#14b8a6');
+    const C_PINK    = new THREE.Color('#ec4899');
+
+    /* ══════════════════════════════════════════
+       1. CORE SPHERE — icosahedron wireframe
+    ══════════════════════════════════════════ */
+    const icoGeo = new THREE.IcosahedronGeometry(1.4, 2);
+    const icoMat = new THREE.MeshBasicMaterial({
+      color: C_PURPLE,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.35,
+    });
+    const icoMesh = new THREE.Mesh(icoGeo, icoMat);
+    scene.add(icoMesh);
+
+    /* ── Inner glowing sphere ── */
+    const innerGeo = new THREE.SphereGeometry(1.0, 32, 32);
+    const innerMat = new THREE.MeshBasicMaterial({
+      color: C_PURPLE,
+      transparent: true,
+      opacity: 0.04,
+    });
+    scene.add(new THREE.Mesh(innerGeo, innerMat));
+
+    /* ══════════════════════════════════════════
+       2. ORBITING RINGS
+    ══════════════════════════════════════════ */
+    function makeRing(radius, tilt, color, opacity) {
+      const geo = new THREE.TorusGeometry(radius, 0.006, 8, 120);
+      const mat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.rotation.x = tilt;
+      return mesh;
+    }
+    const ring1 = makeRing(1.9, Math.PI / 4,      C_VIOLET, 0.55);
+    const ring2 = makeRing(2.1, -Math.PI / 5,     C_TEAL,   0.40);
+    const ring3 = makeRing(2.35, Math.PI / 2.5,   C_PURPLE, 0.30);
+    const ringGroup = new THREE.Group();
+    ringGroup.add(ring1, ring2, ring3);
+    scene.add(ringGroup);
+
+    /* ══════════════════════════════════════════
+       3. PARTICLE CLOUD
+    ══════════════════════════════════════════ */
+    const PARTICLE_COUNT = 600;
+    const pPositions = new Float32Array(PARTICLE_COUNT * 3);
+    const pColors    = new Float32Array(PARTICLE_COUNT * 3);
+    const palette = [C_PURPLE, C_VIOLET, C_TEAL, C_PINK];
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const r     = 1.8 + Math.random() * 2.2;
+      const theta = Math.random() * Math.PI * 2;
+      const phi   = Math.acos(2 * Math.random() - 1);
+      pPositions[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
+      pPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      pPositions[i * 3 + 2] = r * Math.cos(phi);
+      const c = palette[Math.floor(Math.random() * palette.length)];
+      pColors[i * 3]     = c.r;
+      pColors[i * 3 + 1] = c.g;
+      pColors[i * 3 + 2] = c.b;
+    }
+
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+    pGeo.setAttribute('color',    new THREE.BufferAttribute(pColors, 3));
+    const pMat = new THREE.PointsMaterial({
+      size: 0.028,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.75,
+      sizeAttenuation: true,
+    });
+    const particles = new THREE.Points(pGeo, pMat);
+    scene.add(particles);
+
+    /* ══════════════════════════════════════════
+       4. FLOATING ACCENT DOTS (closer)
+    ══════════════════════════════════════════ */
+    const DOT_COUNT = 28;
+    const dotMeshes = [];
+    const dotSpeeds = [];
+    const dotGeo    = new THREE.SphereGeometry(0.045, 8, 8);
+
+    for (let i = 0; i < DOT_COUNT; i++) {
+      const c   = palette[Math.floor(Math.random() * palette.length)];
+      const mat = new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: 0.8 });
+      const m   = new THREE.Mesh(dotGeo, mat);
+      const r   = 1.6 + Math.random() * 1.8;
+      const theta = Math.random() * Math.PI * 2;
+      const phi   = Math.acos(2 * Math.random() - 1);
+      m.userData = {
+        r, theta, phi,
+        dTheta: (Math.random() - 0.5) * 0.008,
+        dPhi:   (Math.random() - 0.5) * 0.005,
+      };
+      scene.add(m);
+      dotMeshes.push(m);
+      dotSpeeds.push(0.3 + Math.random() * 0.7);
+    }
+
+    /* ══════════════════════════════════════════
+       5. MOUSE INTERACTION
+    ══════════════════════════════════════════ */
+    let mouseX = 0, mouseY = 0;
+    let targetX = 0, targetY = 0;
+
+    wrap.addEventListener('mousemove', (e) => {
+      const rect = wrap.getBoundingClientRect();
+      mouseX = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+      mouseY = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
+    }, { passive: true });
+
+    /* ══════════════════════════════════════════
+       6. RESIZE
+    ══════════════════════════════════════════ */
+    function resize() {
+      const w = wrap.clientWidth;
+      const h = wrap.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    /* ══════════════════════════════════════════
+       7. ANIMATION LOOP
+    ══════════════════════════════════════════ */
+    const clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      /* Smooth mouse lag */
+      targetX += (mouseX * 0.4 - targetX) * 0.05;
+      targetY += (mouseY * 0.4 - targetY) * 0.05;
+
+      /* Core sphere slow spin */
+      icoMesh.rotation.y = t * 0.18;
+      icoMesh.rotation.x = t * 0.09 + targetY * 0.3;
+
+      /* Rings */
+      ring1.rotation.z = t * 0.22;
+      ring2.rotation.z = -t * 0.16;
+      ring3.rotation.y = t * 0.12;
+      ringGroup.rotation.y = targetX * 0.5;
+      ringGroup.rotation.x = targetY * 0.3;
+
+      /* Particle cloud rotation */
+      particles.rotation.y = t * 0.04 + targetX * 0.2;
+      particles.rotation.x = t * 0.025 + targetY * 0.15;
+
+      /* Orbiting accent dots */
+      dotMeshes.forEach((m) => {
+        m.userData.theta += m.userData.dTheta;
+        m.userData.phi   += m.userData.dPhi;
+        const { r, theta, phi } = m.userData;
+        m.position.set(
+          r * Math.sin(phi) * Math.cos(theta + targetX * 0.3),
+          r * Math.sin(phi) * Math.sin(theta + targetY * 0.3),
+          r * Math.cos(phi)
+        );
+        /* Pulsing opacity */
+        m.material.opacity = 0.4 + 0.5 * Math.abs(Math.sin(t * 1.2 + m.userData.r));
+      });
+
+      /* Breathing scale on core sphere */
+      const breathe = 1 + 0.025 * Math.sin(t * 0.9);
+      icoMesh.scale.setScalar(breathe);
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  })();
+  </script>
+
+</body>
+</html>
