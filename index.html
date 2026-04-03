@@ -373,6 +373,7 @@
       color: var(--text);
       opacity: 0.5;
       margin-bottom: 16px;
+      padding-top: 100px;
     }
 
     .section-label::before {
@@ -719,7 +720,7 @@
       font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
       font-size: 36px;
       font-weight: 700;
-      
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -897,8 +898,12 @@
 
     .contact-buttons {
       display: flex;
-      flex-direction: column;
-      gap: 14px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 900px;
     }
 
     .contact-btn {
@@ -914,12 +919,14 @@
       font-size: 15px;
       font-weight: 600;
       transition: all 180ms ease;
+      flex: 1;
+      min-width: 260px;
     }
 
     .contact-btn:hover {
       border-color: var(--btn-color, var(--accent));
       background: rgba(255,255,255,0.03);
-      transform: translateX(6px);
+      transform: translateY(-6px);
     }
 
     .contact-btn-icon {
@@ -1302,10 +1309,13 @@
   <!-- ── ABOUT ── -->
   <section id="about">
     <div class="container">
+      <div class="section-header">
+        <div class="section-label" data-i18n="about_label">Sobre mí</div>
+        <h2 class="section-title" data-i18n="about_title">CONÓCEME</h2>
+      </div>
+
       <div class="about-inner">
         <div class="about-text">
-          <div class="section-label" data-i18n="about_label">Sobre mí</div>
-          <h2 class="section-title" style="margin-bottom: 28px;" data-i18n="about_title">CONÓCEME</h2>
 
           <p data-i18n-html="about_p1">
             Haber crecido en una <strong>constante mudanza</strong> me abrió los ojos sobre las diferentes realidades de mi país, y la propia realidad individual que supone cada persona.
@@ -1322,11 +1332,11 @@
 
           <div class="about-stats">
             <div class="stat-card">
-              <div class="stat-number">13+</div>
+              <div class="stat-number">14+</div>
               <div class="stat-label" data-i18n="stat_projects">Proyectos realizados</div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">6</div>
+              <div class="stat-number">5</div>
               <div class="stat-label" data-i18n="stat_disciplines">Disciplinas</div>
             </div>
             <div class="stat-card">
