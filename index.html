@@ -489,7 +489,7 @@
       display: none;
     }
 
-    .year-group.all-hidden {
+    .discipline-group.all-hidden {
       display: none;
     }
 
@@ -530,33 +530,51 @@
     .timeline {
       display: flex;
       flex-direction: column;
-      gap: 56px;
+      gap: 64px;
     }
 
-    .year-group { margin-bottom: 20px; }
+    .discipline-group { margin-bottom: 24px; }
 
-    .year-label {
+    .discipline-label {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
+      gap: 14px;
+      margin-bottom: 32px;
     }
 
-    .year-tag {
+    .discipline-tag {
       font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.04em;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       color: var(--bg);
       background: var(--accent2);
-      padding: 4px 14px;
+      padding: 6px 16px;
       border-radius: 100px;
     }
 
-    .year-line {
+    .discipline-line {
       flex: 1;
       height: 1px;
       background: var(--border);
+      opacity: 0.6;
+    }
+
+    .project-year {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      z-index: 10;
+      letter-spacing: 0.5px;
     }
 
     .projects-grid {
@@ -939,6 +957,7 @@
 
     .footer-links { display: flex; gap: 24px; }
 
+
     /* ── DIVIDER ── */
     .divider {
       width: 100%;
@@ -1072,49 +1091,27 @@
 
       <div class="timeline">
 
-        <!-- 2026 -->
-        <div class="year-group">
-          <div class="year-label">
-            <span class="year-tag">2026</span>
-            <div class="year-line"></div>
+        <!-- Product Design -->
+        <div class="discipline-group">
+          <div class="discipline-label">
+            <span class="discipline-tag" data-i18n="g_product">Product Design</span>
+            <div class="discipline-line"></div>
           </div>
           <div class="projects-grid">
-
-            <a class="project-card" data-discipline="generative-ai" href="https://learsival.notion.site/Neoconsulting-Video-IA-31e08144e2b280c9a5d1c390c8650ae9" target="_blank" rel="noopener">
-              <div class="project-thumb" style="">
-                <span style="font-size:36px">🤖</span>
+            <a class="project-card" data-discipline="product-design" href="https://www.notion.so/learsival/Llamaleads-33608144e2b280869fe6c5433b5b9e71?v=31e08144e2b280588d26000ca6668c18&source=copy_link" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <div class="project-year">2026</div>
+                <img src="images/llama-leads-new.png" alt="Llamaleads Case Study" />
               </div>
               <div class="project-body">
-                <div class="project-title">Neoconsulting — Video IA</div>
-                <div class="project-desc" data-i18n="p_neo">Producción de video con inteligencia artificial para consultoría.</div>
+                <div class="project-title">Llamaleads — Case Study</div>
+                <div class="project-desc" data-i18n="p_llamaleads_case">Rediseño web de alto impacto enfocado en conversión (PAS Funnel) para agencia B2B. +22% CVR.</div>
                 <div class="project-arrow">→</div>
               </div>
             </a>
-
-            <a class="project-card" data-discipline="visual" href="https://learsival.notion.site/Crisva-Design-Lab-31e08144e2b28043ba31d42fcf7ed346" target="_blank" rel="noopener">
+            <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Datasigners-31f08144e2b280d5a371cdaea7171d17" target="_blank" rel="noopener">
               <div class="project-thumb">
-                <img src="images/crisva.png" alt="Crisva Design Lab" />
-              </div>
-              <div class="project-body">
-                <div class="project-title">Crisva Design Lab</div>
-                <div class="project-desc" data-i18n="p_crisva">Estrategia de contenido para Laboratorio de Diseño de productos.</div>
-                <div class="project-arrow">→</div>
-              </div>
-            </a>
-
-            <a class="project-card" data-discipline="branding" href="https://learsival.notion.site/Datasigners-Brand-31e08144e2b280d98ba0f8f647514d41" target="_blank" rel="noopener">
-              <div class="project-thumb">
-                <img src="images/datasigners-brand.png" alt="Datasigners Brand" />
-              </div>
-              <div class="project-body">
-                <div class="project-title">Datasigners Brand</div>
-                <div class="project-desc" data-i18n="p_datasigners_brand">Brandbook para proyecto web educativo.</div>
-                <div class="project-arrow">→</div>
-              </div>
-            </a>
-
-            <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Datasigners-31f08144e2b280d6b78be852edf798ab" target="_blank" rel="noopener">
-              <div class="project-thumb">
+                <div class="project-year">2026</div>
                 <img src="images/datasigners.png" alt="Datasigners" />
               </div>
               <div class="project-body">
@@ -1123,53 +1120,9 @@
                 <div class="project-arrow">→</div>
               </div>
             </a>
-
-            <a class="project-card" data-discipline="branding" href="https://learsival.notion.site/Pawspet-App-31f08144e2b280498870cd9728d76932" target="_blank" rel="noopener">
-              <div class="project-thumb">
-                <img src="images/pawspet.png" alt="Pawspet App" />
-              </div>
-              <div class="project-body">
-                <div class="project-title">Pawspet App</div>
-                <div class="project-desc" data-i18n="p_pawspet">Competencia Hult Price: Plataforma de reserva de servicios para Mascotas.</div>
-                <div class="project-arrow">→</div>
-              </div>
-            </a>
-
-            <a class="project-card" data-discipline="branding" href="https://learsival.notion.site/LlamaLeads-31f08144e2b280bba385dca9239550e4" target="_blank" rel="noopener">
-              <div class="project-thumb">
-                <img src="images/llamaleads.png" alt="LlamaLeads" />
-              </div>
-              <div class="project-body">
-                <div class="project-title">LlamaLeads</div>
-                <div class="project-desc" data-i18n="p_llama">Brandbook para Agencia de Growth Marketing.</div>
-                <div class="project-arrow">→</div>
-              </div>
-            </a>
-
-          </div>
-        </div>
-
-        <!-- 2025 -->
-        <div class="year-group">
-          <div class="year-label">
-            <span class="year-tag" style="background: var(--teal)">2025</span>
-            <div class="year-line"></div>
-          </div>
-          <div class="projects-grid">
-
-            <a class="project-card" data-discipline="data-bi" href="https://learsival.notion.site/Aquatica-31e08144e2b2804c86b0e0e3fe5c36a2" target="_blank" rel="noopener">
-              <div class="project-thumb">
-                <img src="images/aquatica.png" alt="Aquatica" />
-              </div>
-              <div class="project-body">
-                <div class="project-title">Aquatica</div>
-                <div class="project-desc" data-i18n="p_aquatica">Reporte de Ventas Interactivo.</div>
-                <div class="project-arrow">→</div>
-              </div>
-            </a>
-
             <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Bulkmate-31f08144e2b28049bb43eea4d4f4d609" target="_blank" rel="noopener">
               <div class="project-thumb">
+                <div class="project-year">2025</div>
                 <img src="images/bulkmate.png" alt="Bulkmate" />
               </div>
               <div class="project-body">
@@ -1178,9 +1131,9 @@
                 <div class="project-arrow">→</div>
               </div>
             </a>
-
             <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Reebok-Green-31f08144e2b28096970ef273a1e15b8b" target="_blank" rel="noopener">
               <div class="project-thumb">
+                <div class="project-year">2025</div>
                 <img src="images/reebok.png" alt="Reebok Green" />
               </div>
               <div class="project-body">
@@ -1189,20 +1142,9 @@
                 <div class="project-arrow">→</div>
               </div>
             </a>
-
-          </div>
-        </div>
-
-        <!-- 2024 -->
-        <div class="year-group">
-          <div class="year-label">
-            <span class="year-tag" style="background: var(--pink)">2024</span>
-            <div class="year-line"></div>
-          </div>
-          <div class="projects-grid">
-
             <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Fitmashi-31f08144e2b2807a9daaefb6600d5d51" target="_blank" rel="noopener">
               <div class="project-thumb">
+                <div class="project-year">2024</div>
                 <img src="images/fitmashi.png" alt="Fitmashi" />
               </div>
               <div class="project-body">
@@ -1211,9 +1153,9 @@
                 <div class="project-arrow">→</div>
               </div>
             </a>
-
             <a class="project-card" data-discipline="product-design" href="https://learsival.notion.site/Interseguro-31f08144e2b2807998accc2c29cbdc8b" target="_blank" rel="noopener">
               <div class="project-thumb">
+                <div class="project-year">2024</div>
                 <img src="images/interseguro.png" alt="Interseguro" />
               </div>
               <div class="project-body">
@@ -1222,9 +1164,73 @@
                 <div class="project-arrow">→</div>
               </div>
             </a>
+          </div>
+        </div>
 
+        <!-- Branding -->
+        <div class="discipline-group">
+          <div class="discipline-label">
+            <span class="discipline-tag" data-i18n="g_branding">Branding</span>
+            <div class="discipline-line"></div>
+          </div>
+          <div class="projects-grid">
+            <a class="project-card" data-discipline="branding" href="https://learsival.notion.site/Datasigners-Brand-31e08144e2b280d98ba0f8f647514d41" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <div class="project-year">2026</div>
+                <img src="images/datasigners-brand.png" alt="Datasigners Brand" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Datasigners Brand</div>
+                <div class="project-desc" data-i18n="p_datasigners_brand">Brandbook para proyecto web educativo.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+            <a class="project-card" data-discipline="branding" href="https://learsival.notion.site/Pawspet-App-31f08144e2b280918737df32f8313ed5" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <div class="project-year">2026</div>
+                <img src="images/pawspet.png" alt="Pawspet App" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Pawspet App</div>
+                <div class="project-desc" data-i18n="p_pawspet">Competencia Hult Price: Plataforma de reserva de servicios para Mascotas.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+            <a class="project-card" data-discipline="branding" href="https://learsival.notion.site/LlamaLeads-31f08144e2b280bba385dca9239550e4" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <div class="project-year">2026</div>
+                <img src="images/llamaleads.png" alt="LlamaLeads" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">LlamaLeads</div>
+                <div class="project-desc" data-i18n="p_llama">Brandbook para Agencia de Growth Marketing.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Data and BI -->
+        <div class="discipline-group">
+          <div class="discipline-label">
+            <span class="discipline-tag" data-i18n="g_data">Data and BI</span>
+            <div class="discipline-line"></div>
+          </div>
+          <div class="projects-grid">
+            <a class="project-card" data-discipline="data-bi" href="https://learsival.notion.site/Aquatica-31e08144e2b2804c86b0e0e3fe5c36a2" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <div class="project-year">2025</div>
+                <img src="images/aquatica.png" alt="Aquatica" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Aquatica</div>
+                <div class="project-desc" data-i18n="p_aquatica">Reporte de Ventas Interactivo.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
             <a class="project-card" data-discipline="data-bi" href="https://learsival.notion.site/Hackeando-Productos-Informe-31f08144e2b280cea59dda2e0e6da5bb" target="_blank" rel="noopener">
               <div class="project-thumb">
+                <div class="project-year">2024</div>
                 <img src="images/hackeando.png" alt="Hackeando Productos" />
               </div>
               <div class="project-body">
@@ -1233,20 +1239,30 @@
                 <div class="project-arrow">→</div>
               </div>
             </a>
-
           </div>
         </div>
 
-        <!-- 2023 -->
-        <div class="year-group">
-          <div class="year-label">
-            <span class="year-tag" style="background: var(--orange)">2023</span>
-            <div class="year-line"></div>
+        <!-- Visual -->
+        <div class="discipline-group">
+          <div class="discipline-label">
+            <span class="discipline-tag" data-i18n="g_visual">Visual</span>
+            <div class="discipline-line"></div>
           </div>
           <div class="projects-grid">
-
+            <a class="project-card" data-discipline="visual" href="https://learsival.notion.site/Crisva-Design-Lab-31e08144e2b28043ba31d42fcf7ed346" target="_blank" rel="noopener">
+              <div class="project-thumb">
+                <div class="project-year">2026</div>
+                <img src="images/crisva.png" alt="Crisva Design Lab" />
+              </div>
+              <div class="project-body">
+                <div class="project-title">Crisva Design Lab</div>
+                <div class="project-desc" data-i18n="p_crisva">Estrategia de contenido para Laboratorio de Diseño de productos.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
             <a class="project-card" data-discipline="visual" href="https://learsival.notion.site/ONG-Digtital-Marketing-31f08144e2b280a495f6d17ff7e9e558" target="_blank" rel="noopener">
               <div class="project-thumb">
+                <div class="project-year">2023</div>
                 <img src="images/ong.png" alt="ONG Digital Marketing" />
               </div>
               <div class="project-body">
@@ -1255,7 +1271,27 @@
                 <div class="project-arrow">→</div>
               </div>
             </a>
+          </div>
+        </div>
 
+        <!-- Generative AI -->
+        <div class="discipline-group">
+          <div class="discipline-label">
+            <span class="discipline-tag" data-i18n="g_ai">Generative AI</span>
+            <div class="discipline-line"></div>
+          </div>
+          <div class="projects-grid">
+            <a class="project-card" data-discipline="generative-ai" href="https://learsival.notion.site/Neoconsulting-IA-Video-31e08144e2b280b2a0c4eb8967923483" target="_blank" rel="noopener">
+              <div class="project-thumb" style="">
+                <div class="project-year">2026</div>
+                <span style="font-size:36px">🤖</span>
+              </div>
+              <div class="project-body">
+                <div class="project-title">Neoconsulting — Video IA</div>
+                <div class="project-desc" data-i18n="p_neo">Producción de video con inteligencia artificial para consultoría.</div>
+                <div class="project-arrow">→</div>
+              </div>
+            </a>
           </div>
         </div>
 
@@ -1402,7 +1438,7 @@
             <div class="contact-btn-arrow">→</div>
           </a>
 
-          <a href="https://linkedin.com/in/" target="_blank" rel="noopener" class="contact-btn" style="--btn-color: #3b82f6">
+          <a href="https://www.linkedin.com/company/crisva/" target="_blank" rel="noopener" class="contact-btn" style="--btn-color: #3b82f6">
             <div class="contact-btn-icon">💼</div>
             <div>
               <div style="font-size:15px;font-weight:600">LinkedIn</div>
@@ -1432,10 +1468,17 @@
       <a href="#projects" data-i18n="nav_projects">Proyectos</a>
       <a href="#contact" data-i18n="footer_contact">Contacto</a>
     </div>
+
     <span data-i18n="footer_made">Hecho con ❤️ y mucha curiosidad</span>
   </footer>
 
   <script>
+    // Initialize scroll animations
+    let filterHint;
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+
     // ── INTERSECTION OBSERVER (fade-in on scroll) ──
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1464,7 +1507,7 @@
     // ── FILTER LOGIC ──
     const disciplineCards = document.querySelectorAll('.discipline-card[data-filter]');
     const projectCards    = document.querySelectorAll('.project-card[data-discipline]');
-    const yearGroups      = document.querySelectorAll('.year-group');
+    const disciplineGroups = document.querySelectorAll('.discipline-group');
     const filterHint      = document.getElementById('filter-hint');
 
     function applyFilter(filter) {
@@ -1484,8 +1527,8 @@
         }
       });
 
-      // Hide year groups that have no visible cards
-      yearGroups.forEach(group => {
+      // Hide discipline groups that have no visible cards
+      disciplineGroups.forEach(group => {
         const visible = group.querySelectorAll('.project-card:not(.filtered-out)').length > 0;
         group.classList.toggle('all-hidden', !visible);
       });
@@ -1519,6 +1562,8 @@
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); applyFilter(card.dataset.filter); }
       });
     });
+  });
+
 
     // ── I18N TRANSLATIONS ──
     const translations = {
@@ -1541,13 +1586,14 @@
         disc_hint:  'Haz clic en una disciplina para filtrar proyectos ↓',
         proj_label: 'Mi trabajo',
         proj_title: 'Proyectos',
-        proj_sub:   'Casos seleccionados ordenados por año.',
+        proj_sub:   'Casos seleccionados agrupados por disciplina.',
         p_neo:               'Producción de video con inteligencia artificial para consultoría.',
         p_crisva:            'Estrategia de contenido para Laboratorio de Diseño de productos.',
         p_datasigners_brand: 'Brandbook para proyecto web educativo.',
         p_datasigners:       'Web educativa que convierte KPIs y métricas en recursos visuales de aprendizaje y consulta.',
         p_pawspet:           'Competencia Hult Price: Plataforma de reserva de servicios para Mascotas.',
         p_llama:             'Brandbook para Agencia de Growth Marketing.',
+        p_llamaleads_case:   'Rediseño web de alto impacto enfocado en conversión (PAS Funnel) para agencia B2B. +22% CVR.',
         p_aquatica:          'Reporte de Ventas Interactivo.',
         p_bulk:              'Monitoreo de ejercicios y consumo calórico para ectomorfos.',
         p_reebok:            'Competencia Globant Design Center Latam. App de análisis de calzado y reciclaje gamificado.',
@@ -1555,6 +1601,11 @@
         p_interseguro:       'Diseño de experiencia para plataforma de seguros.',
         p_hackeando:         'Informe de análisis y hacking de productos digitales.',
         p_ong:               'Estrategia de marketing digital para organización sin fines de lucro.',
+        g_product:  'Product Design',
+        g_branding: 'Branding',
+        g_data:     'Data and BI',
+        g_visual:   'Visual',
+        g_ai:       'Generative AI',
         about_label: 'Sobre mí',
         about_title: 'CONÓCEME',
         about_p1:    'Haber crecido en una <strong>constante mudanza</strong> me abrió los ojos sobre las diferentes realidades de mi país, y la propia realidad individual que supone cada persona.',
@@ -1608,13 +1659,14 @@
         disc_hint:  'Click a discipline to filter projects ↓',
         proj_label: 'My work',
         proj_title: 'Projects',
-        proj_sub:   'Selected cases ordered by year.',
+        proj_sub:   'Selected cases grouped by discipline.',
         p_neo:               'AI-powered video production for consulting.',
         p_crisva:            'Content strategy for a Product Design Lab.',
         p_datasigners_brand: 'Brandbook for an educational web project.',
         p_datasigners:       'Educational web app that turns KPIs and metrics into visual learning resources.',
         p_pawspet:           'Hult Prize Competition: Pet services booking platform.',
         p_llama:             'Brandbook for a Growth Marketing Agency.',
+        p_llamaleads_case:   'High-impact web redesign focused on conversion (PAS Funnel) for a B2B agency. +22% CVR.',
         p_aquatica:          'Interactive Sales Report.',
         p_bulk:              'Exercise and caloric intake tracking for ectomorphs.',
         p_reebok:            'Globant Design Center Latam competition. Footwear analysis and gamified recycling app.',
@@ -1622,6 +1674,11 @@
         p_interseguro:       'UX design for an insurance platform.',
         p_hackeando:         'Analysis and hacking report for digital products.',
         p_ong:               'Digital marketing strategy for a non-profit organization.',
+        g_product:  'Product Design',
+        g_branding: 'Branding',
+        g_data:     'Data and BI',
+        g_visual:   'Visual',
+        g_ai:       'Generative AI',
         about_label: 'About me',
         about_title: 'GET TO KNOW ME',
         about_p1:    'Growing up constantly <strong>moving around</strong> opened my eyes to the different realities of my country, and the individual reality that each person carries.',
@@ -1660,8 +1717,6 @@
 
     window.currentLang = 'en';
 
-    document.addEventListener('DOMContentLoaded', () => setLanguage('en'));
-
     function setLanguage(lang) {
       window.currentLang = lang;
 
@@ -1688,19 +1743,24 @@
 
       // Re-apply current filter hint with new language
       const activeFilter = document.querySelector('.discipline-card.active')?.dataset.filter || 'all';
-      if (filterHint) {
+      const hint = document.getElementById('filter-hint');
+      if (hint) {
         if (activeFilter === 'all') {
-          filterHint.textContent = t.disc_hint;
+          hint.textContent = t.disc_hint;
         } else {
           const label = document.querySelector(`.discipline-card[data-filter="${activeFilter}"] .discipline-name`)?.textContent || activeFilter;
           const count = document.querySelectorAll(`.project-card[data-discipline="${activeFilter}"]`).length;
-          filterHint.textContent = lang === 'es'
+          hint.textContent = (lang === 'es')
             ? `${count} proyecto${count !== 1 ? 's' : ''} en ${label} — Clic en "Todos" para ver todos ↓`
             : `${count} project${count !== 1 ? 's' : ''} in ${label} — Click "All" to see everything ↓`;
         }
       }
     }
-  </script>
+
+    // Initialize with default language
+    document.addEventListener('DOMContentLoaded', () => setLanguage('en'));
+
+</script>
 
   <!-- ── 3D HERO ANIMATION (Three.js) ── -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
