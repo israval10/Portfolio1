@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <base href="/" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#ffffff" />
@@ -12,10 +13,11 @@
   <script defer src="portfolio-data.js"></script>
   <script defer src="portfolio-model.js"></script>
   <script defer src="content.js"></script>
+  <script defer src=".verification/force-edge-data.js"></script>
   <script defer src="project-wheel.js"></script>
-  <script defer src="portfolio.js?v=project-controls"></script>
+  <script defer src="portfolio.js"></script>
 </head>
-<body id="home">
+<body>
   <a class="skip-link" href="#projects" data-ui="skip">Ir a proyectos</a>
   <header class="site-header">
     <a href="#home" class="nav-logo" aria-label="Israel Valencia, inicio">
@@ -41,7 +43,7 @@
     </div>
   </header>
   <main>
-    <section class="opening">
+    <section class="opening" id="home">
       <div class="opening-copy">
         <div class="opening-identity">
           <span class="hero-badge" data-i18n="hero_badge">Product Design</span>
@@ -55,7 +57,18 @@
           </div>
         </div>
       </div>
-      <div class="work-area" id="projects" data-view="wheel">
+      <div class="work-area" id="projects">
+        <div class="work-head">
+          <div class="project-heading">
+            <span class="section-label" data-i18n="proj_label">Mi trabajo</span>
+            <h2 data-i18n="proj_title">Proyectos</h2>
+            <p data-i18n="proj_sub">Casos seleccionados agrupados por disciplina.</p>
+          </div>
+          <div class="view-switch" role="group" aria-label="Vista de proyectos">
+            <button class="icon-button active" id="view-wheel" data-view="wheel" aria-pressed="true" aria-controls="wheel-view" title="Rueda" aria-label="Rueda"><i data-lucide="orbit" aria-hidden="true"></i></button>
+            <button class="icon-button" id="view-index" data-view="index" aria-pressed="false" aria-controls="project-groups" title="Índice" aria-label="Índice"><i data-lucide="list" aria-hidden="true"></i></button>
+          </div>
+        </div>
         <div class="discipline-toolbar" id="disciplines">
           <div class="discipline-intro">
             <span class="section-label" data-i18n="disc_label">Lo que hago</span>
@@ -73,39 +86,26 @@
             <div class="wheel-loading" id="wheel-loading"><span class="loading-dot"></span><span data-ui="loading">Cargando proyectos</span></div>
             <p class="wheel-empty" id="wheel-empty" data-ui="empty" hidden></p>
           </div>
-        </div>
-        <div class="project-navigation">
-          <div class="view-switch" role="group" aria-label="Vista de proyectos">
-            <button class="icon-button active" id="view-wheel" data-view="wheel" aria-pressed="true" aria-controls="wheel-view wheel-controls project-selection" aria-label="Rueda" aria-describedby="view-wheel-tooltip">
-              <i data-lucide="orbit" aria-hidden="true"></i>
-              <span class="button-tooltip" id="view-wheel-tooltip" role="tooltip" data-ui="wheelTooltip">Ver proyectos en una rueda interactiva</span>
-            </button>
-            <button class="icon-button" id="view-index" data-view="index" aria-pressed="false" aria-controls="project-groups" aria-label="Índice" aria-describedby="view-index-tooltip">
-              <i data-lucide="list" aria-hidden="true"></i>
-              <span class="button-tooltip" id="view-index-tooltip" role="tooltip" data-ui="indexTooltip">Ver proyectos en lista, por disciplina</span>
-            </button>
-          </div>
-          <div class="wheel-controls" id="wheel-controls">
-            <span class="project-position" id="project-position">01 / 15</span>
-            <div class="wheel-arrows">
+          <div class="wheel-bottom">
+            <div class="wheel-controls">
+              <span class="project-position" id="project-position">01 / 15</span>
               <button class="icon-button" id="wheel-prev" title="Proyecto anterior" aria-label="Proyecto anterior"><i data-lucide="arrow-left" aria-hidden="true"></i></button>
               <button class="icon-button" id="wheel-next" title="Proyecto siguiente" aria-label="Proyecto siguiente"><i data-lucide="arrow-right" aria-hidden="true"></i></button>
             </div>
-          </div>
-          <a class="mobile-next-section" href="#about"><span data-i18n="about_label">Sobre mí</span><i data-lucide="arrow-down" aria-hidden="true"></i></a>
-          <div class="project-selection" id="project-selection">
-            <a class="selected-image" id="selected-image-link" target="_blank" rel="noopener noreferrer"><img id="selected-image" alt="" /></a>
-            <div class="selected-copy">
-              <a class="selected-title" id="selected-link" target="_blank" rel="noopener noreferrer"><h3 id="selected-title"></h3><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
-              <p id="selected-meta"></p>
-              <p id="selected-description"></p>
+            <div class="project-selection" id="project-selection">
+              <a class="selected-image" id="selected-image-link" target="_blank" rel="noopener noreferrer"><img id="selected-image" alt="" /></a>
+              <div class="selected-copy">
+                <a class="selected-title" id="selected-link" target="_blank" rel="noopener noreferrer"><h3 id="selected-title"></h3><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                <p id="selected-meta"></p>
+                <p id="selected-description"></p>
+              </div>
             </div>
           </div>
         </div>
         <div class="project-index" id="project-groups" hidden></div>
         <noscript><p>Activa JavaScript para ver los proyectos y las disciplinas.</p><p><a href="https://app.notion.com/p/353af8f94f11836eb47d817bf759c58a">Proyectos en Notion</a></p></noscript>
       </div>
-      <a class="hero-scroll" href="#about"><span data-i18n="hero_scroll">Scroll para explorar</span><span class="next-section"><span data-i18n="about_label">Sobre mí</span><i data-lucide="arrow-down" aria-hidden="true"></i></span></a>
+      <a class="hero-scroll" href="#about"><span data-i18n="hero_scroll">Scroll para explorar</span><span class="next-section"><span data-i18n="about_label">Sobre m\u00ed</span><i data-lucide="arrow-down" aria-hidden="true"></i></span></a>
     </section>
   <section id="about">
     <div class="container">
@@ -159,12 +159,12 @@
               <div class="about-info-row">
                 <div class="about-info-icon"><i data-lucide="graduation-cap" aria-hidden="true"></i></div>
                 <span class="about-info-label" data-i18n="info_studies">Estudios</span>
-                <span class="about-info-value">U. de Lima/ U. Pacifico</span>
+                <span class="about-info-value">Universidad de Lima</span>
               </div>
               <div class="about-info-row">
                 <div class="about-info-icon"><i data-lucide="book-open" aria-hidden="true"></i></div>
                 <span class="about-info-label" data-i18n="info_degree">Carrera</span>
-                <span class="about-info-value">Comunicaciones / Ing. Industrial</span>
+                <span class="about-info-value">Comunicaciones</span>
               </div>
               <div class="about-info-row">
                 <div class="about-info-icon"><i data-lucide="globe" aria-hidden="true"></i></div>
