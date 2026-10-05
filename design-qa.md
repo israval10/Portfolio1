@@ -102,3 +102,14 @@ Resultado del ajuste: passed.
 - Resultado revisado en [escritorio](/Users/israelvalencia/Downloads/Portfolio1-main/.verification/screenshots/datasigners-crop-desktop.jpg) y [movil](/Users/israelvalencia/Downloads/Portfolio1-main/.verification/screenshots/datasigners-crop-mobile.jpg), con canvas visible y rostro/torso reconocibles.
 
 Resultado del ajuste: passed.
+
+## Revision responsive y mobile first
+
+- Estilos movil por defecto y ampliaciones con `min-width: 601px`, `1001px` y `1550px`; sin breakpoints `max-width`.
+- Anchos revisados en el navegador: 320, 390, 600, 601, 820, 1000, 1001, 1440 y 1920 px. Sin scroll horizontal ni textos desbordados en encabezados, parrafos, datos personales y enlaces de portafolio.
+- Controles de idioma, filtros, selector de vista y flechas con dimensiones tactiles de al menos 44 px en movil. La regla `pointer: coarse` extiende los ajustes a tabletas tactiles. El canvas conserva `touch-action: pan-y`.
+- Verificados filtro AI Vibecoding, indice, idiomas ES/EN y menu de contacto a 320 px; tres fotos locales cargadas y galeria de una columna a 390 px. Sin errores ni warnings de consola.
+- Canvas visible: 11376 pixeles de color en la region de la rueda movil. Evidencias en `.verification/screenshots/mobile-first-wheel.jpg`, `mobile-first-photos.jpg`, `mobile-first-contact.jpg` y `mobile-first-desktop.jpg`.
+- 14 pruebas automatizadas aprobadas, incluida una nueva comprobacion de viewport, breakpoints ascendentes y controles tactiles. Pruebas realizadas con viewports de navegador, no en dispositivos fisicos.
+
+Resultado de la revision: passed.

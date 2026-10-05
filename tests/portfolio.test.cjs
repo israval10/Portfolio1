@@ -78,6 +78,18 @@ test('unknown and empty disciplines retain usable groups', () => {
   assert.equal(synthetic.matches('known').length, 0);
 });
 
+test('responsive layouts progressively enhance mobile defaults', () => {
+  const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.match(html, /name="viewport" content="width=device-width, initial-scale=1(?:\.0)?"/);
+  assert.doesNotMatch(css, /@media\s*\(max-width:/);
+  for (const width of [601, 1001, 1550]) assert.ok(css.includes(`@media (min-width: ${width}px)`));
+  assert.ok(css.indexOf('Mobile defaults') < css.indexOf('@media (min-width: 601px)'));
+  assert.match(css, /\.lang-btn \{ min-width: 44px; min-height: 44px; \}/);
+  assert.ok(css.includes('@media (pointer: coarse)'));
+  assert.ok(css.includes('touch-action: pan-y'));
+});
+
 test('view buttons have distinct accessible descriptions in both languages', () => {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const source = fs.readFileSync(path.join(root, 'portfolio.js'), 'utf8');
