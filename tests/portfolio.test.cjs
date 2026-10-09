@@ -54,11 +54,13 @@ test('all original ES/EN copy and emphasis remains identical', () => {
   assert.deepEqual(JSON.parse(JSON.stringify(before.copy)), JSON.parse(JSON.stringify(after.window.PORTFOLIO_TRANSLATIONS)));
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const keys = [...html.matchAll(/data-i18n(?:-html)?="([^"]+)"/g)].map(match => match[1]);
-  const removedHeadings = new Set(['proj_label', 'proj_title', 'proj_sub']);
+  const removedCopy = new Set(['proj_label', 'proj_title', 'proj_sub', 'hero_scroll']);
   for (const key of Object.keys(before.copy.es)) {
-    assert.ok(keys.includes(key) || key === 'disc_all' || removedHeadings.has(key), 'Missing rendered copy: ' + key);
+    assert.ok(keys.includes(key) || key === 'disc_all' || removedCopy.has(key), 'Missing rendered copy: ' + key);
   }
-  for (const key of removedHeadings) assert.ok(!keys.includes(key), 'Removed heading still rendered: ' + key);
+  for (const key of removedCopy) assert.ok(!keys.includes(key), 'Removed copy still rendered: ' + key);
+  assert.doesNotMatch(html, /class="(?:mobile-next-section|hero-scroll)"/);
+  assert.match(html, /<section id="about">/);
   assert.equal(Object.keys(before.copy.es).length, 51);
 });
 

@@ -79,7 +79,6 @@ h1 { display: flex; flex-direction: column; font-size: 48px; line-height: 1.1; f
 #projects[data-view='index'] .project-navigation { min-height: 0; padding-top: 16px; padding-right: 0; padding-bottom: 0; padding-left: 0; }
 .wheel-controls { display: grid; grid-column: 2; grid-template-columns: 52px auto 52px; row-gap: 14px; column-gap: 14px; align-items: center; }
 .wheel-arrows { display: flex; row-gap: 5px; column-gap: 5px; }
-.mobile-next-section { display: none; }
 .project-position { font-size: 11px; font-variant-numeric: tabular-nums; color: var(--muted); min-width: 52px; }
 .wheel-controls .icon-button { width: 34px; height: 34px; border: 1px solid var(--line); }
 .project-selection { display: flex; grid-column: 3; row-gap: 18px; column-gap: 18px; align-items: center; min-width: 0; max-width: 520px; justify-self: end; }
@@ -92,9 +91,6 @@ h1 { display: flex; flex-direction: column; font-size: 48px; line-height: 1.1; f
 .selected-title:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
 #selected-meta { color: var(--muted); font-size: 11px; line-height: 1.5; margin-top: 3px; }
 #selected-description { font-size: 12px; line-height: 1.5; margin-top: 5px; }
-.hero-scroll { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 11px; padding-top: 14px; padding-right: 0; padding-bottom: 20px; padding-left: 0; border-top: 1px solid var(--line); }
-.hero-scroll svg { width: 16px; height: 16px; }
-.next-section { display: flex; align-items: center; row-gap: 16px; column-gap: 16px; }
 .project-index { padding-top: 30px; padding-right: 0; padding-bottom: 20px; padding-left: 0; }
 .discipline-group { margin-bottom: 38px; }
 .discipline-label { display: flex; align-items: baseline; row-gap: 12px; column-gap: 12px; border-bottom: 1px solid var(--ink); padding-bottom: 10px; }
@@ -192,13 +188,10 @@ footer { display: flex; flex-direction: column; align-items: center; justify-con
   .project-navigation { column-gap: 12px; row-gap: 16px; padding-top: 0; min-height: 0; }
   .wheel-controls { display: flex; flex-direction: column; row-gap: 5px; column-gap: 5px; }
   .project-position { order: 2; text-align: center; }
-  .mobile-next-section { display: flex; grid-column: 3; grid-row: 1; justify-self: end; align-items: center; row-gap: 6px; column-gap: 6px; font-size: 11px; color: var(--muted); }
-  .mobile-next-section svg { width: 13px; height: 13px; }
   .project-selection { grid-column: 1 / -1; grid-row: 2; justify-self: stretch; max-width: none; row-gap: 12px; column-gap: 12px; min-height: 74px; }
   .selected-image { width: 75px; min-width: 75px; height: 56px; }
   #selected-description { font-size: 11px; }
   .selected-title h3 { font-size: 13px; }
-  .hero-scroll { padding-bottom: 24px; }
   main > section:not(.opening) { padding-top: 45px; padding-right: var(--edge); padding-bottom: 45px; padding-left: var(--edge); }
   .section-header { display: block; margin-bottom: 28px; }
   .section-header .section-label { padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-bottom: 10px; }
@@ -252,13 +245,10 @@ footer { display: flex; flex-direction: column; align-items: center; justify-con
  .project-navigation { column-gap: 24px; row-gap: 24px; padding-top: 12px; min-height: 100px; }
  .wheel-controls { display: grid; flex-direction: revert; row-gap: 14px; column-gap: 14px; }
  .project-position { order: revert; text-align: revert; }
- .mobile-next-section { display: none; grid-column: revert; grid-row: revert; justify-self: revert; align-items: revert; row-gap: revert; column-gap: revert; font-size: revert; color: revert; }
- .mobile-next-section svg { width: revert; height: revert; }
  .project-selection { grid-column: 3; grid-row: revert; justify-self: end; max-width: 520px; row-gap: 18px; column-gap: 18px; min-height: revert; }
  .selected-image { width: 94px; min-width: 94px; height: 66px; }
  #selected-description { font-size: 12px; }
  .selected-title h3 { font-size: 14px; }
- .hero-scroll { padding-bottom: 20px; }
  main > section:not(.opening) { padding-top: 70px; padding-right: var(--edge); padding-bottom: 70px; padding-left: var(--edge); }
  .section-header { display: grid; margin-bottom: 38px; }
  .section-header .section-label { padding-top: 7px; padding-right: revert; padding-bottom: revert; padding-left: revert; margin-bottom: revert; }
