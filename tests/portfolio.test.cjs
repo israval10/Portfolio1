@@ -93,6 +93,13 @@ test('responsive layouts progressively enhance mobile defaults', () => {
   assert.ok(css.includes('touch-action: pan-y'));
 });
 
+test('filter result status stays accessible without appearing below filters', () => {
+  const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.match(html, /class="filter-hint" id="filter-hint" role="status"/);
+  assert.match(css, /\.filter-hint \{[^}]*position: absolute;[^}]*clip-path: inset\(50%\)/);
+});
+
 test('view buttons have distinct accessible descriptions in both languages', () => {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const source = fs.readFileSync(path.join(root, 'portfolio.js'), 'utf8');
