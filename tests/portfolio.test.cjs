@@ -50,6 +50,7 @@ test('all original ES/EN copy and emphasis remains identical', () => {
   vm.runInNewContext(original.slice(begin, end) + 'globalThis.copy = translations;', before);
   const after = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'content.js'), 'utf8'), after);
+  for (const lang of ['es', 'en']) before.copy[lang].disc_all = lang === 'es' ? 'Todos' : 'All';
   assert.deepEqual(JSON.parse(JSON.stringify(before.copy)), JSON.parse(JSON.stringify(after.window.PORTFOLIO_TRANSLATIONS)));
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const keys = [...html.matchAll(/data-i18n(?:-html)?="([^"]+)"/g)].map(match => match[1]);

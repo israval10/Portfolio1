@@ -184,8 +184,9 @@ footer { display: flex; flex-direction: column; align-items: center; justify-con
   .opening-summary p { font-size: 13px; }
   .hero-actions { row-gap: 25px; column-gap: 25px; margin-top: 12px; }
   .discipline-intro p { display: block; margin-left: 0; }
-  .filters-and-count { flex-direction: column; align-items: flex-start; row-gap: 3px; column-gap: 3px; }
-  #discipline-filters { row-gap: 3px; column-gap: 3px; }
+  .filters-and-count { flex-direction: column; align-items: center; row-gap: 3px; column-gap: 3px; }
+  #discipline-filters { width: 100%; justify-content: center; row-gap: 3px; column-gap: 3px; }
+  .filter-hint { text-align: center; }
   .discipline-filter { padding-top: 7px; padding-right: 8px; padding-bottom: 7px; padding-left: 8px; font-size: 11px; min-height: 34px; row-gap: 6px; column-gap: 6px; }
   .wheel-stage { height: 262px; min-height: 240px; margin-top: 0; margin-right: -12px; margin-bottom: 0; margin-left: -12px; }
   .project-navigation { column-gap: 12px; row-gap: 16px; padding-top: 0; min-height: 0; }
@@ -244,7 +245,8 @@ footer { display: flex; flex-direction: column; align-items: center; justify-con
  .hero-actions { row-gap: 25px; column-gap: 25px; margin-top: 10px; }
  .discipline-intro p { display: inline; margin-left: 10px; }
  .filters-and-count { flex-direction: row; align-items: center; row-gap: 12px; column-gap: 12px; }
- #discipline-filters { row-gap: 4px; column-gap: 4px; }
+ #discipline-filters { width: auto; justify-content: flex-start; row-gap: 4px; column-gap: 4px; }
+ .filter-hint { text-align: start; }
  .discipline-filter { padding-top: 7px; padding-right: 11px; padding-bottom: 7px; padding-left: 11px; font-size: 12px; min-height: revert; row-gap: 8px; column-gap: 8px; }
  .wheel-stage { height: 420px; min-height: 300px; margin-top: 0; margin-right: -20px; margin-bottom: 0; margin-left: -20px; }
  .project-navigation { column-gap: 24px; row-gap: 24px; padding-top: 12px; min-height: 100px; }
