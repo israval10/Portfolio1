@@ -5,7 +5,7 @@ window.PORTFOLIO_DATA = {
     "projects": "https://app.notion.com/p/353af8f94f11836eb47d817bf759c58a",
     "disciplines": "https://app.notion.com/p/ac4af8f94f11823ab210817de63e7818",
     "pictures": "https://app.notion.com/p/3f0af8f94f1180e8a8bed8d1bf6fd44b",
-    "retrievedAt": "2026-10-05"
+    "retrievedAt": "2026-10-09"
   },
   "disciplines": [
     {
@@ -31,24 +31,6 @@ window.PORTFOLIO_DATA = {
   ],
   "additionalDisciplines": [],
   "projects": [
-    {
-      "id": "3b6af8f94f11837d94bd0146a3960484",
-      "name": "Neoconsulting - Video IA",
-      "description": {
-        "es": "",
-        "en": ""
-      },
-      "disciplines": [
-        "227af8f94f11834b948b016daaea86b0"
-      ],
-      "years": [
-        "2026"
-      ],
-      "notionUrl": "https://app.notion.com/p/3b6af8f94f11837d94bd0146a3960484",
-      "externalUrl": "https://neo-3-phi.vercel.app/",
-      "hasContent": true,
-      "cover": null
-    },
     {
       "id": "fbcaf8f94f1182af96f1812e8a3177eb",
       "name": "Bulkmate",
@@ -138,8 +120,7 @@ window.PORTFOLIO_DATA = {
       "notionUrl": "https://app.notion.com/p/bfeaf8f94f118273815f81f48a820cf3",
       "externalUrl": "",
       "hasContent": true,
-      "cover": "images/notion/project-bfeaf8f94f118273815f81f48a820cf3.png",
-      "wheelCoverPosition": { "x": 1, "y": 0.5 }
+      "cover": "images/notion/project-bfeaf8f94f118273815f81f48a820cf3-20261009.png"
     },
     {
       "id": "579af8f94f118232bfa68178d491c911",
@@ -162,7 +143,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       "id": "5c9af8f94f1182dd921e0193d1a7116f",
-      "name": "LlamaLeads brand",
+      "name": "LlamaLeads branding",
       "description": {
         "es": "Brandbook para Agencia de Growth Marketing",
         "en": "Brandbook for a growth marketing agency."
@@ -241,7 +222,8 @@ window.PORTFOLIO_DATA = {
         "en": "Brandbook for a growth marketing agency."
       },
       "disciplines": [
-        "b9aaf8f94f118262b9ac010afe337f0c"
+        "b9aaf8f94f118262b9ac010afe337f0c",
+        "227af8f94f11834b948b016daaea86b0"
       ],
       "years": [
         "2026"

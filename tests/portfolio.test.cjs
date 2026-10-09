@@ -11,8 +11,8 @@ const data = JSON.parse(JSON.stringify(context.window.PORTFOLIO_DATA));
 const model = createModel(data);
 
 test('unique projects and database discipline order', () => {
-  assert.equal(model.projects.length, 15);
-  assert.equal(new Set(model.projects.map(project => project.id)).size, 15);
+  assert.equal(model.projects.length, 14);
+  assert.equal(new Set(model.projects.map(project => project.id)).size, 14);
   const rank = project => Math.min(...project.disciplines.map(id => model.disciplines.findIndex(discipline => discipline.id === id)));
   const ranks = model.projects.map(rank);
   assert.deepEqual(ranks, [...ranks].sort((a, b) => a - b));
@@ -38,7 +38,7 @@ test('empty pages open URL, populated pages open Notion', () => {
 
 test('grouped index retains multi-tag occurrences without inflating unique count', () => {
   assert.equal(model.groups('all').reduce((sum, group) => sum + group.projects.length, 0), 19);
-  assert.equal(model.matches('all').length, 15);
+  assert.equal(model.matches('all').length, 14);
   assert.equal(model.groups(data.disciplines[1].id).length, 1);
 });
 

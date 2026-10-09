@@ -52,15 +52,12 @@ test('wide and tall covers fill the complete plane without stretching or padding
   }
 });
 
-test('only DataSigners shifts its wheel crop to include the person on the right', () => {
+test('explicit cover positions override the centered default crop', () => {
   const dataContext = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'portfolio-data.js'), 'utf8'), dataContext);
   const projects = dataContext.window.PORTFOLIO_DATA.projects;
-  const adjusted = projects.filter(project => project.wheelCoverPosition);
-  assert.equal(adjusted.length, 1);
-  assert.equal(adjusted[0].id, 'bfeaf8f94f118273815f81f48a820cf3');
   const { wheel, draws } = makeWheel({ width: 1500, height: 600 });
-  wheel.makeItem(adjusted[0]);
+  wheel.makeItem({ ...projects[0], wheelCoverPosition: { x: 1, y: 0.5 } });
   const [, x, y, width, height] = draws[0];
   assert.equal(x, 960 - width);
   assert.equal(y, (892 - height) / 2);
