@@ -185,8 +185,10 @@ footer { display: flex; flex-direction: column; align-items: center; justify-con
   .filter-hint { text-align: center; }
   .discipline-filter { padding-top: 7px; padding-right: 8px; padding-bottom: 7px; padding-left: 8px; font-size: 11px; min-height: 34px; row-gap: 6px; column-gap: 6px; }
   .wheel-stage { height: 262px; min-height: 240px; margin-top: 0; margin-right: -12px; margin-bottom: 0; margin-left: -12px; }
-  .project-navigation { column-gap: 12px; row-gap: 16px; padding-top: 0; min-height: 0; }
-  .wheel-controls { display: flex; flex-direction: column; row-gap: 5px; column-gap: 5px; }
+  .project-navigation { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 12px; row-gap: 16px; align-items: start; padding-top: 0; min-height: 0; }
+  .wheel-controls { display: flex; grid-column: 1; grid-row: 1; flex-direction: column; align-items: center; justify-self: start; row-gap: 5px; column-gap: 5px; }
+  .view-switch { grid-column: 2; grid-row: 1; justify-self: end; }
+  .view-switch .button-tooltip { left: auto; right: 0; }
   .project-position { order: 2; text-align: center; }
   .project-selection { grid-column: 1 / -1; grid-row: 2; justify-self: stretch; max-width: none; row-gap: 12px; column-gap: 12px; min-height: 74px; }
   .selected-image { width: 75px; min-width: 75px; height: 56px; }
@@ -242,8 +244,10 @@ footer { display: flex; flex-direction: column; align-items: center; justify-con
  .filter-hint { text-align: start; }
  .discipline-filter { padding-top: 7px; padding-right: 11px; padding-bottom: 7px; padding-left: 11px; font-size: 12px; min-height: revert; row-gap: 8px; column-gap: 8px; }
  .wheel-stage { height: 420px; min-height: 300px; margin-top: 0; margin-right: -20px; margin-bottom: 0; margin-left: -20px; }
- .project-navigation { column-gap: 24px; row-gap: 24px; padding-top: 12px; min-height: 100px; }
- .wheel-controls { display: grid; flex-direction: revert; row-gap: 14px; column-gap: 14px; }
+ .project-navigation { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); column-gap: 24px; row-gap: 24px; align-items: center; padding-top: 12px; min-height: 100px; }
+ .wheel-controls { display: grid; grid-column: 2; grid-row: auto; flex-direction: revert; align-items: center; justify-self: auto; row-gap: 14px; column-gap: 14px; }
+ .view-switch { grid-column: 1; grid-row: auto; justify-self: auto; }
+ .view-switch .button-tooltip { left: 0; right: auto; }
  .project-position { order: revert; text-align: revert; }
  .project-selection { grid-column: 3; grid-row: revert; justify-self: end; max-width: 520px; row-gap: 18px; column-gap: 18px; min-height: revert; }
  .selected-image { width: 94px; min-width: 94px; height: 66px; }
