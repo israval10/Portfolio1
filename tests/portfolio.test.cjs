@@ -91,6 +91,7 @@ test('responsive layouts progressively enhance mobile defaults', () => {
   assert.match(css, /\.lang-btn \{ min-width: 44px; min-height: 44px; \}/);
   assert.ok(css.includes('@media (pointer: coarse)'));
   assert.ok(css.includes('touch-action: pan-y'));
+  assert.match(css, /\.work-area \{[^}]*padding-top: clamp\(40px, 5vw, 76px\); padding-bottom: clamp\(40px, 5vw, 76px\)/);
 });
 
 test('filter result status stays accessible without appearing below filters', () => {
