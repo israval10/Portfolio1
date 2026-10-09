@@ -158,7 +158,7 @@ window.PORTFOLIO_DATA = {
       "notionUrl": "https://app.notion.com/p/5c9af8f94f1182dd921e0193d1a7116f",
       "externalUrl": "",
       "hasContent": true,
-      "cover": "images/notion/project-5c9af8f94f1182dd921e0193d1a7116f.png"
+      "cover": "images/notion/project-5c9af8f94f1182dd921e0193d1a7116f-20261009.png"
     },
     {
       "id": "491af8f94f1183ae9464015338d622b1",
@@ -237,8 +237,8 @@ window.PORTFOLIO_DATA = {
       "id": "281af8f94f11824dac08815a44d68e30",
       "name": "Aguacate Wallet",
       "description": {
-        "es": "",
-        "en": ""
+        "es": "Plataforma de envío de remesas e intercambio de divisas para Latioamérica",
+        "en": "Remittance and currency exchange platform for Latin America."
       },
       "disciplines": [
         "b9aaf8f94f118262b9ac010afe337f0c"
@@ -255,8 +255,8 @@ window.PORTFOLIO_DATA = {
       "id": "3f0af8f94f1180c38ab4eafbcd61e8bc",
       "name": "Llama Academy",
       "description": {
-        "es": "",
-        "en": ""
+        "es": "Plataforma de capacitación para clientes sobre uso de CRM Llamaleads",
+        "en": "Customer training platform for using the Llamaleads CRM."
       },
       "disciplines": [
         "b9aaf8f94f118262b9ac010afe337f0c",
