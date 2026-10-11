@@ -37,8 +37,8 @@
       gl_Position = projectionMatrix * view;
       gl_PointSize = clamp(aSize * uPixelRatio * (1.0 + p.z * 0.12), 3.0, 15.0);
       vColor = aColor;
-      float textSpace = smoothstep(1.7, 3.3, length(vec2(p.x * 0.7, p.y * 1.5)));
-      vAlpha = clamp(0.42 + p.z * 0.16, 0.18, 0.9) * mix(0.04, 1.0, textSpace) * (1.0 - uScroll * 0.3);
+      float textSpace = smoothstep(1.4, 3.0, length(vec2(p.x * 0.7, p.y * 1.5)));
+      vAlpha = clamp(0.48 + p.z * 0.16, 0.2, 0.95) * mix(0.18, 1.0, textSpace) * (1.0 - uScroll * 0.3);
     }
   `;
   const fragmentShader = `
@@ -113,6 +113,64 @@
     return next - Math.floor(next);
   }
 
+  // A side-profile silhouette: cortex, cerebellum and brainstem stay distinct.
+  const brainRegions = [
+    {
+      name: 'cortex', share: 0.77, bounds: [78, 108, 662, 500],
+      outline: [
+        [80, 346], [86, 299], [104, 257], [128, 225], [142, 193],
+        [180, 178], [207, 151], [246, 139], [279, 128], [314, 134],
+        [349, 113], [384, 109], [419, 121], [457, 116], [486, 130],
+        [520, 132], [553, 151], [582, 177], [605, 207], [625, 237],
+        [638, 277], [652, 310], [659, 348], [649, 389], [629, 416],
+        [597, 425], [568, 412], [536, 421], [507, 412], [474, 431],
+        [439, 444], [403, 440], [374, 458], [344, 469], [316, 466],
+        [285, 489], [252, 500], [228, 491], [208, 469], [205, 438],
+        [176, 428], [143, 431], [111, 415], [89, 390]
+      ]
+    },
+    {
+      name: 'cerebellum', share: 0.17, bounds: [411, 409, 633, 565],
+      outline: [
+        [416, 458], [445, 432], [482, 421], [526, 415], [568, 414],
+        [607, 425], [626, 449], [632, 481], [623, 512], [601, 539],
+        [566, 559], [527, 563], [490, 552], [459, 534], [433, 508],
+        [412, 483]
+      ]
+    },
+    {
+      name: 'stem', share: 0.06, bounds: [421, 475, 516, 634],
+      outline: [
+        [421, 477], [453, 492], [480, 517], [486, 550], [496, 583],
+        [509, 627], [480, 634], [468, 601], [451, 565], [432, 534]
+      ]
+    }
+  ];
+
+  function insideOutline(x, y, outline) {
+    let inside = false;
+    for (let i = 0, j = outline.length - 1; i < outline.length; j = i++) {
+      const a = outline[i];
+      const b = outline[j];
+      if ((a[1] > y) !== (b[1] > y) &&
+          x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+    }
+    return inside;
+  }
+
+  function outlineDistance(x, y, outline) {
+    let nearest = Infinity;
+    for (let i = 0; i < outline.length; i++) {
+      const a = outline[i];
+      const b = outline[(i + 1) % outline.length];
+      const dx = b[0] - a[0];
+      const dy = b[1] - a[1];
+      const t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / (dx * dx + dy * dy)));
+      nearest = Math.min(nearest, Math.hypot(x - a[0] - t * dx, y - a[1] - t * dy));
+    }
+    return nearest;
+  }
+
   function buildParticles(count) {
     if (points) {
       scene.remove(points);
@@ -131,22 +189,42 @@
       const r3 = random(i * 5 + 3);
       const r4 = random(i * 5 + 4);
       if (i < count) {
-        const angle = r1 * Math.PI * 2;
-        const tube = r2 * Math.PI * 2;
-        const radius = 2.95 + Math.cos(tube) * (0.48 + r3 * 0.28);
-        positions[i * 3] = Math.cos(angle) * radius;
-        positions[i * 3 + 1] = Math.sin(angle) * radius * 0.68 + Math.sin(tube) * 0.15;
-        positions[i * 3 + 2] = Math.sin(tube) * 0.95 + (r4 - 0.5) * 0.3;
+        const region = i / count < brainRegions[0].share ? brainRegions[0] :
+          i / count < brainRegions[0].share + brainRegions[1].share ? brainRegions[1] : brainRegions[2];
+        const [left, top, right, bottom] = region.bounds;
+        let x = left;
+        let y = top;
+        for (let attempt = 0; attempt < 48; attempt++) {
+          x = left + random(i * 73 + attempt * 2 + 11) * (right - left);
+          y = top + random(i * 73 + attempt * 2 + 12) * (bottom - top);
+          if (insideOutline(x, y, region.outline)) break;
+        }
+        const edge = outlineDistance(x, y, region.outline);
+        const fold = region.name === 'cortex' ?
+          Math.sin(x * 0.075 + Math.sin(y * 0.035) * 1.7) * Math.sin(y * 0.09 + Math.cos(x * 0.03) * 1.5) :
+          Math.sin(y * 0.17 + x * 0.045);
+        const furrow = Math.abs(fold);
+        const boundaryLight = Math.exp(-edge / 12);
+        positions[i * 3] = (x - 370) / 105;
+        positions[i * 3 + 1] = (350 - y) / 140;
+        positions[i * 3 + 2] = (region.name === 'cortex' ? 0.7 : 0.42) + fold * 0.18 + (r3 - 0.5) * 0.45;
+        const band = region.name === 'cerebellum' ? Math.floor((r2 * 2 + 0.4) % palette.length) :
+          Math.floor((r1 * 2 + r3 * 3 + Math.max(0, fold) * 1.8) % palette.length);
+        const color = palette[band];
+        const brightness = (0.36 + furrow * 0.38 + boundaryLight * 0.45) *
+          (region.name === 'stem' ? 0.64 : 1);
+        colors[i * 3] = color.r * brightness;
+        colors[i * 3 + 1] = color.g * brightness;
+        colors[i * 3 + 2] = color.b * brightness;
       } else {
         positions[i * 3] = (r1 - 0.5) * 11;
         positions[i * 3 + 1] = (r2 - 0.5) * 6.1;
         positions[i * 3 + 2] = -1.4 + r3 * 1.7;
+        const color = palette[Math.floor(r4 * palette.length)];
+        colors[i * 3] = color.r * 0.5;
+        colors[i * 3 + 1] = color.g * 0.5;
+        colors[i * 3 + 2] = color.b * 0.5;
       }
-      const band = i < count ? Math.floor((r1 * 2 + r2 * 3) % palette.length) : Math.floor(r4 * palette.length);
-      const color = palette[band];
-      colors[i * 3] = color.r;
-      colors[i * 3 + 1] = color.g;
-      colors[i * 3 + 2] = color.b;
       sizes[i] = i < count ? 5.5 + r4 * 4 : 5 + r4 * 6;
       seeds[i] = r3;
     }
@@ -172,7 +250,7 @@
     camera.updateProjectionMatrix();
     uniforms.uPixelRatio.value = ratio;
     uniforms.uShapeX.value = Math.min(1, Math.max(0.56, width / height / 1.7));
-    const count = width < 600 ? 1250 : width < 900 ? 1900 : 2800;
+    const count = width < 600 ? 2200 : width < 900 ? 3500 : 6000;
     if (!points || points.geometry.getAttribute('position').count !== count + Math.round(count * 0.055)) {
       buildParticles(count);
     }

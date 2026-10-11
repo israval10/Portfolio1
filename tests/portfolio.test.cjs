@@ -119,11 +119,31 @@ test('opening particle scene preserves centered copy and reduced-motion fallback
   const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
   const source = fs.readFileSync(path.join(root, 'hero-particles.js'), 'utf8');
   assert.match(html, /<div class="opening-copy">\s*<canvas class="hero-particle-canvas"[^>]*aria-hidden="true"/);
-  assert.match(html, /<script defer src="hero-particles\.js"><\/script>/);
+  assert.match(html, /<script defer src="hero-particles\.js(?:\?v=[^"]+)?"><\/script>/);
   assert.match(css, /\.opening-copy \{[^}]*justify-content: center;[^}]*overflow: hidden;/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(source, /new IntersectionObserver/);
   assert.match(source, /motionPreference\.matches/);
+  assert.match(source, /name: 'cortex'/);
+  assert.match(source, /name: 'cerebellum'/);
+  assert.match(source, /name: 'stem'/);
+  assert.doesNotMatch(source, /const radius = Math\.sqrt\(r2\)/);
+});
+
+test('particle brain has a lateral cortex, separate cerebellum and descending stem', () => {
+  const source = fs.readFileSync(path.join(root, 'hero-particles.js'), 'utf8');
+  const begin = source.indexOf('const brainRegions =');
+  const end = source.indexOf('function buildParticles', begin);
+  const shape = {};
+  vm.runInNewContext(source.slice(begin, end) + 'globalThis.shape = { brainRegions, insideOutline };', shape);
+  const [cortex, cerebellum, stem] = shape.shape.brainRegions;
+  assert.ok(shape.shape.insideOutline(330, 300, cortex.outline));
+  assert.ok(shape.shape.insideOutline(550, 480, cerebellum.outline));
+  assert.ok(shape.shape.insideOutline(486, 600, stem.outline));
+  assert.ok(!shape.shape.insideOutline(330, 600, cortex.outline));
+  assert.ok(cortex.outline.length > 30);
+  assert.ok(cerebellum.bounds[1] > cortex.bounds[1]);
+  assert.ok(stem.bounds[3] > cerebellum.bounds[3]);
 });
 
 test('filter result status stays accessible without appearing below filters', () => {
