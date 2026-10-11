@@ -10,7 +10,8 @@
     const projects = [...data.projects].sort((a, b) => rank(a) - rank(b));
     const matches = filter => projects.filter(project => filter === 'all' || project.disciplines.includes(filter));
     const destination = project => {
-      const value = project.hasContent ? project.notionUrl : project.externalUrl;
+      if (project.hasContent) return /^[a-f0-9]{32}$/i.test(project.id || '') ? `/proyectos/${project.id.toLowerCase()}/` : null;
+      const value = project.externalUrl;
       if (!value) return null;
       try {
         const url = new URL(value);

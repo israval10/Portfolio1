@@ -113,8 +113,10 @@
     card.dataset.disciplines = project.disciplines.join(' ');
     if (destination) {
       card.href = destination;
-      card.target = '_blank';
-      card.rel = 'noopener noreferrer';
+      if (!project.hasContent) {
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+      }
     } else {
       card.setAttribute('aria-disabled', 'true');
       card.title = strings().pending;
@@ -175,8 +177,12 @@
     const link = document.getElementById('selected-link');
     const imageLink = document.getElementById('selected-image-link');
     for (const node of [link, imageLink]) {
-      if (destination) { node.href = destination; node.removeAttribute('aria-disabled'); }
-      else { node.removeAttribute('href'); node.setAttribute('aria-disabled', 'true'); }
+      if (destination) {
+        node.href = destination;
+        node.removeAttribute('aria-disabled');
+        if (project.hasContent) { node.removeAttribute('target'); node.removeAttribute('rel'); }
+        else { node.target = '_blank'; node.rel = 'noopener noreferrer'; }
+      } else { node.removeAttribute('href'); node.setAttribute('aria-disabled', 'true'); }
     }
     const image = document.getElementById('selected-image');
     imageLink.hidden = !project.cover;
@@ -295,7 +301,8 @@
       onSelect: renderSelection,
       onActivate: project => {
         const destination = model.destination(project);
-        if (destination) window.open(destination, '_blank', 'noopener,noreferrer');
+        if (destination?.startsWith('/proyectos/')) window.location.assign(destination);
+        else if (destination) window.open(destination, '_blank', 'noopener,noreferrer');
       },
       onError: fallback
     });

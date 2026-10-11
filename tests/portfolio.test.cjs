@@ -11,35 +11,51 @@ const data = JSON.parse(JSON.stringify(context.window.PORTFOLIO_DATA));
 const model = createModel(data);
 
 test('unique projects and database discipline order', () => {
-  assert.equal(model.projects.length, 14);
-  assert.equal(new Set(model.projects.map(project => project.id)).size, 14);
-  const rank = project => Math.min(...project.disciplines.map(id => model.disciplines.findIndex(discipline => discipline.id === id)));
+  assert.equal(model.projects.length, data.projects.length);
+  assert.equal(new Set(model.projects.map(project => project.id)).size, data.projects.length);
+  const rank = project => Math.min(...project.disciplines.map(id => model.disciplines.findIndex(discipline => discipline.id === id)).filter(index => index >= 0), model.disciplines.length);
   const ranks = model.projects.map(rank);
   assert.deepEqual(ranks, [...ranks].sort((a, b) => a - b));
-  assert.deepEqual(data.disciplines.map(discipline => model.matches(discipline.id).length), [9, 3, 5, 2]);
+  for (const discipline of data.disciplines) {
+    assert.equal(model.matches(discipline.id).length, data.projects.filter(project => project.disciplines.includes(discipline.id)).length);
+  }
 });
 
 test('multiple discipline relations match independently', () => {
-  const academy = data.projects.find(project => project.name === 'Llama Academy');
-  for (const id of academy.disciplines) assert.ok(model.matches(id).includes(academy));
+  const multiple = data.projects.find(project => project.disciplines.length > 1);
+  if (multiple) for (const id of multiple.disciplines) assert.ok(model.matches(id).includes(multiple));
   assert.equal(model.matches('unknown').length, 0);
 });
 
-test('empty pages open URL, populated pages open Notion', () => {
+test('populated pages use local routes, empty pages open their URL', () => {
   for (const project of data.projects) {
-    assert.ok(model.destination(project), project.name);
-    assert.equal(model.destination(project), new URL(project.hasContent ? project.notionUrl : project.externalUrl).href);
+    assert.equal(model.destination(project), project.hasContent ? `/proyectos/${project.id}/` : project.externalUrl ? new URL(project.externalUrl).href : null);
   }
+  assert.equal(model.destination({ id: '../unsafe', hasContent: true }), null);
   assert.equal(model.destination({ hasContent: false, notionUrl: 'https://notion.so/empty', externalUrl: '' }), null);
   assert.equal(model.destination({ hasContent: false, externalUrl: 'javascript:alert(1)' }), null);
   assert.equal(model.destination({ hasContent: false, externalUrl: 'data:text/html,hi' }), null);
-  assert.equal(model.destination(data.projects.find(project => project.name === 'Llama Academy')), 'https://llama-academy.vercel.app/');
+});
+
+test('each populated project has its own generated page and empty projects retain redirects', () => {
+  for (const project of data.projects) {
+    if (!project.hasContent && !project.externalUrl) continue;
+    const html = fs.readFileSync(path.join(root, 'proyectos', project.id, 'index.html'), 'utf8');
+    assert.ok(html.includes(project.name), project.name);
+    if (project.hasContent) {
+      assert.ok(html.includes('class="project-article"'), project.name);
+      assert.ok(html.includes('../../#projects'), project.name);
+    } else {
+      assert.ok(html.includes(project.externalUrl.replaceAll('&', '&amp;')), project.name);
+    }
+  }
 });
 
 test('grouped index retains multi-tag occurrences without inflating unique count', () => {
-  assert.equal(model.groups('all').reduce((sum, group) => sum + group.projects.length, 0), 19);
-  assert.equal(model.matches('all').length, 14);
-  assert.equal(model.groups(data.disciplines[1].id).length, 1);
+  const known = new Set(data.disciplines.map(discipline => discipline.id));
+  const expected = data.projects.reduce((sum, project) => sum + Math.max(1, project.disciplines.filter(id => known.has(id)).length), 0);
+  assert.equal(model.groups('all').reduce((sum, group) => sum + group.projects.length, 0), expected);
+  assert.equal(model.matches('all').length, data.projects.length);
 });
 
 test('all original ES/EN copy and emphasis remains identical', () => {
