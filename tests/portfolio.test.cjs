@@ -89,10 +89,13 @@ test('all local image assets exist and expected source links are retained', () =
   for (const picture of data.pictures) assert.ok(fs.existsSync(path.join(root, picture.src)));
   assert.equal(data.pictures.length, 3);
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.ok(fs.existsSync(path.join(root, 'images/site/favicon.png')));
+  assert.match(html, /<link rel="icon" type="image\/png" sizes="180x180" href="images\/site\/favicon\.png\?v=rocket"/);
   for (const value of ['U. de Lima/ U. Pacifico', 'Comunicaciones / Ing. Industrial']) {
     assert.ok(html.includes('<span class="about-info-value">' + value + '</span>'), value);
   }
-  for (const value of ['https://wa.me/51987729841', 'https://www.linkedin.com/in/israel-valencia/', 'mailto:israval2000@gmail.com', 'Universidad de Lima', 'Comunicaciones', 'Per\u00fa', '\u221e', '\u00a9 2026 Israel Valencia']) assert.ok(html.includes(value), value);
+  for (const value of ['https://wa.me/51987729841', 'https://www.linkedin.com/in/israel-valencia/', 'mailto:israval2000@gmail.com', 'Universidad de Lima', 'Comunicaciones', 'Per\u00fa', '\u221e']) assert.ok(html.includes(value), value);
+  assert.doesNotMatch(html, /© 2026 Israel Valencia/);
 });
 
 test('unknown and empty disciplines retain usable groups', () => {
