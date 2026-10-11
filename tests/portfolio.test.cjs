@@ -66,18 +66,22 @@ test('all original ES/EN copy and emphasis remains identical', () => {
   vm.runInNewContext(original.slice(begin, end) + 'globalThis.copy = translations;', before);
   const after = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'content.js'), 'utf8'), after);
-  for (const lang of ['es', 'en']) before.copy[lang].disc_all = lang === 'es' ? 'Todos' : 'All';
+  const removedCopy = new Set(['proj_label', 'proj_title', 'proj_sub', 'hero_scroll', 'nav_portfolios', 'port_label', 'port_title', 'port_sub', 'port1_title', 'port1_desc', 'port2_title', 'port2_desc']);
+  const removedPortfolioCopy = [...removedCopy].filter(key => key === 'nav_portfolios' || key.startsWith('port'));
+  for (const lang of ['es', 'en']) {
+    before.copy[lang].disc_all = lang === 'es' ? 'Todos' : 'All';
+    for (const key of removedPortfolioCopy) delete before.copy[lang][key];
+  }
   assert.deepEqual(JSON.parse(JSON.stringify(before.copy)), JSON.parse(JSON.stringify(after.window.PORTFOLIO_TRANSLATIONS)));
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const keys = [...html.matchAll(/data-i18n(?:-html)?="([^"]+)"/g)].map(match => match[1]);
-  const removedCopy = new Set(['proj_label', 'proj_title', 'proj_sub', 'hero_scroll']);
   for (const key of Object.keys(before.copy.es)) {
     assert.ok(keys.includes(key) || key === 'disc_all' || removedCopy.has(key), 'Missing rendered copy: ' + key);
   }
   for (const key of removedCopy) assert.ok(!keys.includes(key), 'Removed copy still rendered: ' + key);
   assert.doesNotMatch(html, /class="(?:mobile-next-section|hero-scroll)"/);
+  assert.doesNotMatch(html, /id="portfolios"|href="#portfolios"/);
   assert.match(html, /<section id="about">/);
-  assert.equal(Object.keys(before.copy.es).length, 51);
 });
 
 test('all local image assets exist and expected source links are retained', () => {
@@ -88,7 +92,7 @@ test('all local image assets exist and expected source links are retained', () =
   for (const value of ['U. de Lima/ U. Pacifico', 'Comunicaciones / Ing. Industrial']) {
     assert.ok(html.includes('<span class="about-info-value">' + value + '</span>'), value);
   }
-  for (const value of ['https://wa.me/51987729841', 'https://www.linkedin.com/in/israel-valencia/', 'mailto:israval2000@gmail.com', 'iv-portafolio-1-1.webflow.io', 'Universidad de Lima', 'Comunicaciones', 'Per\u00fa', '\u221e', '\u00a9 2026 Israel Valencia']) assert.ok(html.includes(value), value);
+  for (const value of ['https://wa.me/51987729841', 'https://www.linkedin.com/in/israel-valencia/', 'mailto:israval2000@gmail.com', 'Universidad de Lima', 'Comunicaciones', 'Per\u00fa', '\u221e', '\u00a9 2026 Israel Valencia']) assert.ok(html.includes(value), value);
 });
 
 test('unknown and empty disciplines retain usable groups', () => {
