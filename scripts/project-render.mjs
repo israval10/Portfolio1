@@ -126,10 +126,18 @@ export function renderProjectPage(project, content, options = {}) {
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="${description || title}">
   <title>${title} | Israel Valencia</title>
-  <link rel="stylesheet" href="../../project-page.css?v=editorial-20261011-2">
+  <link rel="stylesheet" href="../../project-page.css?v=project-language">
+  <script defer src="../../project-language.js"></script>
 </head>
 <body>
-  <header class="project-header"><a class="project-brand" href="../../#home">Israel<br>Valencia</a><a class="project-back" href="../../#projects">&#8592; Todos los proyectos</a></header>
+  <header class="project-header">
+    <a class="project-brand" href="../../#home">Israel<br>Valencia</a>
+    <nav class="project-languages" aria-label="Idioma">
+      <a class="project-lang active" href="./" lang="es" aria-label="Español (España)" aria-current="page" title="Español (España)">🇪🇸</a>
+      <a class="project-lang" href="en.html" lang="en" aria-label="Inglés (Reino Unido)" title="Inglés (Reino Unido)">🇬🇧</a>
+    </nav>
+    <a class="project-back" href="../../#projects">&#8592; Todos los proyectos</a>
+  </header>
   <main>
     <div class="project-intro"><p class="project-meta">${escaped(meta)}</p><h1>${title}</h1>${description ? `<p class="project-description">${description}</p>` : ''}</div>
     ${cover}

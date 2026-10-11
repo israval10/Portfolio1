@@ -58,3 +58,24 @@ test('all project tables have visible cell borders and a mobile overflow path', 
   assert.match(css, /\.project-article div:has\(> table\)\s*\{[^}]*overflow-x:\s*auto/);
   assert.match(css, /\.project-article > table\s*\{[^}]*overflow-x:\s*auto/);
 });
+
+test('populated project pages have a matching English page and language switcher', () => {
+  const folders = fs.readdirSync(path.join(root, 'proyectos'));
+  for (const folder of folders) {
+    const directory = path.join(root, 'proyectos', folder);
+    const spanish = fs.readFileSync(path.join(directory, 'index.html'), 'utf8');
+    const englishPath = path.join(directory, 'en.html');
+    if (!spanish.includes('class="project-article"')) {
+      assert.equal(fs.existsSync(englishPath), false, `${folder}: redirect should not have an English page`);
+      continue;
+    }
+    assert.ok(fs.existsSync(englishPath), `${folder}: missing English page`);
+    const english = fs.readFileSync(englishPath, 'utf8');
+    assert.match(spanish, /class="project-languages"/);
+    assert.match(spanish, /href="en\.html"/);
+    assert.match(english, /<html lang="en">/);
+    assert.match(english, /English \(UK\)/);
+    assert.match(english, /class="project-article"/);
+    assert.match(english, /translation-source-hash/);
+  }
+});

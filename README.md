@@ -9,7 +9,7 @@ Sitio estatico con fichas independientes en `/proyectos/<id>/`. La portada, el t
 3. Opcional pero recomendado: en Vercel, crea un Deploy Hook para `main` y guarda su URL como secreto `VERCEL_DEPLOY_HOOK` en GitHub. La integracion Git de Vercel tambien puede desplegar el commit generado.
 4. El workflow **Sync projects from Notion** esta activo en GitHub Actions y se ejecuto correctamente. Puedes volver a lanzarlo desde la pestana Actions; tambien corre cada hora. GitHub puede demorar ejecuciones programadas y desactivar el workflow en repositorios publicos sin actividad durante 60 dias.
 
-La tarea consulta la API oficial de Notion, pagina resultados y bloques, guarda portadas y archivos locales para evitar URL temporales, genera las fichas, actualiza el inventario de proyectos y crea un commit solo si algo cambio. Si una pagina queda vacia, la card vuelve a usar su propiedad `URL` y su ruta anterior redirige a ella. Los fallos de acceso a Notion detienen la tarea sin reemplazar las paginas actuales.
+La tarea consulta la API oficial de Notion, pagina resultados y bloques, guarda portadas y archivos locales para evitar URL temporales, genera las fichas en espanol, actualiza el inventario de proyectos y crea un commit solo si algo cambio. Si una pagina queda vacia, la card vuelve a usar su propiedad `URL` y su ruta anterior redirige a ella. Los fallos de acceso a Notion detienen la tarea sin reemplazar las paginas actuales.
 
 El contenido inicial de las fichas se genero a partir de la lectura disponible en `notion-seed.json`. La primera sincronizacion autenticada ya incorporo las imagenes y PDFs internos de Notion. Las fichas incluyen el enlace a la pagina original cuando corresponde.
 
@@ -23,3 +23,5 @@ python3 -m http.server 4174
 ```
 
 Con `NOTION_TOKEN` configurado en el entorno, `npm run sync:notion` trae el contenido actualizado. El token nunca llega al navegador ni se escribe en los archivos generados.
+
+Para generar las paginas inglesas en local, instala Python 3.11 o superior y las dependencias de `requirements-translate.txt`, luego ejecuta `npm run translate:projects`. El modelo ES-EN se descarga la primera vez. Esta fase todavia no forma parte del workflow de GitHub: tras cada sincronizacion de Notion hay que regenerar y publicar las paginas inglesas. La traduccion es automatica y conviene revisar el texto ingles antes de usarlo como muestra editorial definitiva; las imagenes con texto integrado no se traducen.

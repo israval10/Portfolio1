@@ -20,6 +20,9 @@
   let wheel = null;
   let wheelAvailable = true;
   window.currentLang = 'es';
+  const languageStorageKey = 'portfolio-language';
+  let initialLanguage = 'es';
+  try { if (localStorage.getItem(languageStorageKey) === 'en') initialLanguage = 'en'; } catch {}
 
   function element(tag, className, text) {
     const node = document.createElement(tag);
@@ -38,6 +41,12 @@
   function icons() { window.lucide?.createIcons(); }
   function language() { return window.currentLang || 'es'; }
   function strings() { return ui[language()]; }
+  function projectDestination(project) {
+    const destination = model.destination(project);
+    if (!project.hasContent || !destination?.startsWith('/proyectos/')) return destination;
+    const local = location.protocol === 'file:' ? '.' + destination : destination;
+    return language() === 'en' ? local + 'en.html' : local;
+  }
 
   function setMenu(open, returnFocus = false) {
     menu.classList.toggle('open', open);
@@ -113,7 +122,7 @@
   }
 
   function projectCard(project) {
-    const destination = model.destination(project);
+    const destination = projectDestination(project);
     const card = element(destination ? 'a' : 'article', 'project-card');
     card.dataset.projectId = project.id;
     card.dataset.disciplines = project.disciplines.join(' ');
@@ -179,7 +188,7 @@
     const index = visible.findIndex(item => item.id === project?.id);
     document.getElementById('project-position').textContent = String(index + 1).padStart(2, '0') + ' / ' + String(visible.length).padStart(2, '0');
     if (!project) return;
-    const destination = model.destination(project);
+    const destination = projectDestination(project);
     const link = document.getElementById('selected-link');
     const imageLink = document.getElementById('selected-image-link');
     for (const node of [link, imageLink]) {
@@ -260,6 +269,7 @@
   window.setLanguage = function (lang) {
     if (!ui[lang]) return;
     window.currentLang = lang;
+    try { localStorage.setItem(languageStorageKey, lang); } catch {}
     renderTranslations();
     renderFilters();
     renderStatus();
@@ -299,15 +309,15 @@
     if (!menu.contains(event.target) && event.target !== menuButton && menu.classList.contains('open')) setMenu(false);
   });
 
-  window.setLanguage('es');
+  window.setLanguage(initialLanguage);
   try {
     wheel = new window.ProjectWheel({
       canvas,
       stage: document.getElementById('wheel-stage'),
       onSelect: renderSelection,
       onActivate: project => {
-        const destination = model.destination(project);
-        if (destination?.startsWith('/proyectos/')) window.location.assign(destination);
+        const destination = projectDestination(project);
+        if (destination && project.hasContent) window.location.assign(destination);
         else if (destination) window.open(destination, '_blank', 'noopener,noreferrer');
       },
       onError: fallback

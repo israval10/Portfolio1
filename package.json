@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "build:projects": "node scripts/sync-notion.mjs --seed",
+    "translate:projects": "python3 scripts/translate-projects.py",
     "sync:notion": "node scripts/sync-notion.mjs --sync",
     "test": "node --test tests/*.test.cjs"
   },
