@@ -110,6 +110,18 @@ test('responsive layouts progressively enhance mobile defaults', () => {
   assert.match(css, /\.work-area \{[^}]*padding-top: clamp\(40px, 5vw, 76px\); padding-bottom: clamp\(40px, 5vw, 76px\)/);
 });
 
+test('opening particle scene preserves centered copy and reduced-motion fallback', () => {
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
+  const source = fs.readFileSync(path.join(root, 'hero-particles.js'), 'utf8');
+  assert.match(html, /<div class="opening-copy">\s*<canvas class="hero-particle-canvas"[^>]*aria-hidden="true"/);
+  assert.match(html, /<script defer src="hero-particles\.js"><\/script>/);
+  assert.match(css, /\.opening-copy \{[^}]*justify-content: center;[^}]*overflow: hidden;/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(source, /new IntersectionObserver/);
+  assert.match(source, /motionPreference\.matches/);
+});
+
 test('filter result status stays accessible without appearing below filters', () => {
   const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');

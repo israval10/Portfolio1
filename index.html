@@ -13,13 +13,14 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "ytlelglcud");
   </script>
-  <link rel="stylesheet" href="styles.css?v=editorial-20261011-flags" />
+  <link rel="stylesheet" href="styles.css?v=hero-particles" />
   <script defer src="vendor/lucide.min.js"></script>
   <script defer src="vendor/three.min.js"></script>
   <script defer src="portfolio-data.js"></script>
   <script defer src="portfolio-model.js"></script>
   <script defer src="content.js"></script>
   <script defer src="project-wheel.js"></script>
+  <script defer src="hero-particles.js"></script>
   <script defer src="portfolio.js?v=project-language"></script>
 </head>
 <body id="home">
@@ -49,6 +50,7 @@
   <main>
     <section class="opening">
       <div class="opening-copy">
+        <canvas class="hero-particle-canvas" id="hero-particle-canvas" aria-hidden="true"></canvas>
         <div class="opening-identity">
           <span class="hero-badge" data-i18n="hero_badge">Product Design</span>
           <h1><span class="hero-greeting" data-i18n="hero_greeting">Hola, soy</span><span>Israel Valencia</span></h1>
