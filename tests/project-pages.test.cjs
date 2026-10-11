@@ -50,3 +50,11 @@ test('generated routes use local assets and empty-page redirects reject unsafe U
     }
   }
 });
+
+test('all project tables have visible cell borders and a mobile overflow path', () => {
+  const css = fs.readFileSync(path.join(root, 'project-page.css'), 'utf8');
+  assert.match(css, /\.project-article table\s*\{[^}]*border:\s*1px solid/);
+  assert.match(css, /\.project-article th, \.project-article td\s*\{[^}]*border:\s*1px solid/);
+  assert.match(css, /\.project-article div:has\(> table\)\s*\{[^}]*overflow-x:\s*auto/);
+  assert.match(css, /\.project-article > table\s*\{[^}]*overflow-x:\s*auto/);
+});

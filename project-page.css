@@ -34,9 +34,13 @@ h1 { font-size: clamp(40px, 5vw, 78px); font-weight: 500; line-height: 1.08; mar
 .project-article code { overflow-wrap: anywhere; }
 .project-article hr { border: 0; border-top: 1px solid var(--line); margin: 3em 0; }
 .project-article summary { cursor: pointer; font-weight: 500; }
-.project-table { overflow-x: auto; margin: 2em 0; }
-.project-table table { width: 100%; border-collapse: collapse; }
-.project-table td { border: 1px solid var(--line); padding: 10px; min-width: 120px; }
+.project-article div:has(> table) { max-width: 100%; overflow-x: auto; margin: 2em 0; }
+.project-article table { width: 100%; border-collapse: collapse; border: 1px solid #c8cec6; margin: 2em 0; font-size: .94em; line-height: 1.5; }
+.project-article div:has(> table) table { margin: 0; }
+.project-article tr:first-child { background: #f2f4f1; }
+.project-article tr:nth-child(even) { background: #fafbf9; }
+.project-article th, .project-article td { min-width: 145px; padding: 13px 16px; border: 1px solid #c8cec6; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+.project-article th, .project-article tr:first-child td { font-weight: 600; }
 .project-file { display: inline-block; padding: 16px 20px; border: 1px solid var(--line); }
 .project-source-note { color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 28px; margin-top: 60px !important; }
 .project-end { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; padding: 30px var(--edge); border-top: 1px solid var(--line); font-size: 14px; }
@@ -47,4 +51,6 @@ footer { padding: 24px var(--edge); color: var(--muted); font-size: 12px; border
   .project-back { font-size: 12px; }
   .project-article { font-size: 16px; }
   .project-article figure { margin: 2em 0; }
+  .project-article > table { display: block; max-width: 100%; overflow-x: auto; }
+  .project-article th, .project-article td { padding: 11px 12px; }
 }
