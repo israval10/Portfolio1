@@ -12,377 +12,203 @@
   <header class="project-header"><a class="project-brand" href="../../#home">Israel<br>Valencia</a><a class="project-back" href="../../#projects">&#8592; Todos los proyectos</a></header>
   <main>
     <div class="project-intro"><p class="project-meta">2025 / Product Design</p><h1>Aguacate Wallet</h1><p class="project-description">Plataforma de envío de remesas e intercambio de divisas para Latioamérica</p></div>
-    <figure class="project-cover"><img src="../../images/notion/project-281af8f94f11824dac08815a44d68e30.png" alt="Aguacate Wallet" fetchpriority="high"></figure>
-    <article class="project-article"><h4>De una billetera funcional a una experiencia que da confianza</h4><h3><a href="https://app.notion.com/p/281af8f94f11824dac08815a44d68e30">Imagen original en Notion</a></h3><h3>TL;DR</h3><p>Aguacate Wallet es una plataforma fintech que reúne envío de dinero, cambio de moneda y operaciones cripto en una sola app. Un benchmark interno contra plataformas locales e internacionales mostró que la experiencia de Aguacate estaba <strong>a un 90% de distancia de la competencia</strong> en flujos y coherencia. El problema no era visual: era estructural. La app resolvía transacciones, pero no resolvía la incertidumbre del usuario.
-Lideré el rediseño de seis flujos críticos (registro, verificación, envío de remesas, cambio de moneda, cripto y beneficiarios) y la creación del primer sistema de diseño del producto. El testeo con clientes reales validó la mayoría de las hipótesis y reveló un hallazgo que reorganizó toda la arquitectura: <strong>los usuarios no usan el dashboard como pantalla de información — lo usan como el primer lugar para operar</strong>.</p>
-<blockquote>
-<p>Aguacate no necesitaba verse mejor. Necesitaba sentirse más claro.</p>
-</blockquote>
+    <figure class="project-cover"><img src="../../images/notion/project-281af8f94f11824dac08815a44d68e30-cover.png" alt="Aguacate Wallet" fetchpriority="high"></figure>
+    <article class="project-article"><h4>De una billetera funcional a una experiencia que da confianza</h4>
+<figure><img src="../../images/notion/content-8c7af8f94f11838eb2a0015fdec85011.png" alt="" loading="lazy" /></figure>
 <hr />
-<h3>1. El problema real</h3><h4>El dinero ya se mueve rápido. La confianza, no.</h4><p>Una wallet hoy puede concentrar transferencias, conversiones, pagos y operaciones cripto en una sola interfaz. Pero mientras el dinero se volvió más digital, también se volvió más fragmentado: bancos, exchanges, monedas locales, dólares, cripto y remesas conviven con reglas y lenguajes distintos.
-En productos financieros, esa fragmentación no genera demora. Genera <strong>duda</strong>.
-El verdadero reto ya no es permitir que una transacción ocurra. Es lograr que el usuario entienda, en cada paso, qué está haciendo, cuánto está moviendo, cuánto le cuesta y qué va a pasar después.</p>
-<blockquote>
-<p>La confianza no aparece cuando la interfaz se ve moderna. Aparece cuando el usuario siente control.</p>
-</blockquote>
-<h4>Aguacate Wallet en este contexto</h4><p>Aguacate propone reunir tres mundos en una sola experiencia: envío de dinero, cambio de moneda y operaciones cripto. Esa es su mayor ventaja y, simultáneamente, su mayor desafío de diseño:</p>
-<blockquote>
-<p>Mientras más capacidades concentra una plataforma financiera, más clara debe ser su experiencia.
-<a href="https://app.notion.com/p/281af8f94f11824dac08815a44d68e30">Imagen original en Notion</a></p>
-</blockquote>
-<h4>El diagnóstico: 90% de distancia</h4><p>Un benchmark contra plataformas locales (Chile) e internacionales (Wise, Binance, exchanges regionales) midió cuatro criterios: facilidad de uso, tiempo de completado, funcionalidad y accesibilidad.
-El hallazgo fue contundente:</p>
-<blockquote>
-<p>La usabilidad y experiencia de Aguacate estaba alejada en un <strong>90%</strong> respecto a la competencia a nivel de flujos y coherencia interna.
-Esto no significaba que la app necesitara una capa de pintura. Significaba que el producto resolvía transacciones, pero no resolvía incertidumbre. Los flujos no guiaban al usuario en los momentos donde la precisión, la seguridad y la confianza son críticas.</p>
-</blockquote>
-<h4>El reto de diseño</h4><p>Tres niveles de intervención:</p>
+<h3>TL;DR</h3>
+<p>Aguacate Wallet es una plataforma fintech que reúne envío de dinero, cambio de moneda y operaciones cripto en una sola app. Un benchmark interno contra plataformas locales e internacionales mostró que la experiencia de Aguacate estaba <strong>a un 90% de distancia de la competencia</strong> en flujos y coherencia. El problema no era visual: era estructural. La app resolvía transacciones, pero no resolvía la incertidumbre del usuario.</p>
+<p>Lideré el rediseño de seis flujos críticos (registro, verificación, envío de remesas, cambio de moneda, cripto y beneficiarios) y la creación del primer sistema de diseño del producto. El testeo con clientes reales validó la mayoría de las hipótesis y reveló un hallazgo que reorganizó toda la arquitectura: <strong>los usuarios no usan el dashboard como pantalla de información — lo usan como el primer lugar para operar</strong>.</p>
+<blockquote>Aguacate no necesitaba verse mejor. Necesitaba sentirse más claro.</blockquote>
+<hr />
+<h3>1. El problema real</h3>
+<h4>El dinero ya se mueve rápido. La confianza, no.</h4>
+<p>Una wallet hoy puede concentrar transferencias, conversiones, pagos y operaciones cripto en una sola interfaz. Pero mientras el dinero se volvió más digital, también se volvió más fragmentado: bancos, exchanges, monedas locales, dólares, cripto y remesas conviven con reglas y lenguajes distintos.</p>
+<p>En productos financieros, esa fragmentación no genera demora. Genera <strong>duda</strong>.</p>
+<p>El verdadero reto ya no es permitir que una transacción ocurra. Es lograr que el usuario entienda, en cada paso, qué está haciendo, cuánto está moviendo, cuánto le cuesta y qué va a pasar después.</p>
+<blockquote>La confianza no aparece cuando la interfaz se ve moderna. Aparece cuando el usuario siente control.</blockquote>
+<h4>Aguacate Wallet en este contexto</h4>
+<p>Aguacate propone reunir tres mundos en una sola experiencia: envío de dinero, cambio de moneda y operaciones cripto. Esa es su mayor ventaja y, simultáneamente, su mayor desafío de diseño:</p>
+<blockquote>Mientras más capacidades concentra una plataforma financiera, más clara debe ser su experiencia.</blockquote>
+<figure><img src="../../images/notion/content-7a2af8f94f1183a299f40134d3f30056.png" alt="" loading="lazy" /></figure>
+<h4>El diagnóstico: 90% de distancia</h4>
+<p>Un benchmark contra plataformas locales (Chile) e internacionales (Wise, Binance, exchanges regionales) midió cuatro criterios: facilidad de uso, tiempo de completado, funcionalidad y accesibilidad.</p>
+<p>El hallazgo fue contundente:</p>
+<blockquote>La usabilidad y experiencia de Aguacate estaba alejada en un <strong>90%</strong> respecto a la competencia a nivel de flujos y coherencia interna.</blockquote>
+<p>Esto no significaba que la app necesitara una capa de pintura. Significaba que el producto resolvía transacciones, pero no resolvía incertidumbre. Los flujos no guiaban al usuario en los momentos donde la precisión, la seguridad y la confianza son críticas.</p>
+<h4>El reto de diseño</h4>
+<p>Tres niveles de intervención:</p>
 <ol>
 <li><strong>Simplificar los flujos críticos</strong> — registro, verificación, envío, cambio de moneda, cripto y beneficiarios.</li>
 <li><strong>Ordenar la arquitectura visual y funcional</strong> — foundations, componentes y patrones consistentes entre app y web.</li>
 <li><strong>Traducir complejidad financiera en decisiones comprensibles</strong> — que el usuario sienta que opera dentro de una experiencia que lo acompaña, no dentro de un sistema técnico.</li>
 </ol>
 <hr />
-<h3>2. Investigación: cómo construye claridad la competencia</h3><h4>Pregunta guía</h4><blockquote>
-<p><em>¿Qué hace que una experiencia financiera se sienta fácil, segura y confiable?</em>
-El benchmark no buscaba copiar interfaces. Buscaba entender los <strong>patrones que permiten que una operación financiera se perciba como simple</strong>.</p>
-</blockquote>
-<h4>Benchmark local, regional e internacional</h4><p>Comparé plataformas locales, para entender expectativas básicas del mercado chileno, y plataformas regionales/internacionales, para reconocer estándares más maduros: experiencias guiadas, información crítica visible y menor incertidumbre antes de cada decisión.
-**Plataformas locales: **
-<a href="https://app.notion.com/p/281af8f94f11824dac08815a44d68e30">Imagen original en Notion</a>
-<a href="https://app.notion.com/p/281af8f94f11824dac08815a44d68e30">Imagen original en Notion</a>
-<strong>Plataformas regionales/internacionales</strong>
-<a href="https://app.notion.com/p/281af8f94f11824dac08815a44d68e30">Imagen original en Notion</a></p>
-<h4>Auditoría de flujos actuales de Aguacate Wallet</h4><p>Además, revisé los <strong>flujos actuales de Aguacate Wallet</strong> para contrastar lo que la competencia resolvía con mayor claridad frente a la experiencia real del usuario en la plataforma.
-No me enfoqué solo en pantallas aisladas, sino en los principales recorridos del producto: <strong>onboarding, verificación, envío de dinero, cambio de moneda, cripto, beneficiarios, dashboard, soporte, transacciones y recargas</strong>. Busqué identificar dónde la experiencia perdía coherencia, aumentaba la carga cognitiva o podía afectar la confianza del usuario.
-Esta auditoría me permitió reconocer que Aguacate tenía una propuesta funcional sólida, pero no siempre la comunicaba de forma simple. Algunos flujos necesitaban más guía, mejor jerarquía visual, mayor visibilidad de información crítica y una estructura más consistente.
-<a href="https://app.notion.com/p/281af8f94f11824dac08815a44d68e30">Imagen original en Notion</a></p>
-<h4>Patrones que aparecían en las mejores experiencias</h4><table>
-<colgroup>
-<col />
-<col />
-</colgroup>
-<tr>
-<td>Patrón</td>
-<td>Por qué funciona</td>
-</tr>
-<tr>
-<td>CTA principal visible</td>
-<td>El usuario inicia la acción sin ambigüedad</td>
-</tr>
-<tr>
-<td>Formularios modulares</td>
-<td>Disminuyen carga cognitiva</td>
-</tr>
-<tr>
-<td>Stepper de progreso</td>
-<td>El usuario sabe dónde está y cuánto falta</td>
-</tr>
-<tr>
-<td>Tooltips contextuales</td>
-<td>Resuelven dudas sin sacar al usuario del flujo</td>
-</tr>
-<tr>
-<td>Comisión y tasa visibles</td>
-<td>Reducen la incertidumbre antes de confirmar</td>
-</tr>
-<tr>
-<td>Tiempo estimado</td>
-<td>Aumenta la sensación de control</td>
-</tr>
-<tr>
-<td>Etiquetas claras en botones</td>
-<td>Evitan errores de interpretación</td>
-</tr>
-</table>
-Lo que estos patrones tenían en común no era estética. Era **anticipación de la duda**.
-### 5 insights que estructuraron el rediseño
-**Insight 1 — La competencia guiaba mejor al usuario.**<br />Las plataformas mejor evaluadas usaban formularios modulares, steppers, microcopy y CTAs identificables. El usuario sabía dónde estaba y qué faltaba.<br />**Implicación:** simplificar registro, verificación y envío con progreso visible.
-**Insight 2 — La confianza dependía de la información visible.**<br />Las plataformas más maduras mostraban comisión, tasa de cambio, monto final, tiempo estimado y soporte **antes** de pedir confirmación. Aguacate los mostraba después o no los mostraba.<br />**Implicación:** anticipar todo lo que el usuario necesita saber antes de mover dinero.
-**Insight 3 — Cripto debía sentirse ubicable y comprensible.**<br />Las mejores plataformas presentaban cripto como una acción más (cambiar, recibir, enviar), no como un módulo aislado con jerga técnica.<br />**Implicación:** integrar cripto al lenguaje de tareas familiares.
-**Insight 4 — La consistencia era una condición para escalar.**<br />Sin foundations comunes, cada flujo se sentía como una experiencia distinta. En productos financieros, la inconsistencia afecta la confianza, no solo la estética.<br />**Implicación:** crear un sistema de diseño con tokens, componentes y patrones de accesibilidad.
-**Insight 5 — Beneficiarios era un flujo sensible de seguridad.**<br />El beneficiario es el destino del dinero. Si el usuario no entiende a quién envía o cómo validar la información, la percepción de riesgo aumenta.<br />**Implicación:** rediseñar beneficiarios con validación progresiva y confirmación previa.
-### De insights a principios de diseño
-Los hallazgos se tradujeron en cinco principios que guiaron toda la etapa UX:
-1. **Reducir carga cognitiva** — cada flujo debía pedir menos esfuerzo mental.
-2. **Hacer visible el progreso** — el usuario debía saber dónde estaba y qué seguía.
-3. **Anticipar información crítica** — comisiones, tiempos, tasas y destinatarios visibles antes de confirmar.
-4. **Diseñar con consistencia** — app y web debían sentirse como el mismo sistema.
-5. **Traducir cripto a lenguaje cotidiano** — desde acciones, no desde conceptos técnicos.
----
-## 3. UX: convertir hipótesis en una experiencia testeable
-### Mapeo: ¿dónde se rompía la claridad?
-Antes de prototipar, mapeé los flujos críticos para identificar dónde la experiencia generaba más fricción:
-<table>
-<tr>
-<td>Momento</td>
-<td>Acción del usuario</td>
-<td>Fricción detectada</td>
-<td>Riesgo UX</td>
-</tr>
-<tr>
-<td>Registro</td>
-<td>Crear cuenta</td>
-<td>Flujo extenso, poco guiado</td>
-<td>Abandono temprano</td>
-</tr>
-<tr>
-<td>Verificación</td>
-<td>Validar identidad</td>
-<td>Proceso opaco, sin tiempo estimado</td>
-<td>Desconfianza</td>
-</tr>
-<tr>
-<td>Envío</td>
-<td>Cotizar y enviar</td>
-<td>Información crítica oculta</td>
-<td>Duda en la confirmación</td>
-</tr>
-<tr>
-<td>Cripto</td>
-<td>Encontrar la función</td>
-<td>Baja visibilidad</td>
-<td>Baja adopción</td>
-</tr>
-<tr>
-<td>Beneficiarios</td>
-<td>Agregar destino</td>
-<td>Validación insuficiente</td>
-<td>Riesgo percibido</td>
-</tr>
-</table>
-### Hipótesis de diseño 
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-### Prototipo low-fi: validar lógica antes que estética
-Con las hipótesis definidas, el siguiente paso fue construir un prototipo de baja fidelidad orientado a validar la claridad de los flujos principales. El objetivo no era evaluar una propuesta visual terminada, sino comprobar si la estructura de la experiencia ayudaba al usuario a avanzar con menos dudas.
-El prototipo se enfocó en dos momentos críticos: **registro** y **remesa**. En el flujo de registro, se diseñaron pantallas para iniciar sesión, elegir tipo de cuenta, crear una cuenta personal, validar correo, ingresar datos personales, adjuntar documentos, registrar residencia y completar el proceso de verificación. En el flujo de remesa, se trabajó una secuencia de envío dividida en tres pasos: **Cambio, Contacto y Validación**.
-**Flujo 1 — Registro**<br />Tipo de cuenta (personal/empresa) → credenciales → validación por correo → datos personales → documentos → residencia → pantalla final con tiempo estimado de verificación.
-**Flujo 2 — Remesa**<br />Cotización (monedas + tasa + medio de pago) → beneficiario → resumen (todos los datos críticos) → éxito.
-La pregunta del prototipo era una sola:
-&gt; ¿La nueva experiencia ayuda al usuario a entender qué hacer, qué información entregar y cómo avanzar?
----
-## 4. User Test: lo que validó y lo que cambió el diseño
-### Preparación de entrevistas y testing 
-La metodología se planteó como un **Testing de experiencia**. El objetivo fue entender si la nueva propuesta era clara y relevante para el usuario, especialmente en escenarios vinculados al envío de dinero.
-
-
-Para ello, se trabajó con **clientes de AguacateWallet** que habían realizado remesas en los últimos meses. La muestra estuvo compuesta por **3 hombres y mujeres entre 25 y 50 años**, un perfil relevante porque ya tenía experiencia previa con el problema que la plataforma buscaba resolver.
-El test se estructuró en cuatro actividades. Cada una simulaba una tarea real dentro del producto:
-1. Crear una cuenta personal después de recibir una recomendación para usar AguacateWallet.
-2. Iniciar sesión y encontrar la opción de remesa.
-3. Cotizar un envío de pesos chilenos a bolívares hacia una cuenta Banesco, pagando con transferencia bancaria.
-4. Continuar el flujo seleccionando un beneficiario existente.
-
-
-
-
-
-
-
-El enfoque fue observar la experiencia desde la acción: no preguntar solamente qué opinaban los usuarios, sino ver qué hacían, dónde dudaban, qué entendían y qué no encontraban.
-<table>
-<colgroup>
-<col />
-<col />
-</colgroup>
-<tr>
-<td>Elemento</td>
-<td>Definición</td>
-</tr>
-<tr>
-<td>Método</td>
-<td>Testeo de experiencia (tareas reales)</td>
-</tr>
-<tr>
-<td>Participantes</td>
-<td>3 clientes reales de Aguacate Wallet, 25–50 años</td>
-</tr>
-<tr>
-<td>Perfil</td>
-<td>Personas que habían realizado remesas en los últimos meses</td>
-</tr>
-<tr>
-<td>Tareas</td>
-<td>Crear cuenta · <br />Encontrar remesa · <br />Cotizar envío CLP→VES a Banesco · <br />Seleccionar beneficiario</td>
-</tr>
-</table>
-### Lo que funcionó
-**✅ El registro fue comprendido sin fricción.**<br />Los usuarios entendieron la diferencia entre cuenta personal y empresa, completaron credenciales intuitivamente, y aceptaron T&amp;C y validación por correo sin dudas. Funcionó porque cada pantalla tenía un objetivo evidente.
-**✅ La verificación dejó de generar rechazo.**<br />Cuando el sistema explicó *qué pedía, por qué y cuánto tomaba* (30 minutos – 2 horas, notificación por correo), los usuarios la aceptaron como un paso necesario, no como un obstáculo.
-**✅ La cotización resultó clara.**<br />Banderas, monedas, montos, banco, medio de pago y tiempo estimado dieron suficiente contexto. La operación se entendió a la primera.
-**✅ El resumen funcionó como punto de control.**<br />La pantalla de revisión previa fue interpretada como lo que es: un *trust checkpoint* — el momento donde el usuario decide si confía lo suficiente para confirmar.
-### Lo que NO funcionó (y cambió el diseño)
-**❌ Hallazgo crítico: la opción de remesa no fue encontrada.**
-Los tres usuarios buscaron remesa primero **en el dashboard**, no la encontraron, confundieron otras opciones, y solo después la ubicaron en el menú hamburguesa.
-&gt; El problema no era que no supieran hacer una remesa. Era que el sistema no les mostraba dónde empezar.
-Esta observación cambió la lógica de toda la arquitectura del producto: **los usuarios no usan el dashboard como pantalla de información — lo usan como punto de partida para operar**. Ese insight no estaba en el research previo. Apareció solo cuando los usuarios actuaron.
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-**❌ Las tarjetas de beneficiario no entregaban suficiente contexto.**<br />Los usuarios entendieron las categorías (recurrentes / todos los contactos), pero la tarjeta sin banco asociado generaba dudas al seleccionar. En una transacción financiera, esa duda es exactamente lo que aumenta la percepción de riesgo.
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-**❌ La pantalla de éxito pasó desapercibida.**<br />Confirmaba que la transacción se creó, pero perdía la oportunidad de dar tranquilidad, comprobante y siguiente acción.
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-### Iteración y recomendaciones
-### *Los testeos no cerraron el proceso; señalaron dónde debía afinarse.*
-A partir de los hallazgos del testeo, el informe plantea cuatro recomendaciones principales: crear accesos directos desde el dashboard para todos los tipos de operaciones, hacer que los componentes sean más intuitivos según el contexto de la operación, agregar datos adicionales del beneficiario —como el banco— y permitir compartir la operación con algún contacto al finalizar.
-<table>
-<tr>
-<td>Observación del test</td>
-<td>Problema UX</td>
-<td>Decisión de diseño</td>
-</tr>
-<tr>
-<td>“Buscan remesa en el dashboard”</td>
-<td>La acción principal no estaba visible</td>
-<td>**Dashboard como centro de acción** con cards rápidas para enviar, cambiar, cripto y beneficiarios</td>
-</tr>
-<tr>
-<td>“Confunden opciones similares”</td>
-<td>Jerarquía poco clara</td>
-<td>Agrupar opciones por tarea, no por funcionalidad técnica</td>
-</tr>
-<tr>
-<td>“La tarjeta de beneficiario no me dice suficiente”</td>
-<td>Riesgo de seleccionar mal</td>
-<td>Tarjetas con banco, número parcial, tipo de cuenta y etiqueta de frecuencia</td>
-</tr>
-<tr>
-<td>“La pantalla de éxito no me deja con nada”</td>
-<td>Cierre poco útil</td>
-<td>Comprobante compartible + resumen + siguiente acción</td>
-</tr>
-</table>
-Estas recomendaciones pueden convertirse en decisiones de iteración:
-<table>
-<tr>
-<td>Hallazgo</td>
-<td>Iteración propuesta</td>
-<td>Impacto esperado</td>
-</tr>
-<tr>
-<td>Los usuarios no encontraron remesas</td>
-<td>Crear accesos directos desde el dashboard</td>
-<td>Mayor descubribilidad</td>
-</tr>
-<tr>
-<td>Confusión con algunas opciones</td>
-<td>Componentes más intuitivos según contexto</td>
-<td>Menor carga cognitiva</td>
-</tr>
-<tr>
-<td>Beneficiarios con información limitada</td>
-<td>Agregar banco y datos clave del contacto</td>
-<td>Mayor confianza antes de enviar</td>
-</tr>
-<tr>
-<td>Pantalla de éxito desapercibida</td>
-<td>Agregar comprobante, compartir y siguiente acción</td>
-<td>Mejor cierre de experiencia</td>
-</tr>
-</table>
-La iteración más importante está en el dashboard. Si los usuarios buscan primero ahí, la experiencia debe responder a ese modelo mental. En lugar de esconder las operaciones principales en un menú, el dashboard debería funcionar como un centro de acción: enviar dinero, hacer remesa, cambiar moneda, gestionar beneficiarios o revisar transacciones.
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
----
-## 5. UI: materializar la confianza
-&gt; “La UI no es estética. Es **confianza visual**.”
-Con los flujos validados, construí el primer sistema de diseño del producto, capaz de sostener esa claridad a escala — entre app y plataforma web.
-**Foundations**<br />Tipografía con jerarquía clara para montos, datos sensibles y acciones.
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-Color: Definí una paleta basada en verdes, blancos y tonos profundos para reforzar claridad, frescura y confianza. Usé los verdes principales para acciones, marca y elementos interactivos, mientras los tonos suaves funcionaron como fondos de apoyo. Así, la paleta permitió construir una experiencia visual más coherente, limpia y reconocible entre app y plataforma web.
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-Rebranding: El rediseño también incorporó un rebranding: la marca pasó de **Aguacate Cambios**, con una identidad más asociada a remesas tradicionales, a **Aguacate Wallet**, una expresión más flexible y alineada con su evolución como plataforma fintech. Este cambio permitió ampliar la percepción del producto: de una solución enfocada en cambio y envío de dinero, a una wallet integral para gestionar envíos, conversión de moneda y operaciones cripto desde una experiencia más moderna, simple y confiable.
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-**Componentes clave**
-
-**Pantallas finales (high fidelity)**
-- Nuevo flujo de registro y onboarding. 
-
-
-
-
-
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-
-
-- Home / dashboard como centro de acción.
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-- Flujo de envío de remesa 
-
-
-
-
-
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-
-
-- Flujo de envío de Cripto
-
-
-
-
-
-[Imagen original en Notion](https://app.notion.com/p/281af8f94f11824dac08815a44d68e30)
-
-
-- Conversión de moneda y operaciones cripto unificadas en lenguaje cotidiano.
----
-## 6. Impacto
-Aunque el proyecto no cuenta todavía con métricas posteriores a implementación, el rediseño permite proyectar impacto en cuatro frentes: **conversión, confianza, descubribilidad y escalabilidad**.
-La oportunidad no era solo mejorar la interfaz, sino hacer que Aguacate se sintiera más claro en los momentos donde el usuario toma decisiones sensibles: registrarse, verificar su identidad, cotizar una remesa, elegir beneficiario y confirmar una operación.
-<table>
-<tr>
-<td>Decisión de rediseño</td>
-<td>Impacto esperado</td>
-</tr>
-<tr>
-<td>Flujos modulares con stepper</td>
-<td>Mayor finalización de registro y verificación</td>
-</tr>
-<tr>
-<td>Información crítica visible antes de confirmar</td>
-<td>Menor incertidumbre transaccional</td>
-</tr>
-<tr>
-<td>Dashboard como centro de acción</td>
-<td>Mejor descubribilidad de remesas y operaciones clave</td>
-</tr>
-<tr>
-<td>Beneficiarios con más contexto</td>
-<td>Mayor seguridad al seleccionar destinatarios</td>
-</tr>
-<tr>
-<td>Pantalla de resumen como *trust checkpoint*</td>
-<td>Más control antes de mover dinero</td>
-</tr>
-<tr>
-<td>Sistema de diseño con foundations</td>
-<td>Consistencia entre app y web; escalabilidad para futuras funciones</td>
-</tr>
-</table>
-### Impacto cualitativo validado en testeo
-- **Registro y verificación:** comprendidos sin fricción por los 3 participantes.
-- **Cotización:** clara cuando el contexto visual estaba presente.
-- **Resumen previo:** funcionó como momento de control y reforzó la confianza.
-- **Dashboard:** la observación más valiosa del proceso — reorganizó la arquitectura completa.
----
-## 7. Aprendizajes
-### *Diseñar una wallet es diseñar confianza.*
-El proceso dejó una lección central: en productos financieros, la experiencia no puede limitarse a permitir acciones. Tiene que ayudar al usuario a entenderlas, validarlas y sentirse seguro antes de completarlas.
-**Aprendizajes principales:**
-1. **UX no es simplificar pantallas; es simplificar decisiones.**
-El usuario no solo necesita avanzar rápido. Necesita entender dónde está, qué está haciendo y qué pasará después.
-2. **La confianza depende de la información visible.**
-Comisiones, tasas, tiempos, beneficiarios y medios de pago deben aparecer antes de confirmar, no después.
-3. **El dashboard debe ser un centro de acción.**
-Si los usuarios buscan las operaciones principales ahí, la interfaz debe responder a ese modelo mental.
-4. **Cripto necesita traducción, no complejidad técnica.**
-Las funciones cripto deben presentarse desde acciones comprensibles: enviar, recibir, cambiar o consultar saldo.
-5. **El sistema de diseño también construye confianza.**
-La consistencia visual hace que la experiencia se sienta más predecible, segura y escalable.
-**Cierre:**
-&gt; Rediseñar Aguacate Wallet no fue solo ordenar una aplicación.
-Fue transformar una experiencia financiera compleja en una plataforma más clara, guiada y confiable.
-<p class="project-source-note"><a href="https://app.notion.com/p/281af8f94f11824dac08815a44d68e30" target="_blank" rel="noopener noreferrer">Ver en Notion &#8599;</a></p></article>
-    <nav class="project-end"><a href="../../#projects">&#8592; Volver a proyectos</a><a href="https://app.notion.com/p/281af8f94f11824dac08815a44d68e30" target="_blank" rel="noopener noreferrer">Ver en Notion &#8599;</a></nav>
+<h3>2. Investigación: cómo construye claridad la competencia</h3>
+<h4>Pregunta guía</h4>
+<blockquote><em>¿Qué hace que una experiencia financiera se sienta fácil, segura y confiable?</em></blockquote>
+<p>El benchmark no buscaba copiar interfaces. Buscaba entender los <strong>patrones que permiten que una operación financiera se perciba como simple</strong>.</p>
+<h4>Benchmark local, regional e internacional</h4>
+<p>Comparé plataformas locales, para entender expectativas básicas del mercado chileno, y plataformas regionales/internacionales, para reconocer estándares más maduros: experiencias guiadas, información crítica visible y menor incertidumbre antes de cada decisión.</p>
+<p><strong>Plataformas locales: </strong></p>
+<figure><img src="../../images/notion/content-6c7af8f94f1182108ee88167374c8bce.png" alt="" loading="lazy" /></figure>
+<figure><img src="../../images/notion/content-90daf8f94f1182fc964101a4acdce8b8.png" alt="" loading="lazy" /></figure>
+<p><strong>Plataformas regionales/internacionales</strong></p>
+<figure><img src="../../images/notion/content-8f3af8f94f118208a1ab01dd48dc774c.png" alt="" loading="lazy" /></figure>
+<h4>Auditoría de flujos actuales de Aguacate Wallet</h4>
+<p>Además, revisé los <strong>flujos actuales de Aguacate Wallet</strong> para contrastar lo que la competencia resolvía con mayor claridad frente a la experiencia real del usuario en la plataforma.</p>
+<p>No me enfoqué solo en pantallas aisladas, sino en los principales recorridos del producto: <strong>onboarding, verificación, envío de dinero, cambio de moneda, cripto, beneficiarios, dashboard, soporte, transacciones y recargas</strong>. Busqué identificar dónde la experiencia perdía coherencia, aumentaba la carga cognitiva o podía afectar la confianza del usuario.</p>
+<p>Esta auditoría me permitió reconocer que Aguacate tenía una propuesta funcional sólida, pero no siempre la comunicaba de forma simple. Algunos flujos necesitaban más guía, mejor jerarquía visual, mayor visibilidad de información crítica y una estructura más consistente.</p>
+<figure><img src="../../images/notion/content-f57af8f94f1183b9b59301019ca46ba7.png" alt="" loading="lazy" /></figure>
+<h4>Patrones que aparecían en las mejores experiencias</h4>
+<div><table><tr><td>Patrón</td><td>Por qué funciona</td></tr><tr><td>CTA principal visible</td><td>El usuario inicia la acción sin ambigüedad</td></tr><tr><td>Formularios modulares</td><td>Disminuyen carga cognitiva</td></tr><tr><td>Stepper de progreso</td><td>El usuario sabe dónde está y cuánto falta</td></tr><tr><td>Tooltips contextuales</td><td>Resuelven dudas sin sacar al usuario del flujo</td></tr><tr><td>Comisión y tasa visibles</td><td>Reducen la incertidumbre antes de confirmar</td></tr><tr><td>Tiempo estimado</td><td>Aumenta la sensación de control</td></tr><tr><td>Etiquetas claras en botones</td><td>Evitan errores de interpretación</td></tr></table></div>
+<p>Lo que estos patrones tenían en común no era estética. Era <strong>anticipación de la duda</strong>.</p>
+<h4>5 insights que estructuraron el rediseño</h4>
+<p><strong>Insight 1 — La competencia guiaba mejor al usuario.</strong>
+Las plataformas mejor evaluadas usaban formularios modulares, steppers, microcopy y CTAs identificables. El usuario sabía dónde estaba y qué faltaba.
+<strong>Implicación:</strong> simplificar registro, verificación y envío con progreso visible.</p>
+<p><strong>Insight 2 — La confianza dependía de la información visible.</strong>
+Las plataformas más maduras mostraban comisión, tasa de cambio, monto final, tiempo estimado y soporte <strong>antes</strong> de pedir confirmación. Aguacate los mostraba después o no los mostraba.
+<strong>Implicación:</strong> anticipar todo lo que el usuario necesita saber antes de mover dinero.</p>
+<p><strong>Insight 3 — Cripto debía sentirse ubicable y comprensible.</strong>
+Las mejores plataformas presentaban cripto como una acción más (cambiar, recibir, enviar), no como un módulo aislado con jerga técnica.
+<strong>Implicación:</strong> integrar cripto al lenguaje de tareas familiares.</p>
+<p><strong>Insight 4 — La consistencia era una condición para escalar.</strong>
+Sin foundations comunes, cada flujo se sentía como una experiencia distinta. En productos financieros, la inconsistencia afecta la confianza, no solo la estética.
+<strong>Implicación:</strong> crear un sistema de diseño con tokens, componentes y patrones de accesibilidad.</p>
+<p><strong>Insight 5 — Beneficiarios era un flujo sensible de seguridad.</strong>
+El beneficiario es el destino del dinero. Si el usuario no entiende a quién envía o cómo validar la información, la percepción de riesgo aumenta.
+<strong>Implicación:</strong> rediseñar beneficiarios con validación progresiva y confirmación previa.</p>
+<h4>De insights a principios de diseño</h4>
+<p>Los hallazgos se tradujeron en cinco principios que guiaron toda la etapa UX:</p>
+<ol>
+<li><strong>Reducir carga cognitiva</strong> — cada flujo debía pedir menos esfuerzo mental.</li>
+<li><strong>Hacer visible el progreso</strong> — el usuario debía saber dónde estaba y qué seguía.</li>
+<li><strong>Anticipar información crítica</strong> — comisiones, tiempos, tasas y destinatarios visibles antes de confirmar.</li>
+<li><strong>Diseñar con consistencia</strong> — app y web debían sentirse como el mismo sistema.</li>
+<li><strong>Traducir cripto a lenguaje cotidiano</strong> — desde acciones, no desde conceptos técnicos.</li>
+</ol>
+<hr />
+<h3>3. UX: convertir hipótesis en una experiencia testeable</h3>
+<h4>Mapeo: ¿dónde se rompía la claridad?</h4>
+<p>Antes de prototipar, mapeé los flujos críticos para identificar dónde la experiencia generaba más fricción:</p>
+<div><table><tr><td>Momento</td><td>Acción del usuario</td><td>Fricción detectada</td><td>Riesgo UX</td></tr><tr><td>Registro</td><td>Crear cuenta</td><td>Flujo extenso, poco guiado</td><td>Abandono temprano</td></tr><tr><td>Verificación</td><td>Validar identidad</td><td>Proceso opaco, sin tiempo estimado</td><td>Desconfianza</td></tr><tr><td>Envío</td><td>Cotizar y enviar</td><td>Información crítica oculta</td><td>Duda en la confirmación</td></tr><tr><td>Cripto</td><td>Encontrar la función</td><td>Baja visibilidad</td><td>Baja adopción</td></tr><tr><td>Beneficiarios</td><td>Agregar destino</td><td>Validación insuficiente</td><td>Riesgo percibido</td></tr></table></div>
+<h4>Hipótesis de diseño </h4>
+<figure><img src="../../images/notion/content-d85af8f94f11823aaa0c01fe9b0c1404.png" alt="" loading="lazy" /></figure>
+<h4>Prototipo low-fi: validar lógica antes que estética</h4>
+<p>Con las hipótesis definidas, el siguiente paso fue construir un prototipo de baja fidelidad orientado a validar la claridad de los flujos principales. El objetivo no era evaluar una propuesta visual terminada, sino comprobar si la estructura de la experiencia ayudaba al usuario a avanzar con menos dudas.</p>
+<p>El prototipo se enfocó en dos momentos críticos: <strong>registro</strong> y <strong>remesa</strong>. En el flujo de registro, se diseñaron pantallas para iniciar sesión, elegir tipo de cuenta, crear una cuenta personal, validar correo, ingresar datos personales, adjuntar documentos, registrar residencia y completar el proceso de verificación. En el flujo de remesa, se trabajó una secuencia de envío dividida en tres pasos: <strong>Cambio, Contacto y Validación</strong>.</p>
+<p><strong>Flujo 1 — Registro</strong>
+Tipo de cuenta (personal/empresa) → credenciales → validación por correo → datos personales → documentos → residencia → pantalla final con tiempo estimado de verificación.</p>
+<p><strong>Flujo 2 — Remesa</strong>
+Cotización (monedas + tasa + medio de pago) → beneficiario → resumen (todos los datos críticos) → éxito.</p>
+<p>La pregunta del prototipo era una sola:</p>
+<blockquote>¿La nueva experiencia ayuda al usuario a entender qué hacer, qué información entregar y cómo avanzar?</blockquote>
+<hr />
+<h3>4. User Test: lo que validó y lo que cambió el diseño</h3>
+<h4>Preparación de entrevistas y testing </h4>
+<p>La metodología se planteó como un <strong>Testing de experiencia</strong>. El objetivo fue entender si la nueva propuesta era clara y relevante para el usuario, especialmente en escenarios vinculados al envío de dinero.</p>
+<p>Para ello, se trabajó con <strong>clientes de AguacateWallet</strong> que habían realizado remesas en los últimos meses. La muestra estuvo compuesta por <strong>3 hombres y mujeres entre 25 y 50 años</strong>, un perfil relevante porque ya tenía experiencia previa con el problema que la plataforma buscaba resolver.</p>
+<p>El test se estructuró en cuatro actividades. Cada una simulaba una tarea real dentro del producto:</p>
+<ol>
+<li>Crear una cuenta personal después de recibir una recomendación para usar AguacateWallet.</li>
+<li>Iniciar sesión y encontrar la opción de remesa.</li>
+<li>Cotizar un envío de pesos chilenos a bolívares hacia una cuenta Banesco, pagando con transferencia bancaria.</li>
+<li>Continuar el flujo seleccionando un beneficiario existente.</li>
+</ol>
+<p>El enfoque fue observar la experiencia desde la acción: no preguntar solamente qué opinaban los usuarios, sino ver qué hacían, dónde dudaban, qué entendían y qué no encontraban.</p>
+<div><table><tr><td>Elemento</td><td>Definición</td></tr><tr><td>Método</td><td>Testeo de experiencia (tareas reales)</td></tr><tr><td>Participantes</td><td>3 clientes reales de Aguacate Wallet, 25–50 años</td></tr><tr><td>Perfil</td><td>Personas que habían realizado remesas en los últimos meses</td></tr><tr><td>Tareas</td><td>Crear cuenta · 
+Encontrar remesa · 
+Cotizar envío CLP→VES a Banesco · 
+Seleccionar beneficiario</td></tr></table></div>
+<h4>Lo que funcionó</h4>
+<p><strong>✅ El registro fue comprendido sin fricción.</strong>
+Los usuarios entendieron la diferencia entre cuenta personal y empresa, completaron credenciales intuitivamente, y aceptaron T&amp;C y validación por correo sin dudas. Funcionó porque cada pantalla tenía un objetivo evidente.</p>
+<p><strong>✅ La verificación dejó de generar rechazo.</strong>
+Cuando el sistema explicó <em>qué pedía, por qué y cuánto tomaba</em> (30 minutos – 2 horas, notificación por correo), los usuarios la aceptaron como un paso necesario, no como un obstáculo.</p>
+<p><strong>✅ La cotización resultó clara.</strong>
+Banderas, monedas, montos, banco, medio de pago y tiempo estimado dieron suficiente contexto. La operación se entendió a la primera.</p>
+<p><strong>✅ El resumen funcionó como punto de control.</strong>
+La pantalla de revisión previa fue interpretada como lo que es: un <em>trust checkpoint</em> — el momento donde el usuario decide si confía lo suficiente para confirmar.</p>
+<h4>Lo que NO funcionó (y cambió el diseño)</h4>
+<p><strong>❌ Hallazgo crítico: la opción de remesa no fue encontrada.</strong></p>
+<p>Los tres usuarios buscaron remesa primero <strong>en el dashboard</strong>, no la encontraron, confundieron otras opciones, y solo después la ubicaron en el menú hamburguesa.</p>
+<blockquote>El problema no era que no supieran hacer una remesa. Era que el sistema no les mostraba dónde empezar.</blockquote>
+<p>Esta observación cambió la lógica de toda la arquitectura del producto: <strong>los usuarios no usan el dashboard como pantalla de información — lo usan como punto de partida para operar</strong>. Ese insight no estaba en el research previo. Apareció solo cuando los usuarios actuaron.</p>
+<figure><img src="../../images/notion/content-a63af8f94f11826ba8d281fea1bf3e1f.png" alt="" loading="lazy" /></figure>
+<p><strong>❌ Las tarjetas de beneficiario no entregaban suficiente contexto.</strong>
+Los usuarios entendieron las categorías (recurrentes / todos los contactos), pero la tarjeta sin banco asociado generaba dudas al seleccionar. En una transacción financiera, esa duda es exactamente lo que aumenta la percepción de riesgo.</p>
+<figure><img src="../../images/notion/content-1fcaf8f94f11834ebfc301ed4896c9a1.png" alt="" loading="lazy" /></figure>
+<p><strong>❌ La pantalla de éxito pasó desapercibida.</strong>
+Confirmaba que la transacción se creó, pero perdía la oportunidad de dar tranquilidad, comprobante y siguiente acción.</p>
+<figure><img src="../../images/notion/content-817af8f94f1183c6a22f81f0c877dead.png" alt="" loading="lazy" /></figure>
+<h4>Iteración y recomendaciones</h4>
+<h4><em>Los testeos no cerraron el proceso; señalaron dónde debía afinarse.</em></h4>
+<p>A partir de los hallazgos del testeo, el informe plantea cuatro recomendaciones principales: crear accesos directos desde el dashboard para todos los tipos de operaciones, hacer que los componentes sean más intuitivos según el contexto de la operación, agregar datos adicionales del beneficiario —como el banco— y permitir compartir la operación con algún contacto al finalizar.</p>
+<div><table><tr><td>Observación del test</td><td>Problema UX</td><td>Decisión de diseño</td></tr><tr><td>“Buscan remesa en el dashboard”</td><td>La acción principal no estaba visible</td><td><strong>Dashboard como centro de acción</strong> con cards rápidas para enviar, cambiar, cripto y beneficiarios</td></tr><tr><td>“Confunden opciones similares”</td><td>Jerarquía poco clara</td><td>Agrupar opciones por tarea, no por funcionalidad técnica</td></tr><tr><td>“La tarjeta de beneficiario no me dice suficiente”</td><td>Riesgo de seleccionar mal</td><td>Tarjetas con banco, número parcial, tipo de cuenta y etiqueta de frecuencia</td></tr><tr><td>“La pantalla de éxito no me deja con nada”</td><td>Cierre poco útil</td><td>Comprobante compartible + resumen + siguiente acción</td></tr></table></div>
+<p>Estas recomendaciones pueden convertirse en decisiones de iteración:</p>
+<div><table><tr><td>Hallazgo</td><td>Iteración propuesta</td><td>Impacto esperado</td></tr><tr><td>Los usuarios no encontraron remesas</td><td>Crear accesos directos desde el dashboard</td><td>Mayor descubribilidad</td></tr><tr><td>Confusión con algunas opciones</td><td>Componentes más intuitivos según contexto</td><td>Menor carga cognitiva</td></tr><tr><td>Beneficiarios con información limitada</td><td>Agregar banco y datos clave del contacto</td><td>Mayor confianza antes de enviar</td></tr><tr><td>Pantalla de éxito desapercibida</td><td>Agregar comprobante, compartir y siguiente acción</td><td>Mejor cierre de experiencia</td></tr></table></div>
+<p>La iteración más importante está en el dashboard. Si los usuarios buscan primero ahí, la experiencia debe responder a ese modelo mental. En lugar de esconder las operaciones principales en un menú, el dashboard debería funcionar como un centro de acción: enviar dinero, hacer remesa, cambiar moneda, gestionar beneficiarios o revisar transacciones.</p>
+<figure><img src="../../images/notion/content-4d6af8f94f1182deb80101412d9baf28.png" alt="" loading="lazy" /></figure>
+<hr />
+<h3>5. UI: materializar la confianza</h3>
+<blockquote>“La UI no es estética. Es <strong>confianza visual</strong>.”</blockquote>
+<p>Con los flujos validados, construí el primer sistema de diseño del producto, capaz de sostener esa claridad a escala — entre app y plataforma web.</p>
+<p><strong>Foundations</strong>
+Tipografía con jerarquía clara para montos, datos sensibles y acciones.</p>
+<figure><img src="../../images/notion/content-fa0af8f94f118296814281a64697e7ea.png" alt="" loading="lazy" /></figure>
+<p>Color: Definí una paleta basada en verdes, blancos y tonos profundos para reforzar claridad, frescura y confianza. Usé los verdes principales para acciones, marca y elementos interactivos, mientras los tonos suaves funcionaron como fondos de apoyo. Así, la paleta permitió construir una experiencia visual más coherente, limpia y reconocible entre app y plataforma web.</p>
+<figure><img src="../../images/notion/content-c15af8f94f11820f9e1a8106a8d4b2a0.png" alt="" loading="lazy" /></figure>
+<p>Rebranding: El rediseño también incorporó un rebranding: la marca pasó de <strong>Aguacate Cambios</strong>, con una identidad más asociada a remesas tradicionales, a <strong>Aguacate Wallet</strong>, una expresión más flexible y alineada con su evolución como plataforma fintech. Este cambio permitió ampliar la percepción del producto: de una solución enfocada en cambio y envío de dinero, a una wallet integral para gestionar envíos, conversión de moneda y operaciones cripto desde una experiencia más moderna, simple y confiable.</p>
+<figure><img src="../../images/notion/content-80aaf8f94f1183a7bafb0170d43d4086.png" alt="" loading="lazy" /></figure>
+<p><strong>Componentes clave</strong></p>
+<p><strong>Pantallas finales (high fidelity)</strong></p>
+<ul>
+<li>Nuevo flujo de registro y onboarding. </li>
+</ul>
+<figure><img src="../../images/notion/content-3eeaf8f94f11821b8e3e01b637fafbb3.png" alt="" loading="lazy" /></figure>
+<ul>
+<li>Home / dashboard como centro de acción.</li>
+</ul>
+<figure><img src="../../images/notion/content-cc2af8f94f11834bb3f7014ce0a50782.png" alt="" loading="lazy" /></figure>
+<ul>
+<li>Flujo de envío de remesa </li>
+</ul>
+<figure><img src="../../images/notion/content-809af8f94f118269987301ccfc667844.png" alt="" loading="lazy" /></figure>
+<ul>
+<li>Flujo de envío de Cripto</li>
+</ul>
+<figure><img src="../../images/notion/content-9a2af8f94f11832bb2ac01d2cfd5f433.png" alt="" loading="lazy" /></figure>
+<ul>
+<li>Conversión de moneda y operaciones cripto unificadas en lenguaje cotidiano.</li>
+</ul>
+<hr />
+<h3>6. Impacto</h3>
+<p>Aunque el proyecto no cuenta todavía con métricas posteriores a implementación, el rediseño permite proyectar impacto en cuatro frentes: <strong>conversión, confianza, descubribilidad y escalabilidad</strong>.</p>
+<p>La oportunidad no era solo mejorar la interfaz, sino hacer que Aguacate se sintiera más claro en los momentos donde el usuario toma decisiones sensibles: registrarse, verificar su identidad, cotizar una remesa, elegir beneficiario y confirmar una operación.</p>
+<div><table><tr><td>Decisión de rediseño</td><td>Impacto esperado</td></tr><tr><td>Flujos modulares con stepper</td><td>Mayor finalización de registro y verificación</td></tr><tr><td>Información crítica visible antes de confirmar</td><td>Menor incertidumbre transaccional</td></tr><tr><td>Dashboard como centro de acción</td><td>Mejor descubribilidad de remesas y operaciones clave</td></tr><tr><td>Beneficiarios con más contexto</td><td>Mayor seguridad al seleccionar destinatarios</td></tr><tr><td>Pantalla de resumen como <em>trust checkpoint</em></td><td>Más control antes de mover dinero</td></tr><tr><td>Sistema de diseño con foundations</td><td>Consistencia entre app y web; escalabilidad para futuras funciones</td></tr></table></div>
+<h4>Impacto cualitativo validado en testeo</h4>
+<ul>
+<li><strong>Registro y verificación:</strong> comprendidos sin fricción por los 3 participantes.</li>
+<li><strong>Cotización:</strong> clara cuando el contexto visual estaba presente.</li>
+<li><strong>Resumen previo:</strong> funcionó como momento de control y reforzó la confianza.</li>
+<li><strong>Dashboard:</strong> la observación más valiosa del proceso — reorganizó la arquitectura completa.</li>
+</ul>
+<hr />
+<h3>7. Aprendizajes</h3>
+<h4><em>Diseñar una wallet es diseñar confianza.</em></h4>
+<p>El proceso dejó una lección central: en productos financieros, la experiencia no puede limitarse a permitir acciones. Tiene que ayudar al usuario a entenderlas, validarlas y sentirse seguro antes de completarlas.</p>
+<p><strong>Aprendizajes principales:</strong></p>
+<ol>
+<li><strong>UX no es simplificar pantallas; es simplificar decisiones.</strong><p>El usuario no solo necesita avanzar rápido. Necesita entender dónde está, qué está haciendo y qué pasará después.</p></li>
+<li><strong>La confianza depende de la información visible.</strong><p>Comisiones, tasas, tiempos, beneficiarios y medios de pago deben aparecer antes de confirmar, no después.</p></li>
+<li><strong>El dashboard debe ser un centro de acción.</strong><p>Si los usuarios buscan las operaciones principales ahí, la interfaz debe responder a ese modelo mental.</p></li>
+<li><strong>Cripto necesita traducción, no complejidad técnica.</strong><p>Las funciones cripto deben presentarse desde acciones comprensibles: enviar, recibir, cambiar o consultar saldo.</p></li>
+<li><strong>El sistema de diseño también construye confianza.</strong><p>La consistencia visual hace que la experiencia se sienta más predecible, segura y escalable.</p></li>
+</ol>
+<p><strong>Cierre:</strong></p>
+<blockquote>Rediseñar Aguacate Wallet no fue solo ordenar una aplicación.<p>Fue transformar una experiencia financiera compleja en una plataforma más clara, guiada y confiable.</p></blockquote></article>
+    <nav class="project-end"><a href="../../#projects">&#8592; Volver a proyectos</a><a href="https://app.notion.com/p/Aguacate-Wallet-281af8f94f11824dac08815a44d68e30" target="_blank" rel="noopener noreferrer">Ver en Notion &#8599;</a></nav>
   </main>
   <footer>&copy; 2026 Israel Valencia</footer>
 </body>
