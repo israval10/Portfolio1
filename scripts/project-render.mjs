@@ -126,7 +126,7 @@ export function renderProjectPage(project, content, options = {}) {
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="${description || title}">
   <title>${title} | Israel Valencia</title>
-  <link rel="stylesheet" href="../../project-page.css">
+  <link rel="stylesheet" href="../../project-page.css?v=editorial-20261011-2">
 </head>
 <body>
   <header class="project-header"><a class="project-brand" href="../../#home">Israel<br>Valencia</a><a class="project-back" href="../../#projects">&#8592; Todos los proyectos</a></header>
