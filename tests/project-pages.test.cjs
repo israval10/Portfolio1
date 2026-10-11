@@ -79,3 +79,11 @@ test('populated project pages have a matching English page and language switcher
     assert.match(english, /translation-source-hash/);
   }
 });
+
+test('Fitmashi English section titles are translated', () => {
+  const html = fs.readFileSync(path.join(root, 'proyectos/933af8f94f11821bb51c011af76fbb8f/en.html'), 'utf8');
+  for (const title of ['PROBLEM', 'SEGMENTATION', 'FINDINGS', 'USER &amp; MARKET RESEARCH']) {
+    assert.ok(html.includes(`<strong>${title}</strong>`), `${title} is missing`);
+  }
+  assert.doesNotMatch(html, /<strong>(?:PROBLEMA|SEGMENTACIÓN|HALLAZGOS)<\/strong>/);
+});

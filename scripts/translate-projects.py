@@ -13,6 +13,10 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parent.parent
 PROJECTS = ROOT / "proyectos"
 COMMON_HEADINGS = {
+    "PROBLEMA": "PROBLEM",
+    "SEGMENTACIÓN": "SEGMENTATION",
+    "HALLAZGOS": "FINDINGS",
+    "USER & MARKET RESEARCH": "USER & MARKET RESEARCH",
     "PROCESO": "PROCESS",
     "EMPATIZAR": "EMPATHIZE",
     "DEFINIR": "DEFINE",
