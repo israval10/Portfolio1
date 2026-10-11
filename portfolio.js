@@ -11,8 +11,8 @@
   const menu = document.getElementById('main-menu');
   const menuButton = document.getElementById('menu-toggle');
   const ui = {
-    es: { skip: 'Ir a proyectos', photos: 'Fotos', loading: 'Cargando proyectos', wheel: 'Rueda', index: '\u00cdndice', wheelTooltip: 'Ver proyectos en una rueda interactiva', indexTooltip: 'Ver proyectos en lista, por disciplina', prev: 'Proyecto anterior', next: 'Proyecto siguiente', openMenu: 'Abrir men\u00fa', closeMenu: 'Cerrar men\u00fa', nav: 'Navegaci\u00f3n principal', view: 'Vista de proyectos', pending: 'Enlace pendiente', ungrouped: 'Otros proyectos', empty: 'No hay proyectos en esta disciplina.', canvas: 'Rueda de proyectos', gallery: 'Galer\u00eda de Israel Valencia' },
-    en: { skip: 'Skip to projects', photos: 'Photos', loading: 'Loading projects', wheel: 'Wheel', index: 'Index', wheelTooltip: 'View projects in an interactive wheel', indexTooltip: 'View projects in a list, by discipline', prev: 'Previous project', next: 'Next project', openMenu: 'Open menu', closeMenu: 'Close menu', nav: 'Main navigation', view: 'Project view', pending: 'Link pending', ungrouped: 'Other projects', empty: 'No projects in this discipline.', canvas: 'Project wheel', gallery: 'Israel Valencia gallery' }
+    es: { skip: 'Ir a proyectos', photos: 'Fotos', loading: 'Cargando proyectos', wheel: 'Rueda', index: '\u00cdndice', wheelTooltip: 'Ver proyectos en una rueda interactiva', indexTooltip: 'Ver proyectos en lista, por disciplina', prev: 'Proyecto anterior', next: 'Proyecto siguiente', openMenu: 'Abrir men\u00fa', closeMenu: 'Cerrar men\u00fa', nav: 'Navegaci\u00f3n principal', view: 'Vista de proyectos', languageGroup: 'Idioma', spanish: 'Espa\u00f1ol', english: 'Ingl\u00e9s', pending: 'Enlace pendiente', ungrouped: 'Otros proyectos', empty: 'No hay proyectos en esta disciplina.', canvas: 'Rueda de proyectos', gallery: 'Galer\u00eda de Israel Valencia' },
+    en: { skip: 'Skip to projects', photos: 'Photos', loading: 'Loading projects', wheel: 'Wheel', index: 'Index', wheelTooltip: 'View projects in an interactive wheel', indexTooltip: 'View projects in a list, by discipline', prev: 'Previous project', next: 'Next project', openMenu: 'Open menu', closeMenu: 'Close menu', nav: 'Main navigation', view: 'Project view', languageGroup: 'Language', spanish: 'Spanish', english: 'English', pending: 'Link pending', ungrouped: 'Other projects', empty: 'No projects in this discipline.', canvas: 'Project wheel', gallery: 'Israel Valencia gallery' }
   };
   let activeFilter = 'all';
   let activeView = 'wheel';
@@ -66,6 +66,12 @@
     document.getElementById('btn-es').setAttribute('aria-pressed', String(language() === 'es'));
     document.getElementById('btn-en').setAttribute('aria-pressed', String(language() === 'en'));
     document.querySelectorAll('[data-lang]').forEach(node => node.classList.toggle('active', node.dataset.lang === language()));
+    document.querySelector('.lang-toggle').setAttribute('aria-label', strings().languageGroup);
+    [['btn-es', 'spanish'], ['btn-en', 'english']].forEach(([id, key]) => {
+      const node = document.getElementById(id);
+      node.setAttribute('aria-label', strings()[key]);
+      node.title = strings()[key];
+    });
     [['view-wheel', 'wheel'], ['view-index', 'index'], ['wheel-prev', 'prev'], ['wheel-next', 'next']].forEach(([id, key]) => {
       const node = document.getElementById(id);
       if (!node.dataset.view) node.title = strings()[key];
