@@ -501,10 +501,10 @@ main > section:not(.opening) { padding-block: 72px; }
   justify-content: center;
   overflow: hidden;
   width: 100vw;
-  height: min(640px, calc(100svh - 200px));
-  min-height: 410px;
+  height: min(720px, calc(100svh - 160px));
+  min-height: 440px;
   margin-left: calc(50% - 50vw);
-  padding: 48px var(--edge);
+  padding: clamp(64px, 10svh, 112px) var(--edge);
   background: #0b0d10;
   color: #f9f8f5;
 }
@@ -536,6 +536,10 @@ main > section:not(.opening) { padding-block: 72px; }
 }
 @media (min-width: 1001px) {
   .opening-copy h1 { font-size: 90px; }
+}
+@media (max-height: 900px) {
+  .work-area { padding-top: 36px; }
+  .discipline-toolbar { margin-bottom: 36px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .opening-copy .opening-identity, .opening-copy .opening-summary { animation: none; }
