@@ -44,7 +44,7 @@ test('each populated project has its own generated page and empty projects retai
     assert.ok(html.includes(project.name), project.name);
     if (project.hasContent) {
       assert.ok(html.includes('class="project-article"'), project.name);
-      assert.ok(html.includes('../../#projects'), project.name);
+      assert.ok(html.includes('/#projects'), project.name);
     } else {
       assert.ok(html.includes(project.externalUrl.replaceAll('&', '&amp;')), project.name);
     }
@@ -90,7 +90,12 @@ test('all local image assets exist and expected source links are retained', () =
   assert.equal(data.pictures.length, 3);
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   assert.ok(fs.existsSync(path.join(root, 'images/site/favicon.png')));
-  assert.match(html, /<link rel="icon" type="image\/png" sizes="180x180" href="images\/site\/favicon\.png\?v=rocket"/);
+  assert.match(html, /<link rel="icon" type="image\/png" sizes="180x180" href="\/images\/site\/favicon\.png\?v=rocket"/);
+  assert.match(html, /id="site-stylesheet" rel="stylesheet" href="\/styles\.css\?v=site-assets-v2"/);
+  assert.match(html, /onerror="this\.onerror=null;this\.href='\/styles\.css\?v=site-assets-v2-retry'"/);
+  for (const asset of ['vendor/lucide.min.js', 'vendor/three.min.js', 'portfolio-data.js', 'portfolio-model.js', 'content.js', 'project-wheel.js', 'hero-particles.js', 'portfolio.js']) {
+    assert.match(html, new RegExp(`(?:src|href)="/${asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
+  }
   for (const value of ['U. de Lima/ U. Pacifico', 'Comunicaciones / Ing. Industrial']) {
     assert.ok(html.includes('<span class="about-info-value">' + value + '</span>'), value);
   }
@@ -122,7 +127,7 @@ test('opening particle scene preserves centered copy and reduced-motion fallback
   const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
   const source = fs.readFileSync(path.join(root, 'hero-particles.js'), 'utf8');
   assert.match(html, /<div class="opening-copy">\s*<canvas class="hero-particle-canvas"[^>]*aria-hidden="true"/);
-  assert.match(html, /<script defer src="hero-particles\.js(?:\?v=[^"]+)?"><\/script>/);
+  assert.match(html, /<script defer src="\/hero-particles\.js(?:\?v=[^"]+)?"><\/script>/);
   assert.match(css, /\.opening-copy \{[^}]*justify-content: center;[^}]*overflow: hidden;/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(source, /new IntersectionObserver/);

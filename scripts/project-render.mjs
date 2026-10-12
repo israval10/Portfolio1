@@ -8,7 +8,7 @@ const webUrl = value => {
     return ['https:', 'http:'].includes(url.protocol) ? url.href : null;
   } catch { return null; }
 };
-const assetUrl = value => value?.startsWith('../../') ? value : webUrl(value);
+const assetUrl = value => value?.startsWith('../../') ? `/${value.slice(6)}` : webUrl(value);
 
 function cleanHtml(html) {
   return sanitizeHtml(html, {
@@ -112,7 +112,7 @@ export function renderSeedMarkdown(markdown, notionUrl) {
 export function renderProjectPage(project, content, options = {}) {
   const title = escaped(project.name);
   const description = escaped(project.description?.es || '');
-  const cover = project.cover ? `<figure class="project-cover"><img src="../../${escaped(project.cover)}" alt="${title}" fetchpriority="high"></figure>` : '';
+  const cover = project.cover ? `<figure class="project-cover"><img src="/${escaped(project.cover)}" alt="${title}" fetchpriority="high"></figure>` : '';
   const disciplines = (options.disciplines || []).filter(item => project.disciplines.includes(item.id)).map(item => escaped(item.name));
   const meta = [...project.years, ...disciplines].join(' / ');
   const source = webUrl(project.notionUrl);
@@ -126,23 +126,25 @@ export function renderProjectPage(project, content, options = {}) {
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="${description || title}">
   <title>${title} | Israel Valencia</title>
-  <link rel="stylesheet" href="../../project-page.css?v=project-language">
-  <script defer src="../../project-language.js"></script>
+  <link rel="icon" type="image/png" sizes="180x180" href="/images/site/favicon.png?v=rocket">
+  <link rel="apple-touch-icon" href="/images/site/favicon.png?v=rocket">
+  <link id="project-stylesheet" rel="stylesheet" href="/project-page.css?v=project-assets-v2" onerror="this.onerror=null;this.href='/project-page.css?v=project-assets-v2-retry'">
+  <script defer src="/project-language.js?v=project-assets-v2"></script>
 </head>
 <body>
   <header class="project-header">
-    <a class="project-brand" href="../../#home">Israel<br>Valencia</a>
+    <a class="project-brand" href="/#home">Israel<br>Valencia</a>
     <nav class="project-languages" aria-label="Idioma">
       <a class="project-lang active" href="./" lang="es" aria-label="Español (España)" aria-current="page" title="Español (España)">🇪🇸</a>
       <a class="project-lang" href="en.html" lang="en" aria-label="Inglés (Reino Unido)" title="Inglés (Reino Unido)">🇬🇧</a>
     </nav>
-    <a class="project-back" href="../../#projects">&#8592; Todos los proyectos</a>
+    <a class="project-back" href="/#projects">&#8592; Todos los proyectos</a>
   </header>
   <main>
     <div class="project-intro"><p class="project-meta">${escaped(meta)}</p><h1>${title}</h1>${description ? `<p class="project-description">${description}</p>` : ''}</div>
     ${cover}
     <article class="project-article">${body || `<p>${sourceLink}</p>`}</article>
-    <nav class="project-end"><a href="../../#projects">&#8592; Volver a proyectos</a>${sourceLink}</nav>
+    <nav class="project-end"><a href="/#projects">&#8592; Volver a proyectos</a>${sourceLink}</nav>
   </main>
   <footer>&copy; ${new Date().getFullYear()} Israel Valencia</footer>
 </body>

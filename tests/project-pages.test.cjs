@@ -20,7 +20,7 @@ test('Notion blocks render rich text, nested content, media and safe links', asy
   const html = await renderBlocks(blocks, async block => block.id === 'image-id' ? '../../images/notion/example.png' : null);
   assert.match(html, /<strong>Hola &lt;mundo&gt;<\/strong> sitio/);
   assert.match(html, /<h2>Proceso<\/h2>/);
-  assert.match(html, /src="\.\.\/\.\.\/images\/notion\/example\.png"/);
+  assert.match(html, /src="\/images\/notion\/example\.png"/);
   assert.match(html, /<figcaption>Prototipo<\/figcaption>/);
   assert.match(html, /<hr\s*\/?\s*>/);
   assert.match(html, /<ul>[\s\S]*Paso uno[\s\S]*Paso dos[\s\S]*<\/ul>/);
@@ -45,8 +45,12 @@ test('generated routes use local assets and empty-page redirects reject unsafe U
   for (const folder of folders) {
     const html = fs.readFileSync(path.join(root, 'proyectos', folder, 'index.html'), 'utf8');
     assert.doesNotMatch(html, /notion-file-block:/, folder);
-    for (const match of html.matchAll(/src="\.\.\/\.\.\/([^"]+)"/g)) {
-      assert.ok(fs.existsSync(path.join(root, match[1])), `${folder}: ${match[1]}`);
+    if (!html.includes('class="project-article"')) continue;
+    assert.match(html, /id="project-stylesheet"[^>]*href="\/project-page\.css\?v=project-assets-v2"/i, folder);
+    assert.match(html, /src="\/project-language\.js\?v=project-assets-v2"/i, folder);
+    assert.match(html, /href="\/images\/site\/favicon\.png\?v=rocket"/i, folder);
+    for (const match of html.matchAll(/src="\/([^\/"][^\"]*)"/g)) {
+      assert.ok(fs.existsSync(path.join(root, match[1].split('?', 1)[0])), `${folder}: ${match[1]}`);
     }
   }
 });
@@ -73,10 +77,12 @@ test('populated project pages have a matching English page and language switcher
     const english = fs.readFileSync(englishPath, 'utf8');
     assert.match(spanish, /class="project-languages"/);
     assert.match(spanish, /href="en\.html"/);
+    assert.match(spanish, /href="\/#projects"/);
     assert.match(english, /<html lang="en">/);
     assert.match(english, /English \(UK\)/);
     assert.match(english, /class="project-article"/);
     assert.match(english, /translation-source-hash/);
+    assert.match(english, /href="\/project-page\.css\?v=project-assets-v2"/);
   }
 });
 
