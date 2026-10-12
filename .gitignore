@@ -6,3 +6,4 @@ worker/
 dist/
 build/
 *.log
+.vercel
