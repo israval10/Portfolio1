@@ -112,6 +112,7 @@
       const geometry = new THREE.PlaneGeometry(2.8, 2.6);
       const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.FrontSide, transparent: true, opacity: 0 });
       const mesh = new THREE.Mesh(geometry, material);
+      mesh.userData.loaded = true;
       mesh.userData.project = project;
       const back = new THREE.Mesh(geometry, material);
       back.rotation.y = Math.PI;
@@ -151,10 +152,10 @@
       this.cache.set(project.id, item);
       if (project.cover) {
         const image = new Image();
-        image.onload = () => { paint(image); mesh.userData.loaded = true; this.updateLoadState(); };
-        image.onerror = () => { mesh.userData.loaded = true; this.updateLoadState(); };
+        image.onload = () => { paint(image); this.updateLoadState(); };
+        image.onerror = () => { this.updateLoadState(); };
         image.src = project.cover;
-      } else { mesh.userData.loaded = true; }
+      }
       return item;
     }
 
