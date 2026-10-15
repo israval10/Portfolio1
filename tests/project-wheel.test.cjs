@@ -132,3 +132,26 @@ test('halo cannot intercept clicks and both cover faces remain independently rea
   assert.equal(item.mesh.children[0].rotation.y, Math.PI);
   assert.equal(item.mesh.children[0].userData.project, item.project);
 });
+
+test('only the selected card faces the viewer when navigating the wheel', () => {
+  const { wheel } = makeWheel(undefined, true);
+  const projects = ['a', 'b', 'c', 'd'].map(project);
+  wheel.items = projects.map((entry, index) => {
+    const item = wheel.makeItem(entry);
+    item.active = true;
+    item.baseAngle = index * Math.PI / 2;
+    return item;
+  });
+  wheel.radius = 3.2;
+  wheel.selected = projects[0];
+  wheel.render(16.67);
+  assert.equal(wheel.items[0].mesh.rotation.y, 0);
+  assert.equal(wheel.items[1].mesh.rotation.y, Math.PI);
+
+  wheel.step(1);
+  wheel.render(33.34);
+  assert.equal(wheel.selected.id, 'b');
+  assert.equal(wheel.items[1].mesh.rotation.y, 0);
+  assert.equal(wheel.items[0].mesh.rotation.y, 0);
+  assert.equal(wheel.items[2].mesh.rotation.y, Math.PI);
+});

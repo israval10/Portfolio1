@@ -264,7 +264,7 @@
         const z = this.radius ? Math.cos(angle) * this.radius : 0;
         item.mesh.position.x += (x - item.mesh.position.x) * ease;
         item.mesh.position.z += (z - item.mesh.position.z) * ease;
-        item.mesh.rotation.y = this.radius ? angle + Math.PI / 2 : 0;
+        item.mesh.rotation.y = this.radius && this.selected?.id !== item.project.id ? angle + Math.PI / 2 : 0;
         const scale = (!this.radius && this.selected?.id === item.project.id ? 1.04 : 1) + item.hover * .025;
         item.mesh.scale.setScalar(scale);
         if (Math.abs(x - item.mesh.position.x) + Math.abs(z - item.mesh.position.z) > .001) moving = true;
