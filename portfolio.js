@@ -15,10 +15,10 @@
     en: { skip: 'Skip to projects', photos: 'Photos', loading: 'Loading projects', wheel: 'Wheel', index: 'Index', wheelTooltip: 'View projects in an interactive wheel', indexTooltip: 'View projects in a list, by discipline', prev: 'Previous project', next: 'Next project', openMenu: 'Open menu', closeMenu: 'Close menu', nav: 'Main navigation', view: 'Project view', languageGroup: 'Language', spanish: 'Spanish (Spain)', english: 'English (UK)', pending: 'Link pending', ungrouped: 'Other projects', empty: 'No projects in this discipline.', canvas: 'Project wheel', gallery: 'Israel Valencia gallery' }
   };
   let activeFilter = 'all';
-  let activeView = 'wheel';
+  let activeView = 'index';
   let selected = model.projects[0] || null;
   let wheel = null;
-  let wheelAvailable = true;
+  let wheelAvailable = !window.matchMedia('(max-width: 600px), (pointer: coarse)').matches;
   window.currentLang = 'es';
   const languageStorageKey = 'portfolio-language';
   let initialLanguage = 'es';
@@ -246,6 +246,7 @@
     const button = document.getElementById('view-wheel');
     const wasFocused = document.activeElement === canvas || document.activeElement === button;
     button.disabled = true;
+    button.hidden = true;
     setView('index');
     if (wasFocused) document.getElementById('view-index').focus({ preventScroll: true });
     document.getElementById('wheel-stage').setAttribute('aria-busy', 'false');
@@ -310,20 +311,23 @@
   });
 
   window.setLanguage(initialLanguage);
-  try {
-    wheel = new window.ProjectWheel({
-      canvas,
-      stage: document.getElementById('wheel-stage'),
-      onSelect: renderSelection,
-      onActivate: project => {
-        const destination = projectDestination(project);
-        if (destination && project.hasContent) window.location.assign(destination);
-        else if (destination) window.open(destination, '_blank', 'noopener,noreferrer');
-      },
-      onError: fallback
-    });
-    wheel.setProjects(model.matches(activeFilter), selected?.id);
-  } catch { fallback(); }
+  if (wheelAvailable) {
+    try {
+      wheel = new window.ProjectWheel({
+        canvas,
+        stage: document.getElementById('wheel-stage'),
+        onSelect: renderSelection,
+        onActivate: project => {
+          const destination = projectDestination(project);
+          if (destination && project.hasContent) window.location.assign(destination);
+          else if (destination) window.open(destination, '_blank', 'noopener,noreferrer');
+        },
+        onError: fallback
+      });
+      wheel.setProjects(model.matches(activeFilter), selected?.id);
+      setView('wheel');
+    } catch { fallback(); }
+  } else fallback();
   icons();
   window.addEventListener('pagehide', event => { if (!event.persisted) wheel?.destroy(); });
 })();

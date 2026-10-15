@@ -58,6 +58,20 @@ test('grouped index retains multi-tag occurrences without inflating unique count
   assert.equal(model.matches('all').length, data.projects.length);
 });
 
+test('published HTML includes the full project index before scripts run', () => {
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const index = html.split('<!-- project-index:start -->')[1]?.split('<!-- project-index:end -->')[0];
+  assert.ok(index, 'Missing static project index');
+  assert.match(html, /id="projects" data-view="index"/);
+  assert.match(html, /id="wheel-view" hidden/);
+  assert.match(html, /id="project-groups">/);
+  for (const project of data.projects) {
+    assert.ok(index.includes(`data-project-id="${project.id}"`), project.name);
+    const destination = model.destination(project);
+    if (destination) assert.ok(index.includes(destination.replaceAll('&', '&amp;')), project.name);
+  }
+});
+
 test('all original ES/EN copy and emphasis remains identical', () => {
   const original = fs.readFileSync(path.join(root, '.verification/index.html'), 'utf8');
   const begin = original.indexOf('const translations =');
@@ -91,8 +105,8 @@ test('all local image assets exist and expected source links are retained', () =
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   assert.ok(fs.existsSync(path.join(root, 'images/site/favicon.png')));
   assert.match(html, /<link rel="icon" type="image\/png" sizes="180x180" href="\/images\/site\/favicon\.png\?v=rocket"/);
-  assert.match(html, /id="site-stylesheet" rel="stylesheet" href="\/styles\.css\?v=site-assets-v2"/);
-  assert.match(html, /onerror="this\.onerror=null;this\.href='\/styles\.css\?v=site-assets-v2-retry'"/);
+  assert.match(html, /id="site-stylesheet" rel="stylesheet" href="\/styles\.css\?v=mobile-index-fallback"/);
+  assert.match(html, /onerror="this\.onerror=null;this\.href='\/styles\.css\?v=mobile-index-fallback-retry'"/);
   for (const asset of ['vendor/lucide.min.js', 'vendor/three.min.js', 'portfolio-data.js', 'portfolio-model.js', 'content.js', 'project-wheel.js', 'hero-particles.js', 'portfolio.js']) {
     assert.match(html, new RegExp(`(?:src|href)="/${asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
   }

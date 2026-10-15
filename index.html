@@ -15,7 +15,7 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "ytlelglcud");
   </script>
-  <link id="site-stylesheet" rel="stylesheet" href="/styles.css?v=site-assets-v2" onerror="this.onerror=null;this.href='/styles.css?v=site-assets-v2-retry'" />
+  <link id="site-stylesheet" rel="stylesheet" href="/styles.css?v=mobile-index-fallback" onerror="this.onerror=null;this.href='/styles.css?v=mobile-index-fallback-retry'" />
   <script defer src="/vendor/lucide.min.js"></script>
   <script defer src="/vendor/three.min.js"></script>
   <script defer src="/portfolio-data.js"></script>
@@ -23,7 +23,7 @@
   <script defer src="/content.js"></script>
   <script defer src="/project-wheel.js?v=mobile-loading-fix"></script>
   <script defer src="/hero-particles.js?v=brain-profile"></script>
-  <script defer src="/portfolio.js?v=project-language"></script>
+  <script defer src="/portfolio.js?v=mobile-index-fallback"></script>
 </head>
 <body id="home">
   <a class="skip-link" href="#projects" data-ui="skip">Ir a proyectos</a>
@@ -64,7 +64,7 @@
           </div>
         </div>
       </div>
-      <div class="work-area" id="projects" data-view="wheel">
+      <div class="work-area" id="projects" data-view="index">
         <div class="discipline-toolbar" id="disciplines">
           <div class="discipline-intro">
             <span class="section-label" data-i18n="disc_label">Lo que hago</span>
@@ -76,7 +76,7 @@
             <p class="filter-hint" id="filter-hint" role="status" aria-live="polite" aria-atomic="true"></p>
           </div>
         </div>
-        <div id="wheel-view">
+        <div id="wheel-view" hidden>
           <div class="wheel-stage" id="wheel-stage" aria-busy="true">
             <canvas id="project-canvas" tabindex="0" aria-label="Proyectos" aria-describedby="selected-title filter-hint"></canvas>
             <div class="wheel-loading" id="wheel-loading"><span class="loading-dot"></span><span data-ui="loading">Cargando proyectos</span></div>
@@ -85,23 +85,23 @@
         </div>
         <div class="project-navigation">
           <div class="view-switch" role="group" aria-label="Vista de proyectos">
-            <button class="icon-button active" id="view-wheel" data-view="wheel" aria-pressed="true" aria-controls="wheel-view wheel-controls project-selection" aria-label="Rueda" aria-describedby="view-wheel-tooltip">
+            <button class="icon-button" id="view-wheel" data-view="wheel" aria-pressed="false" aria-controls="wheel-view wheel-controls project-selection" aria-label="Rueda" aria-describedby="view-wheel-tooltip">
               <i data-lucide="orbit" aria-hidden="true"></i>
               <span class="button-tooltip" id="view-wheel-tooltip" role="tooltip" data-ui="wheelTooltip">Ver proyectos en una rueda interactiva</span>
             </button>
-            <button class="icon-button" id="view-index" data-view="index" aria-pressed="false" aria-controls="project-groups" aria-label="Índice" aria-describedby="view-index-tooltip">
+            <button class="icon-button active" id="view-index" data-view="index" aria-pressed="true" aria-controls="project-groups" aria-label="Índice" aria-describedby="view-index-tooltip">
               <i data-lucide="list" aria-hidden="true"></i>
               <span class="button-tooltip" id="view-index-tooltip" role="tooltip" data-ui="indexTooltip">Ver proyectos en lista, por disciplina</span>
             </button>
           </div>
-          <div class="wheel-controls" id="wheel-controls">
+          <div class="wheel-controls" id="wheel-controls" hidden>
             <span class="project-position" id="project-position">01 / 14</span>
             <div class="wheel-arrows">
               <button class="icon-button" id="wheel-prev" title="Proyecto anterior" aria-label="Proyecto anterior"><i data-lucide="arrow-left" aria-hidden="true"></i></button>
               <button class="icon-button" id="wheel-next" title="Proyecto siguiente" aria-label="Proyecto siguiente"><i data-lucide="arrow-right" aria-hidden="true"></i></button>
             </div>
           </div>
-          <div class="project-selection" id="project-selection">
+          <div class="project-selection" id="project-selection" hidden>
             <a class="selected-image" id="selected-image-link" target="_blank" rel="noopener noreferrer"><img id="selected-image" alt="" /></a>
             <div class="selected-copy">
               <a class="selected-title" id="selected-link" target="_blank" rel="noopener noreferrer"><h3 id="selected-title"></h3><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
@@ -110,8 +110,117 @@
             </div>
           </div>
         </div>
-        <div class="project-index" id="project-groups" hidden></div>
-        <noscript><p>Activa JavaScript para ver los proyectos y las disciplinas.</p><p><a href="https://app.notion.com/p/353af8f94f11836eb47d817bf759c58a">Proyectos en Notion</a></p></noscript>
+        <div class="project-index" id="project-groups">
+          <!-- project-index:start -->
+          <div class="discipline-group" data-discipline="b9aaf8f94f118262b9ac010afe337f0c">
+            <div class="discipline-label"><h3 class="discipline-tag">Product Design</h3><span class="group-count">9</span></div>
+            <a class="project-card" data-project-id="fbcaf8f94f1182af96f1812e8a3177eb" data-disciplines="b9aaf8f94f118262b9ac010afe337f0c" href="/proyectos/fbcaf8f94f1182af96f1812e8a3177eb/">
+              <div class="project-thumb"><img src="/images/notion/project-fbcaf8f94f1182af96f1812e8a3177eb-cover.png" alt="Bulkmate " loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Bulkmate </h3><p class="project-desc">Monitoreo de ejercicios y consumo calórico para ectomorfos</p><div class="project-tags"><span>2025</span><span>Product Design</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="b03af8f94f1182278da2019e7caaf258" data-disciplines="b9aaf8f94f118262b9ac010afe337f0c" href="https://www.figma.com/board/iXuVc0z0UU3rAPLU3gFjKg/-Copy--Reebok--Innovaci%25C3%25B3n-tecnol%25C3%25B3gica-en-el-retail?t=ddOqgl1aPO9wpFhv-0" target="_blank" rel="noopener noreferrer">
+              <div class="project-thumb"><img src="/images/notion/project-b03af8f94f1182278da2019e7caaf258-cover.png" alt="Reebok Green" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Reebok Green</h3><p class="project-desc">Competencia Globant Design Center Latam. App de análisis de calzado y reciclaje gamificado.</p><div class="project-tags"><span>2025</span><span>Product Design</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="bfeaf8f94f118273815f81f48a820cf3" data-disciplines="b9aaf8f94f118262b9ac010afe337f0c" href="/proyectos/bfeaf8f94f118273815f81f48a820cf3/">
+              <div class="project-thumb"><img src="/images/notion/project-bfeaf8f94f118273815f81f48a820cf3-cover.png" alt="DataSigners" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">DataSigners</h3><p class="project-desc">Web educativa que convierte KPIs y métricas en recursos visuales de aprendizaje y consulta.</p><div class="project-tags"><span>2026</span><span>Product Design</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="579af8f94f118232bfa68178d491c911" data-disciplines="284af8f94f118337bd9201d809dcbc5a b9aaf8f94f118262b9ac010afe337f0c" href="/proyectos/579af8f94f118232bfa68178d491c911/">
+              <div class="project-thumb"><img src="/images/notion/project-579af8f94f118232bfa68178d491c911-cover.png" alt="Pawspet App" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Pawspet App</h3><p class="project-desc">Competencia Hult Price: Plataforma de reserva de servicios para Mascotas</p><div class="project-tags"><span>2026</span><span>Product Design</span><span>Branding</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="933af8f94f11821bb51c011af76fbb8f" data-disciplines="b9aaf8f94f118262b9ac010afe337f0c" href="/proyectos/933af8f94f11821bb51c011af76fbb8f/">
+              <div class="project-thumb"><img src="/images/notion/project-933af8f94f11821bb51c011af76fbb8f-cover.png" alt="Fitmashi" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Fitmashi</h3><div class="project-tags"><span>2024</span><span>Product Design</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="5b8af8f94f11838bb34801e5113cbfe4" data-disciplines="b9aaf8f94f118262b9ac010afe337f0c" href="/proyectos/5b8af8f94f11838bb34801e5113cbfe4/">
+              <div class="project-thumb"><img src="/images/notion/project-5b8af8f94f11838bb34801e5113cbfe4-cover.png" alt="Interseguro " loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Interseguro </h3><div class="project-tags"><span>2024</span><span>Product Design</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="3f0af8f94f1180299d3befa896c0ab86" data-disciplines="b9aaf8f94f118262b9ac010afe337f0c 227af8f94f11834b948b016daaea86b0" href="/proyectos/3f0af8f94f1180299d3befa896c0ab86/">
+              <div class="project-thumb"><img src="/images/notion/project-3f0af8f94f1180299d3befa896c0ab86-cover.png" alt="LlamaLeads - Web Redesign" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">LlamaLeads - Web Redesign</h3><p class="project-desc">Brandbook para Agencia de Growth Marketing</p><div class="project-tags"><span>2026</span><span>Product Design</span><span>AI Vibecoding</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="281af8f94f11824dac08815a44d68e30" data-disciplines="b9aaf8f94f118262b9ac010afe337f0c" href="/proyectos/281af8f94f11824dac08815a44d68e30/">
+              <div class="project-thumb"><img src="/images/notion/project-281af8f94f11824dac08815a44d68e30-cover.png" alt="Aguacate Wallet" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Aguacate Wallet</h3><p class="project-desc">Plataforma de envío de remesas e intercambio de divisas para Latioamérica</p><div class="project-tags"><span>2025</span><span>Product Design</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="3f0af8f94f1180c38ab4eafbcd61e8bc" data-disciplines="b9aaf8f94f118262b9ac010afe337f0c 227af8f94f11834b948b016daaea86b0" href="https://llama-academy.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <div class="project-thumb"><img src="/images/notion/project-3f0af8f94f1180c38ab4eafbcd61e8bc-cover.png" alt="Llama Academy" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Llama Academy</h3><p class="project-desc">Plataforma de capacitación para clientes sobre uso de CRM Llamaleads </p><div class="project-tags"><span>2026</span><span>Product Design</span><span>AI Vibecoding</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="discipline-group" data-discipline="284af8f94f118337bd9201d809dcbc5a">
+            <div class="discipline-label"><h3 class="discipline-tag">Branding</h3><span class="group-count">3</span></div>
+            <a class="project-card" data-project-id="579af8f94f118232bfa68178d491c911" data-disciplines="284af8f94f118337bd9201d809dcbc5a b9aaf8f94f118262b9ac010afe337f0c" href="/proyectos/579af8f94f118232bfa68178d491c911/">
+              <div class="project-thumb"><img src="/images/notion/project-579af8f94f118232bfa68178d491c911-cover.png" alt="Pawspet App" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Pawspet App</h3><p class="project-desc">Competencia Hult Price: Plataforma de reserva de servicios para Mascotas</p><div class="project-tags"><span>2026</span><span>Product Design</span><span>Branding</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="280af8f94f1183028d058188008d1711" data-disciplines="284af8f94f118337bd9201d809dcbc5a d25af8f94f1182efa8d901e7160c262f" href="/proyectos/280af8f94f1183028d058188008d1711/">
+              <div class="project-thumb"><img src="/images/notion/project-280af8f94f1183028d058188008d1711-cover.png" alt="Datasigners Brand" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Datasigners Brand</h3><p class="project-desc">Brandbook para proyecto Web educativo</p><div class="project-tags"><span>2026</span><span>Branding</span><span>Visual</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="5c9af8f94f1182dd921e0193d1a7116f" data-disciplines="284af8f94f118337bd9201d809dcbc5a d25af8f94f1182efa8d901e7160c262f" href="/proyectos/5c9af8f94f1182dd921e0193d1a7116f/">
+              <div class="project-thumb"><img src="/images/notion/project-5c9af8f94f1182dd921e0193d1a7116f-cover.png" alt="LlamaLeads branding" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">LlamaLeads branding</h3><p class="project-desc">Brandbook para Agencia de Growth Marketing</p><div class="project-tags"><span>2026</span><span>Branding</span><span>Visual</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="discipline-group" data-discipline="d25af8f94f1182efa8d901e7160c262f">
+            <div class="discipline-label"><h3 class="discipline-tag">Visual</h3><span class="group-count">5</span></div>
+            <a class="project-card" data-project-id="280af8f94f1183028d058188008d1711" data-disciplines="284af8f94f118337bd9201d809dcbc5a d25af8f94f1182efa8d901e7160c262f" href="/proyectos/280af8f94f1183028d058188008d1711/">
+              <div class="project-thumb"><img src="/images/notion/project-280af8f94f1183028d058188008d1711-cover.png" alt="Datasigners Brand" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Datasigners Brand</h3><p class="project-desc">Brandbook para proyecto Web educativo</p><div class="project-tags"><span>2026</span><span>Branding</span><span>Visual</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="5c9af8f94f1182dd921e0193d1a7116f" data-disciplines="284af8f94f118337bd9201d809dcbc5a d25af8f94f1182efa8d901e7160c262f" href="/proyectos/5c9af8f94f1182dd921e0193d1a7116f/">
+              <div class="project-thumb"><img src="/images/notion/project-5c9af8f94f1182dd921e0193d1a7116f-cover.png" alt="LlamaLeads branding" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">LlamaLeads branding</h3><p class="project-desc">Brandbook para Agencia de Growth Marketing</p><div class="project-tags"><span>2026</span><span>Branding</span><span>Visual</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="dd4af8f94f1183f9a49b81f32cd65390" data-disciplines="d25af8f94f1182efa8d901e7160c262f" href="/proyectos/dd4af8f94f1183f9a49b81f32cd65390/">
+              <div class="project-thumb"><img src="/images/notion/project-dd4af8f94f1183f9a49b81f32cd65390-cover.png" alt="Crisva Design Lab " loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Crisva Design Lab </h3><p class="project-desc">Estrategia de contenido para Laboratorio de Diseño de productos</p><div class="project-tags"><span>2026</span><span>Visual</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="491af8f94f1183ae9464015338d622b1" data-disciplines="d25af8f94f1182efa8d901e7160c262f" href="/proyectos/491af8f94f1183ae9464015338d622b1/">
+              <div class="project-thumb"><img src="/images/notion/project-491af8f94f1183ae9464015338d622b1-cover.png" alt="ONG Digtital Marketing" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">ONG Digtital Marketing</h3><div class="project-tags"><span>2023</span><span>Visual</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="a10af8f94f118374b5be0115e640f6d6" data-disciplines="d25af8f94f1182efa8d901e7160c262f" href="/proyectos/a10af8f94f118374b5be0115e640f6d6/">
+              <div class="project-thumb"><img src="/images/notion/project-a10af8f94f118374b5be0115e640f6d6-cover.jpg" alt="Hackeando Productos - Informe" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Hackeando Productos - Informe</h3><div class="project-tags"><span>2024</span><span>Visual</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="discipline-group" data-discipline="227af8f94f11834b948b016daaea86b0">
+            <div class="discipline-label"><h3 class="discipline-tag">AI Vibecoding</h3><span class="group-count">2</span></div>
+            <a class="project-card" data-project-id="3f0af8f94f1180299d3befa896c0ab86" data-disciplines="b9aaf8f94f118262b9ac010afe337f0c 227af8f94f11834b948b016daaea86b0" href="/proyectos/3f0af8f94f1180299d3befa896c0ab86/">
+              <div class="project-thumb"><img src="/images/notion/project-3f0af8f94f1180299d3befa896c0ab86-cover.png" alt="LlamaLeads - Web Redesign" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">LlamaLeads - Web Redesign</h3><p class="project-desc">Brandbook para Agencia de Growth Marketing</p><div class="project-tags"><span>2026</span><span>Product Design</span><span>AI Vibecoding</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project-card" data-project-id="3f0af8f94f1180c38ab4eafbcd61e8bc" data-disciplines="b9aaf8f94f118262b9ac010afe337f0c 227af8f94f11834b948b016daaea86b0" href="https://llama-academy.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <div class="project-thumb"><img src="/images/notion/project-3f0af8f94f1180c38ab4eafbcd61e8bc-cover.png" alt="Llama Academy" loading="lazy" decoding="async"></div>
+              <div class="project-body"><h3 class="project-title">Llama Academy</h3><p class="project-desc">Plataforma de capacitación para clientes sobre uso de CRM Llamaleads </p><div class="project-tags"><span>2026</span><span>Product Design</span><span>AI Vibecoding</span></div></div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <!-- project-index:end -->
+        </div>
       </div>
     </section>
   <section id="about">

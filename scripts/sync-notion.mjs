@@ -3,6 +3,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { runInNewContext } from 'node:vm';
 import { createHash } from 'node:crypto';
+import { createRequire } from 'node:module';
 import { meaningful, renderBlocks, renderExternalRedirect, renderProjectPage, renderSeedMarkdown } from './project-render.mjs';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -14,6 +15,8 @@ if (!['--seed', '--sync'].includes(mode)) throw new Error('Use --seed or --sync'
 if (mode === '--sync' && !process.env.NOTION_TOKEN) throw new Error('NOTION_TOKEN is required for synchronization');
 
 const path = relative => join(root, relative);
+const require = createRequire(import.meta.url);
+const createPortfolioModel = require(path('portfolio-model.js'));
 const readJson = async relative => JSON.parse(await readFile(path(relative), 'utf8'));
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const idFrom = id => String(id || '').replace(/-/g, '').toLowerCase();
@@ -42,6 +45,40 @@ function readSnapshot(source) {
   const context = { window: {} };
   runInNewContext(source, context, { timeout: 1000 });
   return JSON.parse(JSON.stringify(context.window.PORTFOLIO_DATA));
+}
+
+function renderStaticIndex(data) {
+  const escape = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+  const model = createPortfolioModel(data);
+  const cards = project => {
+    const destination = model.destination(project);
+    const tag = destination ? 'a' : 'article';
+    const link = destination ? ` href="${escape(destination)}"${project.hasContent ? '' : ' target="_blank" rel="noopener noreferrer"'}` : ' aria-disabled="true"';
+    const thumb = project.cover
+      ? `<img src="/${escape(project.cover.replace(/^\//, ''))}" alt="${escape(project.name)}" loading="lazy" decoding="async">`
+      : escape(project.name);
+    const description = project.description?.es ? `<p class="project-desc">${escape(project.description.es)}</p>` : '';
+    const tags = [...project.years, ...model.disciplines.filter(item => project.disciplines.includes(item.id)).map(item => item.name)];
+    return `            <${tag} class="project-card" data-project-id="${escape(project.id)}" data-disciplines="${escape(project.disciplines.join(' '))}"${link}>
+              <div class="project-thumb">${thumb}</div>
+              <div class="project-body"><h3 class="project-title">${escape(project.name)}</h3>${description}<div class="project-tags">${tags.map(item => `<span>${escape(item)}</span>`).join('')}</div>${destination ? '' : '<span class="project-pending">Enlace pendiente</span>'}</div>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </${tag}>`;
+  };
+  return model.groups('all').map(group => `          <div class="discipline-group" data-discipline="${escape(group.id)}">
+            <div class="discipline-label"><h3 class="discipline-tag">${escape(group.name || 'Otros proyectos')}</h3><span class="group-count">${group.projects.length}</span></div>
+${group.projects.map(cards).join('\n')}
+          </div>`).join('\n');
+}
+
+async function writeStaticIndex(data) {
+  const source = await readFile(path('index.html'), 'utf8');
+  const start = '<!-- project-index:start -->';
+  const end = '<!-- project-index:end -->';
+  const before = source.indexOf(start);
+  const after = source.indexOf(end, before + start.length);
+  if (before < 0 || after < 0) throw new Error('Project index markers missing from index.html');
+  await writeChanged('index.html', source.slice(0, before + start.length) + '\n' + renderStaticIndex(data) + '\n          ' + source.slice(after));
 }
 
 let lastRequest = 0;
@@ -204,6 +241,7 @@ async function main() {
     const seed = await readJson('notion-seed.json');
     contentById = new Map(Object.entries(seed).map(([id, entry]) => [id, { html: renderSeedMarkdown(entry.markdown, entry.notionUrl), partial: entry.partial }]));
   }
+  await writeStaticIndex(data);
 
   const active = new Set();
   for (const project of data.projects) {
