@@ -72,7 +72,7 @@ test('published HTML includes the full project index before scripts run', () => 
   }
 });
 
-test('all original ES/EN copy and emphasis remains identical', () => {
+test('original ES/EN copy remains intact apart from the updated footer', () => {
   const original = fs.readFileSync(path.join(root, '.verification/index.html'), 'utf8');
   const begin = original.indexOf('const translations =');
   const end = original.indexOf('window.currentLang', begin);
@@ -84,10 +84,14 @@ test('all original ES/EN copy and emphasis remains identical', () => {
   const removedPortfolioCopy = [...removedCopy].filter(key => key === 'nav_portfolios' || key.startsWith('port'));
   for (const lang of ['es', 'en']) {
     before.copy[lang].disc_all = lang === 'es' ? 'Todos' : 'All';
+    before.copy[lang].footer_made = lang === 'es'
+      ? 'Hecho con ❤️, IA, curiosidad y muchas horas de experimentación.'
+      : 'Made with ❤️, AI, curiosity, and many hours of experimentation.';
     for (const key of removedPortfolioCopy) delete before.copy[lang][key];
   }
   assert.deepEqual(JSON.parse(JSON.stringify(before.copy)), JSON.parse(JSON.stringify(after.window.PORTFOLIO_TRANSLATIONS)));
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.ok(html.includes('<span data-i18n="footer_made">' + before.copy.es.footer_made + '</span>'));
   const keys = [...html.matchAll(/data-i18n(?:-html)?="([^"]+)"/g)].map(match => match[1]);
   for (const key of Object.keys(before.copy.es)) {
     assert.ok(keys.includes(key) || key === 'disc_all' || removedCopy.has(key), 'Missing rendered copy: ' + key);

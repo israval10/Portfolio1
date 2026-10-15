@@ -44,7 +44,7 @@
         contact_mail_sub: 'Envíame un correo',
         footer_home:    'Inicio',
         footer_contact: 'Contacto',
-        footer_made:    'Hecho con ❤️ y mucha curiosidad',
+        footer_made:    'Hecho con ❤️, IA, curiosidad y muchas horas de experimentación.',
       },
       en: {
         nav_disciplines: 'Disciplines',
@@ -89,7 +89,7 @@
         contact_mail_sub: 'Send me an email',
         footer_home:    'Home',
         footer_contact: 'Contact',
-        footer_made:    'Made with ❤️ and lots of curiosity',
+        footer_made:    'Made with ❤️, AI, curiosity, and many hours of experimentation.',
       }
     };
 
