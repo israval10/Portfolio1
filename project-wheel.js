@@ -1,6 +1,9 @@
 (function () {
   'use strict';
 
+  const MAX_CARD_TILT = Math.PI * .375;
+  const clampCardTilt = angle => Math.max(-MAX_CARD_TILT, Math.min(MAX_CARD_TILT, angle));
+
   class ProjectWheel {
     constructor({ canvas, stage, onSelect, onActivate, onError }) {
       if (!window.THREE) throw new Error('Three.js unavailable');
@@ -264,7 +267,10 @@
         const z = this.radius ? Math.cos(angle) * this.radius : 0;
         item.mesh.position.x += (x - item.mesh.position.x) * ease;
         item.mesh.position.z += (z - item.mesh.position.z) * ease;
-        const targetRotation = this.radius && this.selected?.id !== item.project.id ? angle + Math.PI / 2 : 0;
+        // Both faces share the cover, so equivalent half-turns can keep the card readable.
+        const tangent = angle + Math.PI / 2;
+        const visibleTangent = Math.atan2(Math.sin(tangent * 2), Math.cos(tangent * 2)) / 2;
+        const targetRotation = this.radius && this.selected?.id !== item.project.id ? clampCardTilt(visibleTangent) : 0;
         const rotationDelta = Math.atan2(Math.sin(targetRotation - item.mesh.rotation.y), Math.cos(targetRotation - item.mesh.rotation.y));
         item.mesh.rotation.y += rotationDelta * ease;
         if (Math.abs(rotationDelta) > .001) moving = true;
@@ -287,6 +293,11 @@
 
     select(project) {
       if (project && project.id !== this.selected?.id) {
+        const item = this.cache.get(project.id);
+        if (this.radius && item) {
+          const angle = item.baseAngle + this.angle;
+          item.mesh.rotation.y = this.reducedMotion.matches ? 0 : clampCardTilt(Math.atan2(Math.sin(angle), Math.cos(angle)));
+        }
         this.selected = project;
         this.onSelect(project);
         this.requestFrame();

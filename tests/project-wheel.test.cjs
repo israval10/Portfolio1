@@ -133,7 +133,7 @@ test('halo cannot intercept clicks and both cover faces remain independently rea
   assert.equal(item.mesh.children[0].userData.project, item.project);
 });
 
-test('only the selected card faces the viewer when navigating the wheel', () => {
+test('selected card faces the viewer while the wheel keeps readable perspective', () => {
   const { wheel } = makeWheel(undefined, true);
   const projects = ['a', 'b', 'c', 'd'].map(project);
   wheel.items = projects.map((entry, index) => {
@@ -146,38 +146,42 @@ test('only the selected card faces the viewer when navigating the wheel', () => 
   wheel.selected = projects[0];
   wheel.render(16.67);
   assert.equal(wheel.items[0].mesh.rotation.y, 0);
-  assert.ok(Math.abs(Math.cos(wheel.items[1].mesh.rotation.y) + 1) < 1e-10);
+  assert.ok(Math.abs(wheel.items[2].mesh.rotation.y) <= Math.PI * .375);
 
   wheel.step(1);
   wheel.render(33.34);
   assert.equal(wheel.selected.id, 'b');
   assert.equal(wheel.items[1].mesh.rotation.y, 0);
   assert.equal(wheel.items[0].mesh.rotation.y, 0);
-  assert.ok(Math.abs(Math.cos(wheel.items[2].mesh.rotation.y) + 1) < 1e-10);
+  assert.ok(Math.abs(wheel.items[3].mesh.rotation.y) <= Math.PI * .375);
 });
 
-test('selected card turns smoothly while the wheel moves', () => {
+test('selected card turns smoothly without becoming edge-on', () => {
   const { wheel } = makeWheel();
-  const projects = ['a', 'b', 'c', 'd'].map(project);
+  const projects = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].map(project);
   wheel.items = projects.map((entry, index) => {
     const item = wheel.makeItem(entry);
     item.active = true;
-    item.baseAngle = index * Math.PI / 2;
+    item.baseAngle = index * Math.PI / 4;
     return item;
   });
   wheel.radius = 3.2;
   wheel.selected = projects[0];
   for (let frame = 1; frame <= 80; frame++) wheel.render(frame * 16.67);
-  const before = wheel.items[1].mesh.rotation.y;
 
   wheel.step(1);
+  const initialTilt = wheel.items[1].mesh.rotation.y;
+  assert.ok(initialTilt > 0 && initialTilt <= Math.PI * .375);
   wheel.render(81 * 16.67);
   const during = wheel.items[1].mesh.rotation.y;
-  assert.ok(during > 0 && during < before);
+  assert.ok(during > 0 && during < initialTilt);
   assert.equal(wheel.stage.dataset.motion, 'moving');
 
-  for (let frame = 82; frame <= 180; frame++) wheel.render(frame * 16.67);
+  for (let frame = 82; frame <= 180; frame++) {
+    wheel.render(frame * 16.67);
+    assert.ok(wheel.items.every(item => Math.abs(item.mesh.rotation.y) <= Math.PI * .375 + 1e-10));
+  }
   assert.ok(Math.abs(wheel.items[1].mesh.rotation.y) < .001);
-  assert.ok(Math.abs(wheel.items[2].mesh.rotation.y) > .1);
+  assert.ok(Math.abs(wheel.items[0].mesh.rotation.y) > .1);
   assert.equal(wheel.stage.dataset.motion, 'idle');
 });
