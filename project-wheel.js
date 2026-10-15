@@ -264,7 +264,10 @@
         const z = this.radius ? Math.cos(angle) * this.radius : 0;
         item.mesh.position.x += (x - item.mesh.position.x) * ease;
         item.mesh.position.z += (z - item.mesh.position.z) * ease;
-        item.mesh.rotation.y = this.radius && this.selected?.id !== item.project.id ? angle + Math.PI / 2 : 0;
+        const targetRotation = this.radius && this.selected?.id !== item.project.id ? angle + Math.PI / 2 : 0;
+        const rotationDelta = Math.atan2(Math.sin(targetRotation - item.mesh.rotation.y), Math.cos(targetRotation - item.mesh.rotation.y));
+        item.mesh.rotation.y += rotationDelta * ease;
+        if (Math.abs(rotationDelta) > .001) moving = true;
         const scale = (!this.radius && this.selected?.id === item.project.id ? 1.04 : 1) + item.hover * .025;
         item.mesh.scale.setScalar(scale);
         if (Math.abs(x - item.mesh.position.x) + Math.abs(z - item.mesh.position.z) > .001) moving = true;
