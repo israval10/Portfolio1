@@ -109,9 +109,9 @@ test('all local image assets exist and expected source links are retained', () =
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   assert.ok(fs.existsSync(path.join(root, 'images/site/favicon.png')));
   assert.match(html, /<link rel="icon" type="image\/png" sizes="180x180" href="\/images\/site\/favicon\.png\?v=rocket"/);
-  assert.match(html, /id="site-stylesheet" rel="stylesheet" href="\/styles\.css\?v=sitewide-dark"/);
-  assert.match(html, /onerror="this\.onerror=null;this\.href='\/styles\.css\?v=sitewide-dark-retry'"/);
-  for (const asset of ['vendor/lucide.min.js', 'vendor/three.min.js', 'portfolio-data.js', 'portfolio-model.js', 'content.js', 'project-wheel.js', 'hero-particles.js', 'portfolio.js']) {
+  assert.match(html, /id="site-stylesheet" rel="stylesheet" href="\/styles\.css\?v=section-scroll-transition"/);
+  assert.match(html, /onerror="this\.onerror=null;this\.href='\/styles\.css\?v=section-scroll-transition-retry'"/);
+  for (const asset of ['vendor/lucide.min.js', 'vendor/three.min.js', 'portfolio-data.js', 'portfolio-model.js', 'content.js', 'project-wheel.js', 'hero-particles.js', 'section-transition.js', 'portfolio.js']) {
     assert.match(html, new RegExp(`(?:src|href)="/${asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
   }
   for (const value of ['U. de Lima/ U. Pacifico', 'Comunicaciones / Ing. Industrial']) {

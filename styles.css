@@ -861,3 +861,41 @@ footer { background: var(--paper); }
   .footer-links a, .project-tags span, .selected-image, .picture-item { background: #20282b; }
   .discipline-filter.active { background: #304d54; }
 }
+
+/* Scroll handoff from the particle hero into the project section. */
+.work-area { position: relative; }
+.scroll-transition-ready .opening-copy { opacity: calc(1 - var(--hero-exit, 0) * .68); }
+.scroll-transition-ready .work-area::before,
+.scroll-transition-ready .work-area::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  pointer-events: none;
+}
+.scroll-transition-ready .work-area::before {
+  top: -110px;
+  width: min(100vw, 1100px);
+  height: 290px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(62, 139, 153, .24), rgba(110, 66, 126, .1) 38%, transparent 72%);
+  opacity: calc(var(--section-reveal, 0) * .85);
+}
+.scroll-transition-ready .work-area::after {
+  top: -1px;
+  width: min(54vw, 580px);
+  height: 1px;
+  transform: translateX(-50%) scaleX(var(--section-reveal, 0));
+  background: linear-gradient(90deg, transparent, #72b9c4, #b081b6, transparent);
+  box-shadow: 0 0 18px rgba(105, 199, 212, .6);
+  opacity: var(--section-reveal, 0);
+}
+.scroll-transition-ready .discipline-toolbar {
+  opacity: calc(.14 + var(--section-reveal, 0) * .86);
+  transform: translateY(calc((1 - var(--section-reveal, 0)) * 32px));
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-transition-ready .opening-copy,
+  .scroll-transition-ready .discipline-toolbar { opacity: 1; transform: none; }
+  .scroll-transition-ready .work-area::before,
+  .scroll-transition-ready .work-area::after { display: none; }
+}
