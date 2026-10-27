@@ -136,3 +136,90 @@ footer { padding-block: 30px; border-top-color: var(--line); color: var(--muted)
   html { scroll-behavior: auto; }
   * { transition-duration: 0s !important; }
 }
+
+/* Glass controls match the portfolio without turning long-form links into buttons. */
+.project-header {
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  background: linear-gradient(112deg, rgba(244, 249, 252, .82), rgba(255, 255, 255, .74) 48%, rgba(252, 247, 250, .8));
+  -webkit-backdrop-filter: blur(18px) saturate(1.35);
+  backdrop-filter: blur(18px) saturate(1.35);
+  box-shadow: inset 0 1px 0 #fff, 0 10px 28px rgba(27, 37, 43, .08);
+}
+.project-brand {
+  border-radius: 8px;
+  transition: background-color .48s ease, box-shadow .48s ease;
+}
+.project-brand:hover, .project-brand:focus-visible {
+  background: rgba(239, 248, 250, .7);
+  box-shadow: 0 4px 12px rgba(31, 49, 56, .08);
+  text-decoration: none;
+}
+.project-languages {
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, .78);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .36);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  backdrop-filter: blur(8px) saturate(1.2);
+  box-shadow: inset 0 1px 0 #fff, 0 2px 10px rgba(26, 40, 48, .05);
+}
+.project-lang {
+  border: 0;
+  border-radius: 50%;
+  transition: transform .48s ease, background-color .48s ease, box-shadow .48s ease;
+}
+.project-lang.active {
+  border: 0;
+  background: rgba(255, 255, 255, .84);
+  box-shadow: 0 1px 8px rgba(29, 55, 67, .13), inset 0 0 0 1px rgba(142, 185, 205, .38);
+}
+.project-lang:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .72); }
+.project-back, .project-end a, .project-article .project-file {
+  border: 1px solid rgba(174, 198, 207, .62);
+  border-radius: 999px;
+  background: linear-gradient(115deg, rgba(232, 245, 249, .8), rgba(255, 255, 255, .9) 48%, rgba(250, 237, 244, .74));
+  -webkit-backdrop-filter: blur(12px) saturate(1.25);
+  backdrop-filter: blur(12px) saturate(1.25);
+  box-shadow: inset 0 1px 0 #fff, 0 5px 16px rgba(31, 49, 56, .08);
+  transition: transform .48s ease, box-shadow .48s ease, border-color .48s ease;
+}
+.project-back:hover, .project-end a:hover, .project-article .project-file:hover {
+  transform: translateY(-2px);
+  border-color: rgba(128, 171, 188, .82);
+  background: linear-gradient(115deg, #e7f5f8, #fff, #faedf2);
+  box-shadow: inset 0 1px 0 #fff, 0 9px 20px rgba(31, 49, 56, .13);
+  text-decoration: none;
+}
+.project-end a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 16px;
+}
+.project-article a:not(.project-file) {
+  border-radius: 3px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-color .48s ease, color .48s ease;
+}
+.project-article a:not(.project-file):hover,
+.project-article a:not(.project-file):focus-visible {
+  color: #245368;
+  background: rgba(218, 239, 245, .65);
+}
+.project-article details summary {
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: rgba(237, 247, 249, .58);
+  transition: background-color .48s ease;
+}
+.project-article details summary:hover { background: rgba(218, 239, 245, .8); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .project-header, .project-languages, .project-back, .project-end a, .project-article .project-file { background: #f6f8f9; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-lang:hover, .project-back:hover, .project-end a:hover, .project-article .project-file:hover { transform: none; }
+}
