@@ -18,7 +18,8 @@
   let activeView = 'index';
   let selected = model.projects[0] || null;
   let wheel = null;
-  let wheelAvailable = !window.matchMedia('(max-width: 600px), (pointer: coarse)').matches;
+  let wheelAvailable = true;
+  const preferIndex = window.matchMedia('(max-width: 600px), (pointer: coarse)').matches;
   window.currentLang = 'es';
   const languageStorageKey = 'portfolio-language';
   let initialLanguage = 'es';
@@ -228,7 +229,7 @@
   }
 
   function setView(view) {
-    activeView = view === 'wheel' && wheelAvailable ? 'wheel' : 'index';
+    activeView = view === 'wheel' && wheelAvailable && (wheel || createWheel()) ? 'wheel' : 'index';
     document.getElementById('wheel-view').hidden = activeView !== 'wheel';
     document.getElementById('wheel-controls').hidden = activeView !== 'wheel';
     document.getElementById('project-selection').hidden = activeView !== 'wheel' || !selected;
@@ -247,6 +248,7 @@
     const wasFocused = document.activeElement === canvas || document.activeElement === button;
     button.disabled = true;
     button.hidden = true;
+    document.querySelector('.view-switch').hidden = true;
     setView('index');
     if (wasFocused) document.getElementById('view-index').focus({ preventScroll: true });
     document.getElementById('wheel-stage').setAttribute('aria-busy', 'false');
@@ -310,8 +312,8 @@
     if (!menu.contains(event.target) && event.target !== menuButton && menu.classList.contains('open')) setMenu(false);
   });
 
-  window.setLanguage(initialLanguage);
-  if (wheelAvailable) {
+  function createWheel() {
+    if (wheel) return true;
     try {
       wheel = new window.ProjectWheel({
         canvas,
@@ -325,9 +327,15 @@
         onError: fallback
       });
       wheel.setProjects(model.matches(activeFilter), selected?.id);
-      setView('wheel');
-    } catch { fallback(); }
-  } else fallback();
+      return true;
+    } catch {
+      fallback();
+      return false;
+    }
+  }
+
+  window.setLanguage(initialLanguage);
+  setView(preferIndex ? 'index' : 'wheel');
   icons();
   window.addEventListener('pagehide', event => { if (!event.persisted) wheel?.destroy(); });
 })();

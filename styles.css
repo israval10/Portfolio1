@@ -177,7 +177,6 @@ footer { display: flex; flex-direction: column; align-items: center; justify-con
   .discipline-filter { padding-top: 7px; padding-right: 8px; padding-bottom: 7px; padding-left: 8px; font-size: 11px; min-height: 34px; row-gap: 6px; column-gap: 6px; }
   .wheel-stage { height: 262px; min-height: 240px; margin-top: 0; margin-right: -12px; margin-bottom: 0; margin-left: -12px; }
   .project-navigation { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 12px; row-gap: 16px; align-items: start; padding-top: 0; min-height: 0; }
-  .project-navigation { display: none; }
   .wheel-controls { display: flex; grid-column: 1; grid-row: 1; flex-direction: column; align-items: center; justify-self: start; row-gap: 5px; column-gap: 5px; }
   .view-switch { grid-column: 2; grid-row: 1; justify-self: end; }
   .view-switch .button-tooltip { left: auto; right: 0; }
@@ -283,7 +282,7 @@ footer { display: flex; flex-direction: column; align-items: center; justify-con
 @media (pointer: coarse) {
   .lang-btn, .discipline-filter, .text-link, .main-menu a { min-height: 44px; }
   .view-switch .icon-button, .wheel-controls .icon-button { width: 44px; height: 44px; }
-  .project-navigation { display: none; }
+  .view-switch .button-tooltip { display: none; }
 }
 
 /* Editorial visual system shared with the generated project pages. */
@@ -898,4 +897,13 @@ footer { background: var(--paper); }
   .scroll-transition-ready .discipline-toolbar { opacity: 1; transform: none; }
   .scroll-transition-ready .work-area::before,
   .scroll-transition-ready .work-area::after { display: none; }
+}
+
+/* The compact layout keeps both views available without loading the wheel first. */
+#projects[data-view='index'] .project-navigation { display: flex; justify-content: center; padding-block: 18px 0; }
+#projects[data-view='wheel'] .wheel-controls { flex-direction: row; gap: 10px; }
+#projects[data-view='wheel'] .project-position { order: 0; }
+@media (min-width: 601px) {
+  #projects[data-view='index'] .project-navigation { display: grid; justify-content: initial; padding-block: 16px 0; }
+  #projects[data-view='wheel'] .wheel-controls { display: grid; gap: 16px; }
 }
