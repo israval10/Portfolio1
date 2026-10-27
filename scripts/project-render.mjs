@@ -128,8 +128,9 @@ export function renderProjectPage(project, content, options = {}) {
   <title>${title} | Israel Valencia</title>
   <link rel="icon" type="image/png" sizes="180x180" href="/images/site/favicon.png?v=rocket">
   <link rel="apple-touch-icon" href="/images/site/favicon.png?v=rocket">
-  <link id="project-stylesheet" rel="stylesheet" href="/project-page.css?v=sitewide-dark" onerror="this.onerror=null;this.href='/project-page.css?v=sitewide-dark-retry'">
+  <link id="project-stylesheet" rel="stylesheet" href="/project-page.css?v=image-lightbox" onerror="this.onerror=null;this.href='/project-page.css?v=image-lightbox-retry'">
   <script defer src="/project-language.js?v=project-assets-v2"></script>
+  <script defer src="/project-lightbox.js?v=1"></script>
 </head>
 <body>
   <header class="project-header">

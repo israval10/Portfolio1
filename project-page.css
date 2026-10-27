@@ -270,3 +270,80 @@ footer { padding-block: 30px; border-top-color: var(--line); color: var(--muted)
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .project-header, .project-languages, .project-back, .project-end a, .project-article .project-file { background: #20282b; }
 }
+
+/* Image viewer shared by covers and every image in the project article. */
+.project-image-frame { position: relative; display: block; width: 100%; border-radius: 8px; overflow: hidden; }
+.project-image-zoom {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(210, 232, 235, .45);
+  border-radius: 50%;
+  background: rgba(23, 32, 36, .78);
+  color: #fff;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 8px 22px rgba(0, 0, 0, .3);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  cursor: pointer;
+  transition: opacity .2s ease, transform .2s ease, background .2s ease;
+}
+.project-image-zoom svg { width: 23px; height: 23px; }
+.project-image-frame:hover .project-image-zoom,
+.project-image-frame:focus-within .project-image-zoom { opacity: 1; transform: none; pointer-events: auto; }
+.project-image-zoom:hover, .project-image-zoom:focus-visible { background: rgba(47, 85, 93, .95); }
+.project-image-zoom:focus-visible, .project-lightbox button:focus-visible { outline: 2px solid #a9dce5; outline-offset: 3px; }
+@media (hover: none), (pointer: coarse) {
+  .project-image-zoom { opacity: 1; transform: none; pointer-events: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-image-zoom { transition: none; }
+}
+body.project-lightbox-open { overflow: hidden; }
+.project-lightbox {
+  width: min(96vw, 1800px);
+  max-width: none;
+  height: min(94dvh, 1200px);
+  max-height: none;
+  padding: 0;
+  border: 1px solid rgba(181, 213, 219, .28);
+  border-radius: 18px;
+  background: #141b1e;
+  color: var(--ink);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .55);
+}
+.project-lightbox::backdrop { background: rgba(3, 7, 9, .84); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.project-lightbox-shell { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.project-lightbox-toolbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; gap: 12px; }
+.project-lightbox-action {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(181, 213, 219, .3);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .08);
+  color: #f2f4f3;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.project-lightbox-action:hover { background: rgba(133, 194, 204, .22); }
+.project-lightbox-close { padding: 0; font-size: 28px; line-height: 1; }
+.project-lightbox-stage { flex: 1; min-height: 0; overflow: auto; display: grid; place-items: center; padding: 8px 16px 16px; }
+.project-lightbox-stage img { width: auto; height: auto; max-width: 100%; max-height: calc(min(94dvh, 1200px) - 128px); object-fit: contain; }
+.project-lightbox.is-zoomed .project-lightbox-stage { display: block; }
+.project-lightbox.is-zoomed .project-lightbox-stage img { max-width: none; max-height: none; margin: 0 auto; }
+.project-lightbox-caption { margin: 0; padding: 0 20px 14px; color: var(--muted); font-size: 13px; text-align: center; }
+@media (max-width: 600px) {
+  .project-image-zoom { right: 10px; bottom: 10px; }
+  .project-lightbox { width: 100vw; height: 100dvh; border: 0; border-radius: 0; }
+  .project-lightbox-stage img { max-height: calc(100dvh - 120px); }
+}

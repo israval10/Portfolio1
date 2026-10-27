@@ -46,8 +46,9 @@ test('generated routes use local assets and empty-page redirects reject unsafe U
     const html = fs.readFileSync(path.join(root, 'proyectos', folder, 'index.html'), 'utf8');
     assert.doesNotMatch(html, /notion-file-block:/, folder);
     if (!html.includes('class="project-article"')) continue;
-    assert.match(html, /id="project-stylesheet"[^>]*href="\/project-page\.css\?v=sitewide-dark"/i, folder);
+    assert.match(html, /id="project-stylesheet"[^>]*href="\/project-page\.css\?v=image-lightbox"/i, folder);
     assert.match(html, /src="\/project-language\.js\?v=project-assets-v2"/i, folder);
+    assert.match(html, /src="\/project-lightbox\.js\?v=1"/i, folder);
     assert.match(html, /href="\/images\/site\/favicon\.png\?v=rocket"/i, folder);
     for (const match of html.matchAll(/src="\/([^\/"][^\"]*)"/g)) {
       assert.ok(fs.existsSync(path.join(root, match[1].split('?', 1)[0])), `${folder}: ${match[1]}`);
@@ -82,7 +83,8 @@ test('populated project pages have a matching English page and language switcher
     assert.match(english, /English \(UK\)/);
     assert.match(english, /class="project-article"/);
     assert.match(english, /translation-source-hash/);
-    assert.match(english, /href="\/project-page\.css\?v=sitewide-dark"/);
+    assert.match(english, /href="\/project-page\.css\?v=image-lightbox"/);
+    assert.match(english, /src="\/project-lightbox\.js\?v=1"/);
   }
 });
 
