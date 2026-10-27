@@ -36,6 +36,17 @@ test('seed conversion keeps external images and excludes expiring Notion file UR
   assert.doesNotMatch(html, /notion-file-block:/);
 });
 
+test('imported image prompts disappear without removing nearby project copy', async () => {
+  const { renderSeedMarkdown, renderBlocks } = await renderer;
+  const html = renderSeedMarkdown('Press enter or click to view image in full size\n\nPress enter or click to view image in full sizePress enter or click to view image in full sizeUser personas\n\nPres enter or click to view image in full size\n\n![Mapa](https://example.com/map.png)', 'https://www.notion.so/example');
+  assert.doesNotMatch(html, /(?:press|pres) enter or click to view image in full size/i);
+  assert.match(html, /User personas/);
+  assert.match(html, /<img src="https:\/\/example\.com\/map\.png"/);
+  assert.doesNotMatch(html, /<p>\s*<\/p>/);
+  const blocks = [{ type: 'paragraph', paragraph: { rich_text: [{ plain_text: 'Press enter or click to view image in full size' }] } }];
+  assert.doesNotMatch(await renderBlocks(blocks), /Press enter|<p>\s*<\/p>/);
+});
+
 test('generated routes use local assets and empty-page redirects reject unsafe URLs', async () => {
   const { renderExternalRedirect } = await renderer;
   assert.equal(renderExternalRedirect({ externalUrl: 'javascript:alert(1)' }), null);
@@ -45,6 +56,7 @@ test('generated routes use local assets and empty-page redirects reject unsafe U
   for (const folder of folders) {
     const html = fs.readFileSync(path.join(root, 'proyectos', folder, 'index.html'), 'utf8');
     assert.doesNotMatch(html, /notion-file-block:/, folder);
+    assert.doesNotMatch(html, /Pres{1,2} enter or click to view image in full size/i, folder);
     if (!html.includes('class="project-article"')) continue;
     assert.match(html, /id="project-stylesheet"[^>]*href="\/project-page\.css\?v=image-lightbox"/i, folder);
     assert.match(html, /src="\/project-language\.js\?v=project-assets-v2"/i, folder);
@@ -76,6 +88,7 @@ test('populated project pages have a matching English page and language switcher
     }
     assert.ok(fs.existsSync(englishPath), `${folder}: missing English page`);
     const english = fs.readFileSync(englishPath, 'utf8');
+    assert.doesNotMatch(english, /Pres{1,2} enter or click to view image in full size/i, folder);
     assert.match(spanish, /class="project-languages"/);
     assert.match(spanish, /href="en\.html"/);
     assert.match(spanish, /href="\/#projects"/);

@@ -22,7 +22,8 @@ function cleanHtml(html) {
     },
     allowedSchemes: ['http', 'https', 'mailto'],
     allowedSchemesByTag: { img: ['http', 'https'], video: ['http', 'https'], source: ['http', 'https'] }
-  });
+  }).replace(/Pres{1,2} enter or click to view image in full size/gi, '')
+    .replace(/<p>\s*<\/p>/gi, '');
 }
 
 export function richText(items = []) {
@@ -97,8 +98,7 @@ export function renderSeedMarkdown(markdown, notionUrl) {
     .replace(/!\[([^\]]*)\]\(notion-file-block:[^)]+\)/g, (_, label) => `[${label || 'Imagen original en Notion'}](${notionUrl})`)
     .replace(/<(?:pdf|video|file)\s+src="notion-file-block:[^"]+"\s*\/?\s*>/g, `[Abrir archivo en Notion](${notionUrl})`)
     .replace(/<\/?callout[^>]*>/g, '\n\n')
-    .replace(/^\t+/gm, '')
-    .replace(/Press enter or click to view image in full size/g, '');
+    .replace(/^\t+/gm, '');
   const renderer = new Renderer();
   renderer.heading = ({ tokens, depth }) => {
     const text = renderer.parser.parseInline(tokens);
