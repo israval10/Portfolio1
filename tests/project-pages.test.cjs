@@ -46,7 +46,7 @@ test('generated routes use local assets and empty-page redirects reject unsafe U
     const html = fs.readFileSync(path.join(root, 'proyectos', folder, 'index.html'), 'utf8');
     assert.doesNotMatch(html, /notion-file-block:/, folder);
     if (!html.includes('class="project-article"')) continue;
-    assert.match(html, /id="project-stylesheet"[^>]*href="\/project-page\.css\?v=glass-interactions"/i, folder);
+    assert.match(html, /id="project-stylesheet"[^>]*href="\/project-page\.css\?v=sitewide-dark"/i, folder);
     assert.match(html, /src="\/project-language\.js\?v=project-assets-v2"/i, folder);
     assert.match(html, /href="\/images\/site\/favicon\.png\?v=rocket"/i, folder);
     for (const match of html.matchAll(/src="\/([^\/"][^\"]*)"/g)) {
@@ -82,7 +82,7 @@ test('populated project pages have a matching English page and language switcher
     assert.match(english, /English \(UK\)/);
     assert.match(english, /class="project-article"/);
     assert.match(english, /translation-source-hash/);
-    assert.match(english, /href="\/project-page\.css\?v=glass-interactions"/);
+    assert.match(english, /href="\/project-page\.css\?v=sitewide-dark"/);
   }
 });
 
