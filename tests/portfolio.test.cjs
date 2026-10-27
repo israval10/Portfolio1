@@ -109,8 +109,8 @@ test('all local image assets exist and expected source links are retained', () =
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   assert.ok(fs.existsSync(path.join(root, 'images/site/favicon.png')));
   assert.match(html, /<link rel="icon" type="image\/png" sizes="180x180" href="\/images\/site\/favicon\.png\?v=rocket"/);
-  assert.match(html, /id="site-stylesheet" rel="stylesheet" href="\/styles\.css\?v=mobile-index-fallback"/);
-  assert.match(html, /onerror="this\.onerror=null;this\.href='\/styles\.css\?v=mobile-index-fallback-retry'"/);
+  assert.match(html, /id="site-stylesheet" rel="stylesheet" href="\/styles\.css\?v=liquid-glass-nav"/);
+  assert.match(html, /onerror="this\.onerror=null;this\.href='\/styles\.css\?v=liquid-glass-nav-retry'"/);
   for (const asset of ['vendor/lucide.min.js', 'vendor/three.min.js', 'portfolio-data.js', 'portfolio-model.js', 'content.js', 'project-wheel.js', 'hero-particles.js', 'portfolio.js']) {
     assert.match(html, new RegExp(`(?:src|href)="/${asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
   }
