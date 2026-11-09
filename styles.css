@@ -899,7 +899,7 @@ footer { background: var(--paper); }
   .scroll-transition-ready .work-area::after { display: none; }
 }
 
-/* The compact layout keeps both views available without loading the wheel first. */
+/* Keep the view switch and wheel controls usable in the compact layout. */
 #projects[data-view='index'] .project-navigation { display: flex; justify-content: center; padding-block: 18px 0; }
 #projects[data-view='wheel'] .wheel-controls { flex-direction: row; gap: 10px; }
 #projects[data-view='wheel'] .project-position { order: 0; }

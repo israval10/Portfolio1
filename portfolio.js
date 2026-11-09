@@ -19,7 +19,6 @@
   let selected = model.projects[0] || null;
   let wheel = null;
   let wheelAvailable = true;
-  const preferIndex = window.matchMedia('(max-width: 600px), (pointer: coarse)').matches;
   window.currentLang = 'es';
   const languageStorageKey = 'portfolio-language';
   let initialLanguage = 'es';
@@ -335,7 +334,7 @@
   }
 
   window.setLanguage(initialLanguage);
-  setView(preferIndex ? 'index' : 'wheel');
+  setView('wheel');
   icons();
   window.addEventListener('pagehide', event => { if (!event.persisted) wheel?.destroy(); });
 })();
