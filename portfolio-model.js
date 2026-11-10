@@ -7,7 +7,7 @@
       const indices = project.disciplines.map(id => disciplines.findIndex(discipline => discipline.id === id)).filter(index => index >= 0);
       return indices.length ? Math.min(...indices) : disciplines.length;
     };
-    const projects = [...data.projects].sort((a, b) => rank(a) - rank(b));
+    const projects = data.projects.filter(project => project.show === true).sort((a, b) => rank(a) - rank(b));
     const matches = filter => projects.filter(project => filter === 'all' || project.disciplines.includes(filter));
     const destination = project => {
       if (project.hasContent) return /^[a-f0-9]{32}$/i.test(project.id || '') ? `/proyectos/${project.id.toLowerCase()}/` : null;

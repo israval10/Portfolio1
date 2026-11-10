@@ -8,7 +8,7 @@ const root = path.resolve(__dirname, '..');
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'portfolio-data.js'), 'utf8'), context);
 const data = JSON.parse(JSON.stringify(context.window.PORTFOLIO_DATA));
-const model = createModel(data);
+const model = createModel({ ...data, projects: data.projects.map(project => ({ ...project, show: true })) });
 
 test('unique projects and database discipline order', () => {
   assert.equal(model.projects.length, data.projects.length);
@@ -22,7 +22,7 @@ test('unique projects and database discipline order', () => {
 });
 
 test('multiple discipline relations match independently', () => {
-  const multiple = data.projects.find(project => project.disciplines.length > 1);
+  const multiple = model.projects.find(project => project.disciplines.length > 1);
   if (multiple) for (const id of multiple.disciplines) assert.ok(model.matches(id).includes(multiple));
   assert.equal(model.matches('unknown').length, 0);
 });
@@ -58,15 +58,17 @@ test('grouped index retains multi-tag occurrences without inflating unique count
   assert.equal(model.matches('all').length, data.projects.length);
 });
 
-test('published HTML includes the full project index before scripts run', () => {
+test('published HTML includes only checked projects before scripts run', () => {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const index = html.split('<!-- project-index:start -->')[1]?.split('<!-- project-index:end -->')[0];
   assert.ok(index, 'Missing static project index');
   assert.match(html, /id="projects" data-view="index"/);
   assert.match(html, /id="wheel-view" hidden/);
   assert.match(html, /id="project-groups">/);
-  for (const project of data.projects) {
-    assert.ok(index.includes(`data-project-id="${project.id}"`), project.name);
+  const visible = data.projects.filter(project => project.show === true);
+  const listedIds = new Set(Array.from(index.matchAll(/data-project-id="([^"]+)"/g), match => match[1]));
+  assert.deepEqual(listedIds, new Set(visible.map(project => project.id)));
+  for (const project of visible) {
     const destination = model.destination(project);
     if (destination) assert.ok(index.includes(destination.replaceAll('&', '&amp;')), project.name);
   }
@@ -122,9 +124,21 @@ test('all local image assets exist and expected source links are retained', () =
 });
 
 test('unknown and empty disciplines retain usable groups', () => {
-  const synthetic = createModel({ disciplines: [{ id: 'known', name: 'Known' }], projects: [{ id: 'p', disciplines: ['removed'], hasContent: false, externalUrl: 'https://example.com/' }], additionalDisciplines: [] });
+  const synthetic = createModel({ disciplines: [{ id: 'known', name: 'Known' }], projects: [{ id: 'p', disciplines: ['removed'], show: true, hasContent: false, externalUrl: 'https://example.com/' }], additionalDisciplines: [] });
   assert.equal(synthetic.groups('all')[0].id, 'ungrouped');
   assert.equal(synthetic.matches('known').length, 0);
+});
+
+test('only a checked Show checkbox includes a project in the wheel and index', () => {
+  const projects = [
+    { id: 'checked', disciplines: ['design'], show: true },
+    { id: 'unchecked', disciplines: ['design'], show: false },
+    { id: 'missing', disciplines: [] }
+  ];
+  const visibilityModel = createModel({ disciplines: [{ id: 'design', name: 'Design' }], projects });
+  assert.deepEqual(visibilityModel.matches('all'), [projects[0]]);
+  assert.deepEqual(visibilityModel.matches('design'), [projects[0]]);
+  assert.deepEqual(visibilityModel.groups('all').flatMap(group => group.projects), [projects[0]]);
 });
 
 test('responsive layouts progressively enhance mobile defaults', () => {

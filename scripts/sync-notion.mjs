@@ -50,6 +50,7 @@ function readSnapshot(source) {
 function renderStaticIndex(data) {
   const escape = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
   const model = createPortfolioModel(data);
+  if (!model.projects.length) return '          <p class="empty-state">No hay proyectos visibles.</p>';
   const cards = project => {
     const destination = model.destination(project);
     const tag = destination ? 'a' : 'article';
@@ -196,16 +197,17 @@ async function sync(snapshot) {
   const contentById = new Map();
   for (const page of projectPages) {
     const before = previous.get(idFrom(page.id));
+    const show = property(page.properties, 'Show')?.checkbox === true;
     const route = path(`proyectos/${idFrom(page.id)}/index.html`);
     const routeExists = await readFile(route).then(() => true).catch(error => error.code === 'ENOENT' ? false : Promise.reject(error));
     const blocks = await childrenOf(page.id);
     const hash = contentHash(blocks);
     if (before?.notionEditedAt === page.last_edited_time && before?.notionContentHash === hash && routeExists) {
-      projects.push(before);
+      projects.push({ ...before, show });
       contentById.set(before.id, null);
       continue;
     }
-    const project = mapProject(page, before);
+    const project = { ...mapProject(page, before), show };
     project.notionContentHash = hash;
     project.hasContent = blocks.some(block => meaningful(block) && block.type !== 'divider');
     if (page.cover) {

@@ -49,7 +49,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-fbcaf8f94f1182af96f1812e8a3177eb-cover.png",
       "notionEditedAt": "2026-10-09T16:32:00.000Z",
-      "notionContentHash": "c9b80d4a50b52c75a99cbea40c1ed83e03c81b4138ebf57b55adc6aca09310f5"
+      "notionContentHash": "c9b80d4a50b52c75a99cbea40c1ed83e03c81b4138ebf57b55adc6aca09310f5",
+      "show": true
     },
     {
       "id": "b03af8f94f1182278da2019e7caaf258",
@@ -69,7 +70,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": false,
       "cover": "images/notion/project-b03af8f94f1182278da2019e7caaf258-cover.png",
       "notionEditedAt": "2026-10-05T15:51:00.000Z",
-      "notionContentHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "notionContentHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "show": false
     },
     {
       "id": "dd4af8f94f1183f9a49b81f32cd65390",
@@ -89,7 +91,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-dd4af8f94f1183f9a49b81f32cd65390-cover.png",
       "notionEditedAt": "2026-10-05T13:16:00.000Z",
-      "notionContentHash": "6b26f4ae1f9b019111cbb4f1cc987bc9b719a4924ccdf0e9e3671a225c48e225"
+      "notionContentHash": "6b26f4ae1f9b019111cbb4f1cc987bc9b719a4924ccdf0e9e3671a225c48e225",
+      "show": true
     },
     {
       "id": "280af8f94f1183028d058188008d1711",
@@ -110,7 +113,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-280af8f94f1183028d058188008d1711-cover.png",
       "notionEditedAt": "2026-10-05T13:18:00.000Z",
-      "notionContentHash": "5ed22e231ee4555072ad9a3030c0db30de752119da70fe27ab2c198540b0cf31"
+      "notionContentHash": "5ed22e231ee4555072ad9a3030c0db30de752119da70fe27ab2c198540b0cf31",
+      "show": true
     },
     {
       "id": "bfeaf8f94f118273815f81f48a820cf3",
@@ -130,7 +134,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-bfeaf8f94f118273815f81f48a820cf3-cover.png",
       "notionEditedAt": "2026-10-09T16:15:00.000Z",
-      "notionContentHash": "1647b64b36345a8715f2c41b8a15b1f4eb9d9b2395c932ae8fa1c89bec56314d"
+      "notionContentHash": "1647b64b36345a8715f2c41b8a15b1f4eb9d9b2395c932ae8fa1c89bec56314d",
+      "show": true
     },
     {
       "id": "579af8f94f118232bfa68178d491c911",
@@ -151,7 +156,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-579af8f94f118232bfa68178d491c911-cover.png",
       "notionEditedAt": "2026-10-09T16:25:00.000Z",
-      "notionContentHash": "e14d80f501a29727586ab65b93581542403eee24a03c7f7d066c83767074e3ab"
+      "notionContentHash": "e14d80f501a29727586ab65b93581542403eee24a03c7f7d066c83767074e3ab",
+      "show": false
     },
     {
       "id": "5c9af8f94f1182dd921e0193d1a7116f",
@@ -172,7 +178,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-5c9af8f94f1182dd921e0193d1a7116f-cover.png",
       "notionEditedAt": "2026-10-09T16:56:00.000Z",
-      "notionContentHash": "cdbbaa6f50cb855b2731f2bd327d64ab1404f3028b08e17510c7568bc65a4986"
+      "notionContentHash": "cdbbaa6f50cb855b2731f2bd327d64ab1404f3028b08e17510c7568bc65a4986",
+      "show": true
     },
     {
       "id": "491af8f94f1183ae9464015338d622b1",
@@ -192,7 +199,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-491af8f94f1183ae9464015338d622b1-cover.png",
       "notionEditedAt": "2026-10-05T15:08:00.000Z",
-      "notionContentHash": "1b793b4b0fe07f50719ea48a03d99790e329e690ebe61744f4e2ed6bd4581bab"
+      "notionContentHash": "1b793b4b0fe07f50719ea48a03d99790e329e690ebe61744f4e2ed6bd4581bab",
+      "show": true
     },
     {
       "id": "933af8f94f11821bb51c011af76fbb8f",
@@ -212,7 +220,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-933af8f94f11821bb51c011af76fbb8f-cover.png",
       "notionEditedAt": "2026-10-09T16:38:00.000Z",
-      "notionContentHash": "4d3480f23ffe43d36e6b05dedb73f4870408ba0137e1ff2163036da932d451bb"
+      "notionContentHash": "4d3480f23ffe43d36e6b05dedb73f4870408ba0137e1ff2163036da932d451bb",
+      "show": true
     },
     {
       "id": "5b8af8f94f11838bb34801e5113cbfe4",
@@ -232,7 +241,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-5b8af8f94f11838bb34801e5113cbfe4-cover.png",
       "notionEditedAt": "2026-10-09T16:39:00.000Z",
-      "notionContentHash": "c68f9d12ec2a0a8da10d0794dca2fc7fbbc325fb3e89a1cbb58c50cd39f3718e"
+      "notionContentHash": "c68f9d12ec2a0a8da10d0794dca2fc7fbbc325fb3e89a1cbb58c50cd39f3718e",
+      "show": true
     },
     {
       "id": "3f0af8f94f1180299d3befa896c0ab86",
@@ -253,7 +263,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-3f0af8f94f1180299d3befa896c0ab86-cover.png",
       "notionEditedAt": "2026-10-09T15:58:00.000Z",
-      "notionContentHash": "5cc63aac2c4308729ef2ca4b697291c64902bd5b0ec2152acdb0d55942e87ba8"
+      "notionContentHash": "5cc63aac2c4308729ef2ca4b697291c64902bd5b0ec2152acdb0d55942e87ba8",
+      "show": true
     },
     {
       "id": "281af8f94f11824dac08815a44d68e30",
@@ -273,7 +284,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-281af8f94f11824dac08815a44d68e30-cover.png",
       "notionEditedAt": "2026-10-09T16:26:00.000Z",
-      "notionContentHash": "fc416e50605924354da45e87125bba5e4641b0af7e05c19daf1b18af945d7ffb"
+      "notionContentHash": "fc416e50605924354da45e87125bba5e4641b0af7e05c19daf1b18af945d7ffb",
+      "show": true
     },
     {
       "id": "3f0af8f94f1180c38ab4eafbcd61e8bc",
@@ -294,7 +306,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": false,
       "cover": "images/notion/project-3f0af8f94f1180c38ab4eafbcd61e8bc-cover.png",
       "notionEditedAt": "2026-10-09T16:32:00.000Z",
-      "notionContentHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "notionContentHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "show": true
     },
     {
       "id": "a10af8f94f118374b5be0115e640f6d6",
@@ -314,7 +327,8 @@ window.PORTFOLIO_DATA = {
       "hasContent": true,
       "cover": "images/notion/project-a10af8f94f118374b5be0115e640f6d6-cover.jpg",
       "notionEditedAt": "2026-10-05T15:37:00.000Z",
-      "notionContentHash": "2613ee16fb118fd68fdbdccfa36e42ba09ef3659910d0482868b62ee19092aeb"
+      "notionContentHash": "2613ee16fb118fd68fdbdccfa36e42ba09ef3659910d0482868b62ee19092aeb",
+      "show": true
     }
   ],
   "pictures": [
