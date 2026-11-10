@@ -152,7 +152,7 @@ async function mediaForBlock(block, notionUrl, missing) {
   if (value?.type === 'external' && source?.startsWith('https://')) return source;
   if (!source) { missing.add(block.id); return null; }
   try {
-    const local = await downloadMedia(source, `images/notion/content-${idFrom(block.id)}`);
+    const local = await downloadMedia(source, `images/notion/content-${idFrom(block.id)}`, block.type === 'pdf' ? 100 * 1024 * 1024 : 80 * 1024 * 1024);
     return local ? `../../${local}` : null;
   } catch (error) {
     missing.add(block.id);

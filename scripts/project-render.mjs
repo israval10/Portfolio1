@@ -9,19 +9,22 @@ const webUrl = value => {
   } catch { return null; }
 };
 const assetUrl = value => value?.startsWith('../../') ? `/${value.slice(6)}` : webUrl(value);
+const localPdf = /^\/images\/notion\/content-[a-f0-9]{32}\.pdf$/i;
 
 function cleanHtml(html) {
   return sanitizeHtml(html, {
-    allowedTags: [...sanitizeHtml.defaults.allowedTags, 'img', 'figure', 'figcaption', 'aside', 'video', 'source'],
+    allowedTags: [...sanitizeHtml.defaults.allowedTags, 'img', 'figure', 'figcaption', 'aside', 'video', 'source', 'iframe'],
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
       a: ['href', 'target', 'rel'],
       img: ['src', 'alt', 'loading'],
       video: ['src', 'controls', 'preload'],
-      source: ['src', 'type']
+      source: ['src', 'type'],
+      iframe: ['src', 'title', 'loading']
     },
     allowedSchemes: ['http', 'https', 'mailto'],
-    allowedSchemesByTag: { img: ['http', 'https'], video: ['http', 'https'], source: ['http', 'https'] }
+    allowedSchemesByTag: { img: ['http', 'https'], video: ['http', 'https'], source: ['http', 'https'] },
+    exclusiveFilter: frame => frame.tag === 'iframe' && !localPdf.test(frame.attribs.src || '')
   }).replace(/Pres{1,2} enter or click to view image in full size/gi, '')
     .replace(/<p>\s*<\/p>/gi, '');
 }
@@ -81,6 +84,7 @@ export async function renderBlocks(blocks, resolveMedia = async () => null) {
       if (url) output.push(`<video src="${escaped(url)}" controls preload="none"></video>`);
     } else if (type === 'pdf' || type === 'file') {
       const url = assetUrl(await resolveMedia(block));
+      if (localPdf.test(url || '')) output.push(`<iframe src="${escaped(url)}" title="PDF" loading="lazy"></iframe>`);
       if (url) output.push(`<p><a class="project-file" href="${escaped(url)}" target="_blank" rel="noopener noreferrer">${escaped(value.name || (type === 'pdf' ? 'Abrir PDF' : 'Abrir archivo'))} &#8599;</a></p>`);
     } else if (type === 'bookmark' || type === 'link_preview' || type === 'embed') {
       const url = webUrl(value.url);

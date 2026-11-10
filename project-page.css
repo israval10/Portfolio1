@@ -29,6 +29,15 @@ h1 { font-size: clamp(40px, 5vw, 78px); font-weight: 500; line-height: 1.08; mar
 .project-article figure { margin: 2.8em 0; }
 .project-article figure img { width: 100%; height: auto; }
 .project-article figcaption { color: var(--muted); font-size: 13px; margin-top: 8px; }
+.project-article iframe {
+  display: block;
+  width: 100%;
+  height: clamp(360px, 72vh, 760px);
+  margin: 0 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--soft);
+}
 .project-article blockquote, .project-callout { border-left: 2px solid var(--ink); padding: 12px 0 12px 24px; }
 .project-callout { background: #f4f5f2; padding: 18px 24px; }
 .project-article pre { overflow-x: auto; padding: 20px; background: #f4f5f2; font-size: 14px; }
