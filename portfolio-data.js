@@ -5,7 +5,7 @@ window.PORTFOLIO_DATA = {
     "projects": "https://app.notion.com/p/353af8f94f11836eb47d817bf759c58a",
     "disciplines": "https://app.notion.com/p/ac4af8f94f11823ab210817de63e7818",
     "pictures": "https://app.notion.com/p/3f0af8f94f1180e8a8bed8d1bf6fd44b",
-    "retrievedAt": "2026-10-11"
+    "retrievedAt": "2026-11-10"
   },
   "disciplines": [
     {
@@ -48,7 +48,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-fbcaf8f94f1182af96f1812e8a3177eb-cover.png",
-      "notionEditedAt": "2026-10-09T16:32:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "c9b80d4a50b52c75a99cbea40c1ed83e03c81b4138ebf57b55adc6aca09310f5",
       "show": true
     },
@@ -69,7 +69,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "https://www.figma.com/board/iXuVc0z0UU3rAPLU3gFjKg/-Copy--Reebok--Innovaci%25C3%25B3n-tecnol%25C3%25B3gica-en-el-retail?t=ddOqgl1aPO9wpFhv-0",
       "hasContent": false,
       "cover": "images/notion/project-b03af8f94f1182278da2019e7caaf258-cover.png",
-      "notionEditedAt": "2026-10-05T15:51:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
       "show": false
     },
@@ -90,7 +90,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-dd4af8f94f1183f9a49b81f32cd65390-cover.png",
-      "notionEditedAt": "2026-10-05T13:16:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "6b26f4ae1f9b019111cbb4f1cc987bc9b719a4924ccdf0e9e3671a225c48e225",
       "show": true
     },
@@ -112,7 +112,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-280af8f94f1183028d058188008d1711-cover.png",
-      "notionEditedAt": "2026-10-05T13:18:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "5ed22e231ee4555072ad9a3030c0db30de752119da70fe27ab2c198540b0cf31",
       "show": true
     },
@@ -133,7 +133,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-bfeaf8f94f118273815f81f48a820cf3-cover.png",
-      "notionEditedAt": "2026-10-09T16:15:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "1647b64b36345a8715f2c41b8a15b1f4eb9d9b2395c932ae8fa1c89bec56314d",
       "show": true
     },
@@ -155,7 +155,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-579af8f94f118232bfa68178d491c911-cover.png",
-      "notionEditedAt": "2026-10-09T16:25:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "e14d80f501a29727586ab65b93581542403eee24a03c7f7d066c83767074e3ab",
       "show": false
     },
@@ -177,7 +177,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-5c9af8f94f1182dd921e0193d1a7116f-cover.png",
-      "notionEditedAt": "2026-10-09T16:56:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "cdbbaa6f50cb855b2731f2bd327d64ab1404f3028b08e17510c7568bc65a4986",
       "show": true
     },
@@ -198,8 +198,8 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-491af8f94f1183ae9464015338d622b1-cover.png",
-      "notionEditedAt": "2026-10-05T15:08:00.000Z",
-      "notionContentHash": "1b793b4b0fe07f50719ea48a03d99790e329e690ebe61744f4e2ed6bd4581bab",
+      "notionEditedAt": "2026-11-10T22:09:00.000Z",
+      "notionContentHash": "ef470ff46bed8ac451c52093ca29972348b493c1eb93039b0ebca380f8d61958",
       "show": false
     },
     {
@@ -219,7 +219,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-933af8f94f11821bb51c011af76fbb8f-cover.png",
-      "notionEditedAt": "2026-10-09T16:38:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "4d3480f23ffe43d36e6b05dedb73f4870408ba0137e1ff2163036da932d451bb",
       "show": true
     },
@@ -240,7 +240,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-5b8af8f94f11838bb34801e5113cbfe4-cover.png",
-      "notionEditedAt": "2026-10-09T16:39:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "c68f9d12ec2a0a8da10d0794dca2fc7fbbc325fb3e89a1cbb58c50cd39f3718e",
       "show": true
     },
@@ -262,7 +262,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-3f0af8f94f1180299d3befa896c0ab86-cover.png",
-      "notionEditedAt": "2026-10-09T15:58:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "5cc63aac2c4308729ef2ca4b697291c64902bd5b0ec2152acdb0d55942e87ba8",
       "show": true
     },
@@ -283,7 +283,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-281af8f94f11824dac08815a44d68e30-cover.png",
-      "notionEditedAt": "2026-10-09T16:26:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "fc416e50605924354da45e87125bba5e4641b0af7e05c19daf1b18af945d7ffb",
       "show": true
     },
@@ -305,7 +305,7 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "https://llama-academy.vercel.app/",
       "hasContent": false,
       "cover": "images/notion/project-3f0af8f94f1180c38ab4eafbcd61e8bc-cover.png",
-      "notionEditedAt": "2026-10-09T16:32:00.000Z",
+      "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
       "show": true
     },
@@ -326,8 +326,8 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-a10af8f94f118374b5be0115e640f6d6-cover.jpg",
-      "notionEditedAt": "2026-10-05T15:37:00.000Z",
-      "notionContentHash": "2613ee16fb118fd68fdbdccfa36e42ba09ef3659910d0482868b62ee19092aeb",
+      "notionEditedAt": "2026-11-10T22:09:00.000Z",
+      "notionContentHash": "c198e0a1e92584164fb129ab8dfa478f001d032a09c2c15700f35670800c5109",
       "show": false
     }
   ],
