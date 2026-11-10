@@ -200,7 +200,7 @@ window.PORTFOLIO_DATA = {
       "cover": "images/notion/project-491af8f94f1183ae9464015338d622b1-cover.png",
       "notionEditedAt": "2026-10-05T15:08:00.000Z",
       "notionContentHash": "1b793b4b0fe07f50719ea48a03d99790e329e690ebe61744f4e2ed6bd4581bab",
-      "show": true
+      "show": false
     },
     {
       "id": "933af8f94f11821bb51c011af76fbb8f",
@@ -328,7 +328,7 @@ window.PORTFOLIO_DATA = {
       "cover": "images/notion/project-a10af8f94f118374b5be0115e640f6d6-cover.jpg",
       "notionEditedAt": "2026-10-05T15:37:00.000Z",
       "notionContentHash": "2613ee16fb118fd68fdbdccfa36e42ba09ef3659910d0482868b62ee19092aeb",
-      "show": true
+      "show": false
     }
   ],
   "pictures": [
