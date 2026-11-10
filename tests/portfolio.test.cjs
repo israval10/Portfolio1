@@ -74,7 +74,7 @@ test('published HTML includes only checked projects before scripts run', () => {
   }
 });
 
-test('original ES/EN copy remains intact apart from the updated footer', () => {
+test('remaining ES/EN copy matches the original with the updated footer', () => {
   const original = fs.readFileSync(path.join(root, '.verification/index.html'), 'utf8');
   const begin = original.indexOf('const translations =');
   const end = original.indexOf('window.currentLang', begin);
@@ -82,14 +82,14 @@ test('original ES/EN copy remains intact apart from the updated footer', () => {
   vm.runInNewContext(original.slice(begin, end) + 'globalThis.copy = translations;', before);
   const after = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'content.js'), 'utf8'), after);
-  const removedCopy = new Set(['proj_label', 'proj_title', 'proj_sub', 'hero_scroll', 'nav_portfolios', 'port_label', 'port_title', 'port_sub', 'port1_title', 'port1_desc', 'port2_title', 'port2_desc']);
-  const removedPortfolioCopy = [...removedCopy].filter(key => key === 'nav_portfolios' || key.startsWith('port'));
+  const removedCopy = new Set(['proj_label', 'proj_title', 'proj_sub', 'hero_scroll', 'stat_projects', 'stat_disciplines', 'stat_years', 'stat_learning', 'nav_portfolios', 'port_label', 'port_title', 'port_sub', 'port1_title', 'port1_desc', 'port2_title', 'port2_desc']);
+  const deletedTranslationKeys = [...removedCopy].filter(key => key === 'nav_portfolios' || key.startsWith('port') || key.startsWith('stat_'));
   for (const lang of ['es', 'en']) {
     before.copy[lang].disc_all = lang === 'es' ? 'Todos' : 'All';
     before.copy[lang].footer_made = lang === 'es'
       ? 'Hecho con ❤️, IA, curiosidad y muchas horas de experimentación.'
       : 'Made with ❤️, AI, curiosity, and many hours of experimentation.';
-    for (const key of removedPortfolioCopy) delete before.copy[lang][key];
+    for (const key of deletedTranslationKeys) delete before.copy[lang][key];
   }
   assert.deepEqual(JSON.parse(JSON.stringify(before.copy)), JSON.parse(JSON.stringify(after.window.PORTFOLIO_TRANSLATIONS)));
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
@@ -119,7 +119,7 @@ test('all local image assets exist and expected source links are retained', () =
   for (const value of ['U. de Lima/ U. Pacifico', 'Comunicaciones / Ing. Industrial']) {
     assert.ok(html.includes('<span class="about-info-value">' + value + '</span>'), value);
   }
-  for (const value of ['https://wa.me/51987729841', 'https://www.linkedin.com/in/israel-valencia/', 'mailto:israval2000@gmail.com', 'Universidad de Lima', 'Comunicaciones', 'Per\u00fa', '\u221e']) assert.ok(html.includes(value), value);
+  for (const value of ['https://wa.me/51987729841', 'https://www.linkedin.com/in/israel-valencia/', 'mailto:israval2000@gmail.com', 'Universidad de Lima', 'Comunicaciones', 'Per\u00fa']) assert.ok(html.includes(value), value);
   assert.doesNotMatch(html, /© 2026 Israel Valencia/);
 });
 

@@ -278,8 +278,6 @@
     renderIndex();
     renderSelection();
     renderPictures();
-    document.getElementById('project-count').textContent = String(data.projects.length);
-    document.getElementById('discipline-count').textContent = String(data.disciplines.length);
     window.dispatchEvent(new Event('portfolio:language'));
   };
 
