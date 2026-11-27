@@ -11,6 +11,36 @@ const webUrl = value => {
 const assetUrl = value => value?.startsWith('../../') ? `/${value.slice(6)}` : webUrl(value);
 const localPdf = /^\/images\/notion\/content-[a-f0-9]{32}\.pdf$/i;
 
+function figmaEmbedUrl(value) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== 'https:' || !['figma.com', 'www.figma.com', 'embed.figma.com'].includes(url.hostname) || !/^\/(?:design|proto|board)\/[a-z0-9]+(?:\/[^/?#]+)?\/?$/i.test(url.pathname)) return null;
+    url.hostname = 'embed.figma.com';
+    url.searchParams.set('embed-host', 'israel-valencia-portfolio');
+    return url.href;
+  } catch { return null; }
+}
+
+export function renderFigmaEmbed(url, title = 'Figma') {
+  const source = figmaEmbedUrl(url);
+  if (!source) return '';
+  return `<figure class="project-figma"><iframe src="${escaped(source)}" title="${escaped(title)}" loading="lazy" allowfullscreen></iframe><figcaption><a href="${escaped(url)}" target="_blank" rel="noopener noreferrer">${escaped(title)} &#8599;</a></figcaption></figure>`;
+}
+
+function addFigmaEmbeds(content, embeds = []) {
+  for (const embed of embeds) {
+    const source = figmaEmbedUrl(embed.url);
+    if (!source || content.includes(escaped(source))) continue;
+    const headings = [...content.matchAll(/<h[2-6]\b[^>]*>([\s\S]*?)<\/h[2-6]>/g)];
+    const heading = headings.findLast(item => item[1].replace(/<[^>]*>/g, '').trim() === embed.heading);
+    if (!heading) continue;
+    const next = headings.find(item => item.index > heading.index);
+    const position = next?.index ?? content.length;
+    content = content.slice(0, position) + renderFigmaEmbed(embed.url, embed.title) + '\n' + content.slice(position);
+  }
+  return content;
+}
+
 function cleanHtml(html) {
   return sanitizeHtml(html, {
     allowedTags: [...sanitizeHtml.defaults.allowedTags, 'img', 'figure', 'figcaption', 'aside', 'video', 'source', 'iframe'],
@@ -20,11 +50,12 @@ function cleanHtml(html) {
       img: ['src', 'alt', 'loading'],
       video: ['src', 'controls', 'preload'],
       source: ['src', 'type'],
-      iframe: ['src', 'title', 'loading']
+      figure: ['class'],
+      iframe: ['src', 'title', 'loading', 'allowfullscreen']
     },
     allowedSchemes: ['http', 'https', 'mailto'],
     allowedSchemesByTag: { img: ['http', 'https'], video: ['http', 'https'], source: ['http', 'https'] },
-    exclusiveFilter: frame => frame.tag === 'iframe' && !localPdf.test(frame.attribs.src || '')
+    exclusiveFilter: frame => frame.tag === 'iframe' && !localPdf.test(frame.attribs.src || '') && figmaEmbedUrl(frame.attribs.src) !== frame.attribs.src
   }).replace(/Pres{1,2} enter or click to view image in full size/gi, '')
     .replace(/<p>\s*<\/p>/gi, '');
 }
@@ -88,7 +119,7 @@ export async function renderBlocks(blocks, resolveMedia = async () => null) {
       if (url) output.push(`<p><a class="project-file" href="${escaped(url)}" target="_blank" rel="noopener noreferrer">${escaped(value.name || (type === 'pdf' ? 'Abrir PDF' : 'Abrir archivo'))} &#8599;</a></p>`);
     } else if (type === 'bookmark' || type === 'link_preview' || type === 'embed') {
       const url = webUrl(value.url);
-      if (url) output.push(`<p><a href="${escaped(url)}" target="_blank" rel="noopener noreferrer">${text || escaped(url)} &#8599;</a></p>`);
+      if (url) output.push(renderFigmaEmbed(url) || `<p><a href="${escaped(url)}" target="_blank" rel="noopener noreferrer">${text || escaped(url)} &#8599;</a></p>`);
     } else if (type === 'divider') output.push('<hr>');
     else if (type === 'table') output.push(`<div class="project-table"><table>${(block.children || []).map(row => `<tr>${(row.table_row?.cells || []).map(cell => `<td>${richText(cell)}</td>`).join('')}</tr>`).join('')}</table></div>`);
     else if (nested) output.push(nested);
@@ -121,7 +152,8 @@ export function renderProjectPage(project, content, options = {}) {
   const meta = [...project.years, ...disciplines].join(' / ');
   const source = webUrl(project.notionUrl);
   const sourceLink = source ? `<a href="${escaped(source)}" target="_blank" rel="noopener noreferrer">Ver en Notion &#8599;</a>` : '';
-  const body = options.partial ? `${content}<p class="project-source-note">${sourceLink}</p>` : content;
+  const embeddedContent = addFigmaEmbeds(content, project.figmaEmbeds);
+  const body = options.partial ? `${embeddedContent}<p class="project-source-note">${sourceLink}</p>` : embeddedContent;
   return `<!doctype html>
 <html lang="es">
 <head>
@@ -132,7 +164,7 @@ export function renderProjectPage(project, content, options = {}) {
   <title>${title} | Israel Valencia</title>
   <link rel="icon" type="image/png" sizes="180x180" href="/images/site/favicon.png?v=rocket">
   <link rel="apple-touch-icon" href="/images/site/favicon.png?v=rocket">
-  <link id="project-stylesheet" rel="stylesheet" href="/project-page.css?v=image-lightbox" onerror="this.onerror=null;this.href='/project-page.css?v=image-lightbox-retry'">
+  <link id="project-stylesheet" rel="stylesheet" href="/project-page.css?v=image-lightbox-figma" onerror="this.onerror=null;this.href='/project-page.css?v=image-lightbox-figma-retry'">
   <script defer src="/project-language.js?v=project-assets-v2"></script>
   <script defer src="/project-lightbox.js?v=1"></script>
 </head>

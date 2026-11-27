@@ -38,6 +38,8 @@ h1 { font-size: clamp(40px, 5vw, 78px); font-weight: 500; line-height: 1.08; mar
   border-radius: 8px;
   background: var(--soft);
 }
+.project-article .project-figma { margin: 32px 0 48px; }
+.project-article .project-figma iframe { height: clamp(640px, 90vh, 900px); }
 .project-article blockquote, .project-callout { border-left: 2px solid var(--ink); padding: 12px 0 12px 24px; }
 .project-callout { background: #f4f5f2; padding: 18px 24px; }
 .project-article pre { overflow-x: auto; padding: 20px; background: #f4f5f2; font-size: 14px; }

@@ -71,7 +71,44 @@ window.PORTFOLIO_DATA = {
       "cover": "images/notion/project-b03af8f94f1182278da2019e7caaf258-cover.png",
       "notionEditedAt": "2026-11-27T10:09:15.887Z",
       "notionContentHash": null,
-      "show": true
+      "show": true,
+      "figmaEmbeds": [
+        {
+          "heading": "Compra personalizada",
+          "title": "Prototipo de compra personalizada",
+          "url": "https://www.figma.com/proto/gYelRjmwg4OdELvMSr9HmF/Reebok-Green?node-id=28-1738&starting-point-node-id=28-1738&scaling=contain&content-scaling=fixed&device-frame=false"
+        },
+        {
+          "heading": "Devolución en tienda",
+          "title": "Prototipo de devolución en tienda",
+          "url": "https://www.figma.com/proto/gYelRjmwg4OdELvMSr9HmF/Reebok-Green?node-id=29-2765&starting-point-node-id=29-2765&scaling=contain&content-scaling=fixed&device-frame=false"
+        },
+        {
+          "heading": "Consulta de impacto",
+          "title": "Prototipo de consulta de impacto",
+          "url": "https://www.figma.com/proto/gYelRjmwg4OdELvMSr9HmF/Reebok-Green?node-id=30-3308&starting-point-node-id=30-3308&scaling=contain&content-scaling=fixed&device-frame=false"
+        },
+        {
+          "heading": "Canje de puntos",
+          "title": "Prototipo de canje de puntos",
+          "url": "https://www.figma.com/proto/gYelRjmwg4OdELvMSr9HmF/Reebok-Green?node-id=31-3550&starting-point-node-id=31-3550&scaling=contain&content-scaling=fixed&device-frame=false"
+        },
+        {
+          "heading": "Fundamentos visuales",
+          "title": "Fundamentos visuales en Figma",
+          "url": "https://www.figma.com/design/gYelRjmwg4OdELvMSr9HmF/Reebok-Green?node-id=6-1602"
+        },
+        {
+          "heading": "Componentes y estados",
+          "title": "Componentes y estados en Figma",
+          "url": "https://www.figma.com/design/gYelRjmwg4OdELvMSr9HmF/Reebok-Green?node-id=10-1780"
+        },
+        {
+          "heading": "Aplicación al prototipo",
+          "title": "Pilotos responsive en Figma",
+          "url": "https://www.figma.com/design/gYelRjmwg4OdELvMSr9HmF/Reebok-Green?node-id=6-1604"
+        }
+      ]
     },
     {
       "id": "dd4af8f94f1183f9a49b81f32cd65390",

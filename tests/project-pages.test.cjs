@@ -58,7 +58,7 @@ test('generated routes use local assets and empty-page redirects reject unsafe U
     assert.doesNotMatch(html, /notion-file-block:/, folder);
     assert.doesNotMatch(html, /Pres{1,2} enter or click to view image in full size/i, folder);
     if (!html.includes('class="project-article"')) continue;
-    assert.match(html, /id="project-stylesheet"[^>]*href="\/project-page\.css\?v=image-lightbox"/i, folder);
+    assert.match(html, /id="project-stylesheet"[^>]*href="\/project-page\.css\?v=image-lightbox(?:-figma)?"/i, folder);
     assert.match(html, /src="\/project-language\.js\?v=project-assets-v2"/i, folder);
     assert.match(html, /src="\/project-lightbox\.js\?v=1"/i, folder);
     assert.match(html, /href="\/images\/site\/favicon\.png\?v=rocket"/i, folder);
@@ -96,7 +96,7 @@ test('populated project pages have a matching English page and language switcher
     assert.match(english, /English \(UK\)/);
     assert.match(english, /class="project-article"/);
     assert.match(english, /translation-source-hash/);
-    assert.match(english, /href="\/project-page\.css\?v=image-lightbox"/);
+    assert.match(english, /href="\/project-page\.css\?v=image-lightbox(?:-figma)?"/);
     assert.match(english, /src="\/project-lightbox\.js\?v=1"/);
   }
 });

@@ -171,6 +171,7 @@ function mapProject(page, previous) {
   const externalUrl = property(properties, 'URL')?.url || '';
   return {
     id, name,
+    ...(previous?.figmaEmbeds ? { figmaEmbeds: previous.figmaEmbeds } : {}),
     description: { es: description, en: previous?.description?.es === description ? previous.description.en : description },
     disciplines: relation.map(item => idFrom(item.id)),
     years, notionUrl: page.url || `https://www.notion.so/${id}`,
