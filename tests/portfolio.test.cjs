@@ -82,8 +82,8 @@ test('remaining ES/EN copy matches the original with the updated footer', () => 
   vm.runInNewContext(original.slice(begin, end) + 'globalThis.copy = translations;', before);
   const after = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'content.js'), 'utf8'), after);
-  const removedCopy = new Set(['proj_label', 'proj_title', 'proj_sub', 'hero_scroll', 'stat_projects', 'stat_disciplines', 'stat_years', 'stat_learning', 'nav_portfolios', 'port_label', 'port_title', 'port_sub', 'port1_title', 'port1_desc', 'port2_title', 'port2_desc']);
-  const deletedTranslationKeys = [...removedCopy].filter(key => key === 'nav_portfolios' || key.startsWith('port') || key.startsWith('stat_'));
+  const removedCopy = new Set(['proj_label', 'proj_title', 'proj_sub', 'hero_scroll', 'about_label', 'stat_projects', 'stat_disciplines', 'stat_years', 'stat_learning', 'nav_portfolios', 'port_label', 'port_title', 'port_sub', 'port1_title', 'port1_desc', 'port2_title', 'port2_desc']);
+  const deletedTranslationKeys = [...removedCopy].filter(key => key === 'about_label' || key === 'nav_portfolios' || key.startsWith('port') || key.startsWith('stat_'));
   for (const lang of ['es', 'en']) {
     before.copy[lang].disc_all = lang === 'es' ? 'Todos' : 'All';
     before.copy[lang].footer_made = lang === 'es'
@@ -101,7 +101,7 @@ test('remaining ES/EN copy matches the original with the updated footer', () => 
   for (const key of removedCopy) assert.ok(!keys.includes(key), 'Removed copy still rendered: ' + key);
   assert.doesNotMatch(html, /class="(?:mobile-next-section|hero-scroll)"/);
   assert.doesNotMatch(html, /id="portfolios"|href="#portfolios"/);
-  assert.match(html, /<section id="about">/);
+  assert.match(html, /<section id="about" aria-labelledby="about-title">/);
 });
 
 test('all local image assets exist and expected source links are retained', () => {
