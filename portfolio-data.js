@@ -55,23 +55,6 @@ window.PORTFOLIO_DATA = {
     {
       "id": "b03af8f94f1182278da2019e7caaf258",
       "name": "Reebok Green",
-      "description": {
-        "es": "Competencia Globant Design Center Latam. App de análisis de calzado y reciclaje gamificado.",
-        "en": "Globant Design Center Latam competition. Footwear analysis and gamified recycling app."
-      },
-      "disciplines": [
-        "b9aaf8f94f118262b9ac010afe337f0c"
-      ],
-      "years": [
-        "2025"
-      ],
-      "notionUrl": "https://app.notion.com/p/Reebok-Green-b03af8f94f1182278da2019e7caaf258",
-      "externalUrl": "",
-      "hasContent": true,
-      "cover": "images/notion/project-b03af8f94f1182278da2019e7caaf258-cover.png",
-      "notionEditedAt": "2026-11-27T10:09:15.887Z",
-      "notionContentHash": null,
-      "show": true,
       "figmaEmbeds": [
         {
           "heading": "Compra personalizada",
@@ -108,7 +91,24 @@ window.PORTFOLIO_DATA = {
           "title": "Pilotos responsive en Figma",
           "url": "https://www.figma.com/design/gYelRjmwg4OdELvMSr9HmF/Reebok-Green?node-id=6-1604"
         }
-      ]
+      ],
+      "description": {
+        "es": "Competencia Globant Design Center Latam. App de análisis de calzado y reciclaje gamificado.",
+        "en": "Globant Design Center Latam competition. Footwear analysis and gamified recycling app."
+      },
+      "disciplines": [
+        "b9aaf8f94f118262b9ac010afe337f0c"
+      ],
+      "years": [
+        "2025"
+      ],
+      "notionUrl": "https://app.notion.com/p/Reebok-Green-b03af8f94f1182278da2019e7caaf258",
+      "externalUrl": "",
+      "hasContent": true,
+      "cover": "images/notion/project-b03af8f94f1182278da2019e7caaf258-cover.png",
+      "notionEditedAt": "2026-11-27T10:37:00.000Z",
+      "notionContentHash": "e0e5e69f2248e5e25f0b29be587564ee2adefe0cca2a7b810c693113f985253d",
+      "show": true
     },
     {
       "id": "dd4af8f94f1183f9a49b81f32cd65390",
@@ -256,8 +256,8 @@ window.PORTFOLIO_DATA = {
       "externalUrl": "",
       "hasContent": true,
       "cover": "images/notion/project-933af8f94f11821bb51c011af76fbb8f-cover.png",
-      "notionEditedAt": "2026-11-10T21:43:00.000Z",
-      "notionContentHash": "4d3480f23ffe43d36e6b05dedb73f4870408ba0137e1ff2163036da932d451bb",
+      "notionEditedAt": "2026-11-26T23:00:00.000Z",
+      "notionContentHash": "0857eb16fb63380de97ded9bf7e5bc7826bfca5a6620887d40bb2fe53856df3e",
       "show": true
     },
     {
