@@ -71,7 +71,7 @@ window.PORTFOLIO_DATA = {
       "cover": "images/notion/project-b03af8f94f1182278da2019e7caaf258-cover.png",
       "notionEditedAt": "2026-11-10T21:43:00.000Z",
       "notionContentHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "show": false
+      "show": true
     },
     {
       "id": "dd4af8f94f1183f9a49b81f32cd65390",
