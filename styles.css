@@ -449,21 +449,11 @@ main > section:not(.opening) { padding-block: 72px; }
   .discipline-intro { text-align: left; }
   .filters-and-count { width: auto; }
   #discipline-filters { width: auto; justify-content: flex-end; }
-  #about .container {
-    display: grid;
-    grid-template-columns: minmax(0, 380px) minmax(0, 680px);
-    column-gap: 40px;
+  .about-inner {
+    grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
     align-items: start;
   }
-  .about-title { margin-bottom: 0; text-wrap: balance; }
-  .about-card {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    align-items: start;
-  }
-  .about-card .about-quote { margin-bottom: 0; }
-  #about .pictures-grid { grid-column: 1 / -1; }
+  .about-title { text-wrap: balance; }
   .contact-inner { gap: 80px; }
 }
 
