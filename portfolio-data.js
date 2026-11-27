@@ -5,7 +5,7 @@ window.PORTFOLIO_DATA = {
     "projects": "https://app.notion.com/p/353af8f94f11836eb47d817bf759c58a",
     "disciplines": "https://app.notion.com/p/ac4af8f94f11823ab210817de63e7818",
     "pictures": "https://app.notion.com/p/3f0af8f94f1180e8a8bed8d1bf6fd44b",
-    "retrievedAt": "2026-11-10"
+    "retrievedAt": "2026-11-27"
   },
   "disciplines": [
     {
@@ -66,11 +66,11 @@ window.PORTFOLIO_DATA = {
         "2025"
       ],
       "notionUrl": "https://app.notion.com/p/Reebok-Green-b03af8f94f1182278da2019e7caaf258",
-      "externalUrl": "https://www.figma.com/board/iXuVc0z0UU3rAPLU3gFjKg/-Copy--Reebok--Innovaci%25C3%25B3n-tecnol%25C3%25B3gica-en-el-retail?t=ddOqgl1aPO9wpFhv-0",
-      "hasContent": false,
+      "externalUrl": "",
+      "hasContent": true,
       "cover": "images/notion/project-b03af8f94f1182278da2019e7caaf258-cover.png",
-      "notionEditedAt": "2026-11-10T21:43:00.000Z",
-      "notionContentHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "notionEditedAt": "2026-11-27T10:09:15.887Z",
+      "notionContentHash": null,
       "show": true
     },
     {
